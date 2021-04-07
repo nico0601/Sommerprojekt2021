@@ -24,11 +24,11 @@
             klassische Massage
         </div>
         <div class="description">
-            <img class="plus" src="Bilder/plus.png">
+            <img class="plus" src="../images/plus.png">
             <p>löst Verspannungen und Verkrampfungen in der Muskulatur</p>
-            <img class="plus" src="Bilder/plus.png">
+            <img class="plus" src="../images/plus.png">
             <p>wohltuend, durchblutungsfördernd</p>
-            <img class="plus" src="Bilder/plus.png">
+            <img class="plus" src="../images/plus.png">
             <p>löst Verspannungen und Verkrampfungen in der Muskulatur</p>
         </div>
     </div>
@@ -38,13 +38,13 @@
             Sportmassage
         </div>
         <div class="description">
-            <img class="plus" src="Bilder/plus.png">
+            <img class="plus" src="../images/plus.png">
             <p>regenerative Massage nach wettkampfmäßiger Belastung</p>
-            <img class="plus" src="Bilder/plus.png">
+            <img class="plus" src="../images/plus.png">
             <p>Behandlung von sportartspezifischen Verletzungen und Restriktionen</p>
-            <img class="plus" src="Bilder/plus.png">
+            <img class="plus" src="../images/plus.png">
             <p>Prävention von Verletzungen durch rechtzeitiges behandeln von Verhärtungen und Verspannung</p>
-            <img class="plus" src="Bilder/plus.png">
+            <img class="plus" src="../images/plus.png">
             <p>Analyse und Behandlung von strukturellen Problematiken</p>
         </div>
     </div>
