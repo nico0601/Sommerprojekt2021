@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+#heading {
+    background: #D7D8D9;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#headline {
+    color: #4D4D4D;
+    font-size: 40px;
+    font-family: 'Oswald';
+    font-weight: bold;
+}
+
+
+#first, #second {
+    overflow-y: hidden;
+    height: 121px;
+}
+
+.contentHeading {
+    height: 81px;
+    background: #4D4D4D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    color: #D7D8D9;
+    font-family: 'Oswald';
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.description {
+    list-style-image: url("Bilder/plus-klein.png");
+    font-family: 'Roboto';
+    font-size: 15px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 20px max-content;
+    margin: 20px 50px;
+}
+.plus {
+    width: 20px;
+    height: auto;
+}
