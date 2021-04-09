@@ -3,16 +3,16 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto';
+    overflow-x: hidden;
 }
 body {
     width: 100%;
-    overflow-x: hidden;
 }
 
 
 #heading {
     background: #D7D8D9;
-    height: 100px;
+    height: 250px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -21,15 +21,25 @@ body {
 
 #headline {
     color: #4D4D4D;
-    font-size: 40px;
+    font-size: 156px;
     font-family: 'Oswald';
     font-weight: bold;
 }
 
 
-#first, #second {
+#content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+
+#first, #second, #third, #fourth, #fifth {
     overflow-y: hidden;
+    overflow-x: visible;
     height: 121px;
+    width: 30vw;
 }
 
 .contentHeading {
@@ -47,13 +57,13 @@ body {
 }
 
 .description {
-    list-style-image: url("Bilder/plus-klein.png");
     font-family: 'Roboto';
     font-size: 15px;
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 20px max-content;
-    margin: 20px 50px;
+    margin: 20px;
+    overflow-wrap: break-word;
 }
 .plus {
     width: 20px;
