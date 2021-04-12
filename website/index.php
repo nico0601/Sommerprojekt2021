@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 <?php
-require 'nav.php';
+require 'header.php';
 ?>
-<h1>THIS IS A TEMPLATE :DD</h1>
+<div id="heading">
+    <h1>THIS IS A TEMPLATE :DD</h1>
+</div>
+
 <?php
 require 'footer.php';
 ?>
-</body>
-</html>
