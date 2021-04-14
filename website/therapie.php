@@ -19,7 +19,7 @@
 <section id="content">
     <div class="contentSection">
         <div class="contentHeading">
-            <h2>klassische Massage</h2>
+            klassische Massage
         </div>
         <div class="description">
             <div class="item">
@@ -32,14 +32,14 @@
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>löst Verspannungen und Verkrampfungen in der Muskulatur</a>
+                <a>Entspannung</a>
             </div>
         </div>
     </div>
 
     <div class="contentSection">
         <div class="contentHeading">
-            <h2>Sportmassage</h2>
+            Sportmassage
         </div>
         <div class="description">
             <div class="item">
@@ -63,72 +63,72 @@
 
     <div class="contentSection">
         <div class="contentHeading">
-            <h2>Sportmassage</h2>
+            Faszientherapie
         </div>
         <div class="description">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>regenerative Massage nach wettkampfmäßiger Belastung</a>
+                <a>lösen von myofaszialen Triggerpunkten und Adhäsionen</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Behandlung von sportartspezifischen Verletzungen und Restriktionen</a>
+                <a>Myofaszial Taping und foam Rolling</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Prävention von Verletzungen durch rechtzeitiges behandeln von Verhärtungen und Verspannung</a>
-            </div>
-            <div class="item">
-                <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Analyse und Behandlung von strukturellen Problematiken</a>
+                <a>Segmentmassage</a>
             </div>
         </div>
     </div>
 
     <div class="contentSection">
         <div class="contentHeading">
-            <h2>Sportmassage</h2>
+            FUZO
         </div>
         <div class="description">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>regenerative Massage nach wettkampfmäßiger Belastung</a>
+                <a>die Fußreflexzonenmassage ist vielfältig anwendbar</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Behandlung von sportartspezifischen Verletzungen und Restriktionen</a>
+                <a>Stärkung des Parasympathikus zum Stressabbau</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Prävention von Verletzungen durch rechtzeitiges behandeln von Verhärtungen und Verspannung</a>
+                <a>gezielte Behandlung von Magen Darmproblematiken</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Analyse und Behandlung von strukturellen Problematiken</a>
+                <a>vegetativer Ausgleich und Entspannung</a>
             </div>
         </div>
     </div>
 
     <div class="contentSection">
         <div class="contentHeading">
-            <h2>Sportmassage</h2>
+            Lymphdrainage
         </div>
         <div class="description">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>regenerative Massage nach wettkampfmäßiger Belastung</a>
+                <a>Behandlung von Ödemen nach Sportverletzungen</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Behandlung von sportartspezifischen Verletzungen und Restriktionen</a>
+                <a>regenerative Drainagen nach schweren wettkampfmäßigen Belastungen zur Vorbeugung von muskulären Problemen</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Prävention von Verletzungen durch rechtzeitiges behandeln von Verhärtungen und Verspannung</a>
+                <a>klassische Lymphdrainage zur Behebung von Lymphstauproblematiken</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Analyse und Behandlung von strukturellen Problematiken</a>
+                <a>Stressabbau, Entspannung</a>
+            </div>
+            <div class="item">
+                <img class="plus" src="images/plus.svg" alt="plus icon">
+                <a>bei Schlafstörungen</a>
             </div>
         </div>
     </div>
