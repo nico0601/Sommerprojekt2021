@@ -59,10 +59,22 @@
             <span class="material-icons icon">event</span>
             Termine
         </div>
-        <div class="nav-element">
-            <a class="nav-link" href="index.php"></a>
-            <span class="material-icons icon">person</span>
-            Über uns
+        <div class="nav-dropdown-element">
+            <div class="nav-element">
+                <a class="nav-link" href="index.php"></a>
+                <span class="material-icons icon">person</span>
+                Über uns
+            </div>
+            <div class="nav-dropdown">
+                <div class="nav-element">
+                    <a class="nav-link" href="index.php"></a>
+                    Team
+                </div>
+                <div class="nav-element">
+                    <a class="nav-link" href="index.php"></a>
+                    Kontakt
+                </div>
+            </div>
         </div>
     </nav>
 
