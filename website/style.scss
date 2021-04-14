@@ -5,6 +5,7 @@ $companyBlue: #00ADD0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  transition: 200ms ease;
 }
 
 body {
@@ -100,6 +101,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 47px;
 }
 
 nav {
@@ -112,14 +114,14 @@ nav {
   //margin: 0 5px;
 }
 
+.icon {
+  margin: 2px;
+  font-size: 26pt;
+}
+
 .nav-element {
   &:hover {
     background: $companyBlue;
-  }
-
-  .icon {
-    margin: 2px;
-    font-size: 26pt;
   }
 
   position: relative;
@@ -160,8 +162,82 @@ nav {
 .nav-link {
   position: absolute;
   width: 100%;
-  height: 40px;
+  height: 47px;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
+}
+
+#nav-expand-icon-container, #nav-close-icon-container {
+  display: none;
+}
+
+// MOBILE
+
+@media only screen and (max-width: 1000px) {
+  nav {
+    display: flex;
+    //margin-right: -100px;
+    position: relative;
+    background: white;
+    flex-direction: column;
+    justify-items: start;
+    height: 100vh;
+    width: 250px;
+    align-self: start;
+    z-index: 1;
+    box-shadow: 0 0 3px 0 #000000;
+    transition: 200ms ease;
+  }
+
+  .nav-element {
+    height: 3rem;
+  }
+
+  .nav-dropdown {
+    display: flex;
+  }
+
+  .nav-hidden {
+    //display: none;
+    margin-right: -260px;
+  }
+
+  #nav-close-icon-container {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    z-index: 3;
+    cursor: pointer;
+  }
+
+  #nav-close-icon-container:hover {
+    background: #d7d8d9;
+  }
+
+  #nav-expand-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    width: 47px;
+    height: 47px;
+    cursor: pointer;
+  }
+
+  #page-no-nav {
+    pointer-events: none;
+    position: fixed;
+    display: block;
+    top: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+  }
 }
