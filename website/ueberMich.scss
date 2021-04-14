@@ -70,10 +70,12 @@
   .description {
     display: flex;
     flex-direction: column;
-    transform: translateX(0);
   }
 
   .item {
     margin-bottom: 100px;
+  }
+  .description > *:nth-child(1) {
+    transform: translateX(2.5vw);
   }
 }
