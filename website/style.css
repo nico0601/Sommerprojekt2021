@@ -70,3 +70,16 @@ h2 {
     justify-content: center;
     align-items: center;
 }
+
+/*NAV STYLE*/
+
+.logo {
+    height: 36px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
