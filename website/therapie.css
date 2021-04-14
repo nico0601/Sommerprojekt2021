@@ -7,6 +7,7 @@
 
 body {
     width: 100%;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -23,6 +24,7 @@ h2 {
     font-weight: bold;
 }
 
+
 .contentHeading {
     height: 81px;
     background: #4D4D4D;
@@ -34,14 +36,14 @@ h2 {
 }
 
 .description {
-    display: block;
+    display: none;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     margin: 20px 50px;
 }
 
-.hidden {
-    display: none;
+.unhidden {
+    display: block;
 }
 
 .item {
