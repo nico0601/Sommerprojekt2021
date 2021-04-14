@@ -19,11 +19,14 @@ h1 {
 
 .blue {
   color: #00ADD0;
-  font-family: "Oswald", sans-serif;
 }
 
 .bold {
   font-weight: bold;
+}
+
+.oswald {
+  font-family: "Oswald", sans-serif;
 }
 
 
@@ -82,6 +85,11 @@ h1 {
 
 .person {
   width: 200px;
+  height: auto;
+}
+
+.socialMedia {
+  width: 60px;
   height: auto;
 }
 
