@@ -11,6 +11,7 @@
           rel="stylesheet">
     <script src="therapie.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="therapieTraining.css">
 </head>
 <body>
 <div id="heading">
