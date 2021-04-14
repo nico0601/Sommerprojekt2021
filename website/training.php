@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>F.A.S.T</title>
+    <title>F.A.S.T - Training</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
           rel="stylesheet">
@@ -14,121 +14,133 @@
 </head>
 <body>
 <div id="heading">
-    <h1>Therapie</h1>
+    <h1>Training</h1>
 </div>
 <section id="content">
     <div class="contentSection">
         <div class="contentHeading">
-            klassische Massage
+            Functional Training
         </div>
         <div class="description">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>löst Verspannungen und Verkrampfungen in der Muskulatur</a>
+                <a>Kraft, Ausdauer, Balance, Beweglichkeit, Mobiltiy, Propriozeption, ...</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>wohltuend, durchblutungsfördernd</a>
+                <a>Ziel: Vorbereitung auf persönliche Anforderungen</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Entspannung</a>
+                <a>Gruppen- oder Einzeltrainings</a>
+            </div>
+            <div class="item">
+                <img class="plus" src="images/plus.svg" alt="plus icon">
+                <a>mit Bodyweight Training oder mit Kettlebell, TRX, Gymball, Miniband, Plyobox, Medizinball und Co.</a>
             </div>
         </div>
     </div>
 
     <div class="contentSection">
         <div class="contentHeading">
-            Sportmassage
+            Faszientraining
         </div>
         <div class="description">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>regenerative Massage nach wettkampfmäßiger Belastung</a>
+                <a>Training mit der foam Roll</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Behandlung von sportartspezifischen Verletzungen und Restriktionen</a>
+                <a>Gruppentraining</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Prävention von Verletzungen durch rechtzeitiges behandeln von Verhärtungen und Verspannung</a>
+                <a>für mehr Mobilität und Range of Motion</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Analyse und Behandlung von strukturellen Problematiken</a>
+                <a>Verletzungsprophylaxe</a>
+            </div>
+            <div class="item">
+                <img class="plus" src="images/plus.svg" alt="plus icon">
+                <a>Regeneration</a>
             </div>
         </div>
     </div>
 
     <div class="contentSection">
         <div class="contentHeading">
-            Faszientherapie
+            Speedtraining
         </div>
         <div class="description">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>lösen von myofaszialen Triggerpunkten und Adhäsionen</a>
+                <a>Analyse, Speedcheck, individuell abgestimmte Trainingspläne</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Myofaszial Taping und foam Rolling</a>
+                <a>sportartspezifisches Speedtraining</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Segmentmassage</a>
+                <a>Core Performance Training</a>
             </div>
         </div>
     </div>
 
     <div class="contentSection">
         <div class="contentHeading">
-            FUZO
+            Testing
         </div>
         <div class="description">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>die Fußreflexzonenmassage ist vielfältig anwendbar</a>
+                <a>Muskuläre Dysbalancen</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Stärkung des Parasympathikus zum Stressabbau</a>
+                <a>Functional Movement Screen</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>gezielte Behandlung von Magen Darmproblematiken</a>
+                <a>Muskelfunktionstest</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>vegetativer Ausgleich und Entspannung</a>
+                <a>Kraft, Ausdauer, ROM</a>
+            </div>
+            <div class="item">
+                <img class="plus" src="images/plus.svg" alt="plus icon">
+                <a>Laufanalyse</a>
             </div>
         </div>
     </div>
 
     <div class="contentSection">
         <div class="contentHeading">
-            Lymphdrainage
+            Nutrition, Gewichtsmanagement
         </div>
         <div class="description">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Behandlung von Ödemen nach Sportverletzungen</a>
+                <a>Tips für die richtige Ernährung in den einzelnen Wettkampfphasen</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>regenerative Drainagen nach schweren wettkampfmäßigen Belastungen zur Vorbeugung von muskulären Problemen</a>
+                <a>Was <span class="blue">?</span> braucht der Körper Wann <span class="blue">?</span></a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>klassische Lymphdrainage zur Behebung von Lymphstauproblematiken</a>
+                <a>Isst Analyse</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>Stressabbau, Entspannung</a>
+                <a>Zielvereinbarung mit Monitoring  (Vorher, Nachher)</a>
             </div>
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
-                <a>bei Schlafstörungen</a>
+                <a>Körperfettanalyse, BMI</a>
             </div>
         </div>
     </div>
