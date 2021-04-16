@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
+<!--    <link rel="stylesheet" type="text/css" href="style.css">-->
+    <link rel="stylesheet" type="text/css" href="headerStyle.css">
 
     <script src="nav.js" defer></script>
 </head>
@@ -19,6 +20,7 @@
     <img class="logo" src="images/logo.png" alt="Logo">
 
     <div id="nav-expand-icon-container">
+        <a id="nav-icon-link" href="javascript:void(0)">Open Navigation</a>
         <span class="material-icons icon nav-expand-icon">menu</span>
     </div>
 
@@ -26,6 +28,7 @@
 
     <nav class="nav-hidden">
         <div id="nav-close-icon-container">
+            <a id="nav-icon-link" href="javascript:void(0)">Close Navigation</a>
             <span class="material-icons icon nav-expand-icon">close</span>
         </div>
         <div class="nav-element">

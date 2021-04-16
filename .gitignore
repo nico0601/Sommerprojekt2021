@@ -107,3 +107,5 @@ dist
 /.idea
 /website/style.css
 /website/style.css.map
+/website/headerStyle.css
+/website/headerStyle.css.map
