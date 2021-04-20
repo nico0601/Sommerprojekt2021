@@ -1,0 +1,33 @@
+#content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contentHeading {
+  cursor: pointer;
+}
+
+.contentSection {
+  width: 500px;
+  margin: 0 50px;
+}
+
+.description {
+  display: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  margin: 20px 50px
+}
+
+.unhidden {
+  display: block;
+}
+
+
+
+@media (max-width: 991px) {
+  .contentSection {
+    width: 90vw;
+  }
+}

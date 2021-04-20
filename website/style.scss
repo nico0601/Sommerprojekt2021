@@ -1,72 +1,96 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  color: #4D4D4D;
 }
 
 body {
-    width: 100%;
-    overflow-x: hidden;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 h1 {
-    color: #4D4D4D;
-    font-size: 40px;
-    font-family: 'Oswald', sans-serif;
-    font-weight: bold;
+  font-size: 40px;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
 }
 
-h2 {
-    color: #D7D8D9;
-    font-family: 'Oswald', sans-serif;
-    font-size: 28px;
-    font-weight: bold;
+.blue {
+  color: #00ADD0;
 }
 
+.bold {
+  font-weight: bold;
+}
+
+.oswald {
+  font-family: "Oswald", sans-serif;
+}
+
+
+
+#heading {
+  background: #D7D8D9;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .contentHeading {
-    height: 81px;
-    background: #4D4D4D;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-    cursor: pointer;
+  height: 81px;
+  background: #4D4D4D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  color: #D7D8D9;
+  font-family: "Oswald", sans-serif;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-.description {
-    display: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    margin: 20px 50px;
+.contentInfo {
+  background: #4D4D4D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px 0;
+  padding: 20px 0;
+  font-family: "Roboto", sans-serif;
 }
-
-.unhidden {
-    display: block;
+.contentInfo > * {
+  color: #D7D8D9;
+  font-size: 24px;
 }
 
 .item {
-    display: flex;
-    align-items: center;
-    height: 20px;
-    margin: 10px;
+  display: flex;
+  align-items: center;
+  height: max-content;
 }
 
 .item > * {
-    margin: 5px;
+  margin: 5px;
 }
 
 .plus {
-    width: 20px;
-    height: auto;
+  width: 20px;
+  height: auto;
 }
 
-#heading {
-    background: #D7D8D9;
-    height: 100px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.person {
+  width: 200px;
+  height: auto;
 }
+
+.socialMedia {
+  width: 60px;
+  height: auto;
+}
+
+/*# sourceMappingURL=style.css.map */
