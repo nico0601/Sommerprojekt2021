@@ -105,6 +105,8 @@ dist
 
 # PHP Storm
 /.idea
+/website/index.css
+/website/index.css.map
 /website/style.css.map
 /website/style.css
 /website/therapieTraining.css
