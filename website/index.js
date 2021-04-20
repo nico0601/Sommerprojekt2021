@@ -1,3 +1,8 @@
+let weiter = document.getElementById('weiter')
+let heading = document.getElementById('heading')
+weiter.addEventListener('mouseenter', scrollen, false)
+
+
 let slideIndex1 = 1
 showDivs1(slideIndex1)
 
@@ -16,6 +21,13 @@ right1.addEventListener('click', plusDivs1, false)
 left2.addEventListener('click', minusDivs2, false)
 right2.addEventListener('click', plusDivs2, false)
 
+
+
+function scrollen() {
+    weiter.style.display = 'none'
+    heading.scrollIntoView({behavior: "smooth", block: "start"})
+    setTimeout(() => weiter.style.display = 'block', 5000)
+}
 
 
 function plusDivs1() {

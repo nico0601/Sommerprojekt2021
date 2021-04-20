@@ -36,6 +36,15 @@
   margin-top: 3vw;
 }
 
+a {
+  width: 600px;
+  margin: 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
 .button {
   cursor: pointer;
   padding: 10px;
@@ -48,8 +57,12 @@
   font-weight: bold;
   width: 600px;
   transition: 0.2s;
-  margin: 0 40px;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
+}
+
+.infoA {
+  width: 25vw;
+  margin: 0 3vw;
 }
 
 .infoButton {
@@ -57,7 +70,7 @@
   border: 0.65vw solid white;
   font-size: 3vw;
   width: 25vw;
-  margin: 0 3vw;
+  //margin: 0;
 }
 
 .button:hover {
@@ -93,6 +106,7 @@
 
 .therapie, .training {
   display: none;
+  margin: 0 30px;
 }
 
 #buttonLeft1, #buttonLeft2 {
@@ -105,17 +119,34 @@
 }
 
 
+@keyframes weiter {
+  0% {
+    bottom: 20px
+  }
+  50% {
+    bottom: 30px
+  }
+  100% {
+    bottom: 20px
+  }
+}
+
+#weiter {
+  animation: weiter 1s ease-in-out infinite;
+  position: sticky;
+  bottom: 20px;
+  align-self: center;
+  display: block;
+  width: 70px;
+  height: auto;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+
 @media (max-width: 991px) {
   #logo {
     width: 55vw;
-  }
-
-  .infoButton {
-    padding: 0.5vw;
-    border: 0.75vw solid white;
-    font-size: 5vw;
-    width: 35vw;
-    margin: 0 3vw;
   }
 
   #fastText {
@@ -124,10 +155,24 @@
   }
 
 
+  a {
+    width: 400px;
+    margin: 0 30px;
+  }
   .button {
     border: 5px solid white;
     font-size: 30px;
     width: 400px;
-    margin: 0 30px;
+  }
+
+  .infoA {
+    width: 35vw;
+    margin: 0 3vw;
+  }
+  .infoButton {
+    padding: 0.5vw;
+    border: 0.75vw solid white;
+    font-size: 5vw;
+    width: 35vw;
   }
 }

@@ -19,10 +19,10 @@
     <div>
         <img id="logo" src="images/logo%20-%20hell.png" alt="Logo">
         <div id="buttonDiv">
-            <a href="kontakt.php">
+            <a href="kontakt.php" class="infoA">
                 <button type="button" class="button infoButton">Kontakt</button>
             </a>
-            <a href="termin.php">
+            <a href="termin.php" class="infoA">
                 <button type="button" class="button infoButton">Termin</button>
             </a>
         </div>
@@ -94,5 +94,6 @@
         </div>
     </div>
 </section>
+<img src="images/weiter.png" alt="weiter" id="weiter">
 </body>
 </html>
