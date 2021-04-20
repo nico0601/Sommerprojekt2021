@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
-
+  <?php
+  include "header.php"
+  ?>
     <title>F.A.S.T - Events</title>
-
+    <link rel="stylesheet" href="event.css">
 </head>
 <body>
 <?php
-global $pageTitle;
-$pageTitle = "Events";
-include "header.php"
+include "nav.php"
 ?>
 <div id="heading">
     <h1>Events</h1>
@@ -44,5 +42,8 @@ include "header.php"
         </div>
     </div>
 </section>
+<?php
+include "footer.php";
+?>
 </body>
 </html>
