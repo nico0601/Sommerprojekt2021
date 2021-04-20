@@ -35,7 +35,7 @@
 <section id="content">
     <div class="contentSection">
         <div class="description">
-            <img src="images/pfeil.png" class="nav" id="buttonLeft1">
+            <img src="images/pfeil.png" class="nav" id="buttonLeft1" alt="<-">
             <div class="item therapie">
                 <a href="therapie.php">
                     <button type="button" class="button">klassische Massage</button>
@@ -61,10 +61,10 @@
                     <button type="button" class="button">Lymphdrainage</button>
                 </a>
             </div>
-            <img src="images/pfeil.png" class="nav" id="buttonRight1">
+            <img src="images/pfeil.png" class="nav" id="buttonRight1" alt="->">
         </div>
         <div class="description">
-            <img src="images/pfeil.png" class="nav" id="buttonLeft2">
+            <img src="images/pfeil.png" class="nav" id="buttonLeft2" alt="<-">
             <div class="item training">
                 <a href="training.php">
                     <button type="button" class="button">Functional Training</button>
@@ -90,7 +90,7 @@
                     <button type="button" class="button">Nutrition, Gewichtsmanagement</button>
                 </a>
             </div>
-            <img src="images/pfeil.png" class="nav" id="buttonRight2">
+            <img src="images/pfeil.png" class="nav" id="buttonRight2" alt="->">
         </div>
     </div>
 </section>
