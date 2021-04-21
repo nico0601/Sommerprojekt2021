@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="nav-element">
-            <a class="nav-link" href="termine.php"></a>
+            <a class="nav-link" href="termin.php"></a>
             <span class="material-icons icon">event</span>
             Termine
         </div>
