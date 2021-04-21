@@ -8,7 +8,9 @@
 
 body {
   width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
 }
 
 h1 {
@@ -93,9 +95,30 @@ h1 {
   height: auto;
 }
 
+body::after {
+  content: '';
+  display: block;
+  height: 100px; /* Set same as footer's height */
+}
+
+footer {
+  :active, :visited, :link {
+    color: white;
+  }
+
+  background: #4D4D4D;
+  color: white;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  padding: 20px;
+  font-weight: normal;
+  bottom: 0;
+  height: 100px;
+}
+
 /*# sourceMappingURL=style.css.map */
 @media (max-width: 991px) {
-  h1 {
-    font-size: 40px;
-  }
+h1 {
+  font-size: 40px;
 }
