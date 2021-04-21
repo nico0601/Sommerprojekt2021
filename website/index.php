@@ -16,11 +16,14 @@
 include "nav.php";
 ?>
 <div id="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ysdw7cmigZM?controls=0"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-    <div>
+    <div class="videoContainer">
+        <div class="videoDarkener"></div>
+        <video class="videoElement" autoplay="autoplay" loop>
+            <source src="FAST.mp4" type="video/mp4"/>
+        </video>
+    </div>
+
+    <div class="videoOverlay">
         <img id="logo" src="images/logo%20-%20hell.png" alt="Logo">
         <div id="buttonDiv">
             <a href="kontakt.php" class="infoA">
