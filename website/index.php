@@ -9,13 +9,17 @@
   ?>
     <title>F.A.S.T</title>
     <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
 </head>
 <body>
 <?php
 include "nav.php";
 ?>
 <div id="video">
-    <img src="images/laufen.jpg" alt="Video">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ysdw7cmigZM?controls=0"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
     <div>
         <img id="logo" src="images/logo%20-%20hell.png" alt="Logo">
         <div id="buttonDiv">

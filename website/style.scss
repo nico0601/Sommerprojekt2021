@@ -98,7 +98,7 @@ h1 {
 body::after {
   content: '';
   display: block;
-  height: 100px; /* Set same as footer's height */
+  height: 110px; /* Set same as footer's height */
 }
 
 footer {
@@ -118,7 +118,6 @@ footer {
   height: 100px;
 }
 
-/*# sourceMappingURL=style.css.map */
 @media (max-width: 991px) {
   h1 {
     font-size: 40px;
