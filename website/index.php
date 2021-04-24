@@ -16,12 +16,9 @@
 include "nav.php";
 ?>
 <div id="video">
-    <div class="videoContainer">
-        <div class="videoDarkener"></div>
-        <video class="videoElement" autoplay="autoplay" loop>
-            <source src="FAST.mp4" type="video/mp4"/>
-        </video>
-    </div>
+    <video class="videoElement" autoplay="autoplay" loop>
+        <source src="FAST.mp4" type="video/mp4"/>
+    </video>
 
     <div class="videoOverlay">
         <img id="logo" src="images/logo%20-%20hell.png" alt="Logo">
