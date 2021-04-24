@@ -19,6 +19,7 @@ include "nav.php";
 <div id="video">
     <video class="videoElement" preload="none" autoplay muted loop>
         <source src="video/FAST_manifest.xml" type="application/dash+xml"/>
+        <source src="video/FAST_160x90_250k.webm" type="video/webm">
     </video>
 
     <div class="videoOverlay">
