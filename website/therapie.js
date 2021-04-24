@@ -5,9 +5,9 @@ content.forEach(element => element.addEventListener('click', expandContent, fals
 function expandContent(event) {
     let contentDetails = event.target.parentNode.querySelector('.description');
 
-    if (contentDetails.classList.contains('unhidden')) {
-        contentDetails.classList.remove('unhidden');
+    if (contentDetails.classList.contains('hidden')) {
+        contentDetails.classList.remove('hidden');
     } else {
-        contentDetails.classList.add('unhidden');
+        contentDetails.classList.add('hidden');
     }
 }

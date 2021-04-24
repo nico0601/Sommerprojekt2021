@@ -22,7 +22,7 @@ include "nav.php"
         <div class="contentHeading">
             Functional Training
         </div>
-        <div class="description">
+        <div class="description hidden">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
                 <a>Kraft, Ausdauer, Balance, Beweglichkeit, Mobiltiy, Propriozeption, ...</a>
@@ -46,7 +46,7 @@ include "nav.php"
         <div class="contentHeading">
             Faszientraining
         </div>
-        <div class="description">
+        <div class="description hidden">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
                 <a>Training mit der foam Roll</a>
@@ -74,7 +74,7 @@ include "nav.php"
         <div class="contentHeading">
             Speedtraining
         </div>
-        <div class="description">
+        <div class="description hidden">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
                 <a>Analyse, Speedcheck, individuell abgestimmte Trainingspläne</a>
@@ -94,7 +94,7 @@ include "nav.php"
         <div class="contentHeading">
             Testing
         </div>
-        <div class="description">
+        <div class="description hidden">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
                 <a>Muskuläre Dysbalancen</a>
@@ -122,7 +122,7 @@ include "nav.php"
         <div class="contentHeading">
             Nutrition, Gewichtsmanagement
         </div>
-        <div class="description">
+        <div class="description hidden">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
                 <a>Tips für die richtige Ernährung in den einzelnen Wettkampfphasen</a>

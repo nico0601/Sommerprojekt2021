@@ -100,3 +100,8 @@ function showDivs2(n) {
     }
     x[slideIndex2 - 1].style.display = 'block'
 }
+
+
+
+const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+observer.observe();

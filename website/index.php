@@ -11,15 +11,16 @@
     <link rel="stylesheet" href="index.css">
     <script src="index.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dashjs/3.2.2/dash.all.min.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 </head>
 <body>
 <?php
 include "nav.php";
 ?>
 <div id="video">
-    <video class="videoElement" preload="none" autoplay muted loop>
-        <source src="video/FAST_manifest.xml" type="application/dash+xml"/>
-        <source src="video/FAST_160x90_250k.webm" type="video/webm">
+    <video class="videoElement lozad" preload="none" autoplay muted loop playsinline>
+        <source data-src="video/FAST_manifest.xml" type="application/dash+xml"/>
+        <source data-src="video/FAST_160x90_250k.webm" type="video/webm">
     </video>
 
     <div class="videoOverlay">

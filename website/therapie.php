@@ -21,7 +21,7 @@ include "nav.php"
         <div class="contentHeading">
             klassische Massage
         </div>
-        <div class="description">
+        <div class="description hidden">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
                 <a>löst Verspannungen und Verkrampfungen in der Muskulatur</a>
@@ -41,7 +41,7 @@ include "nav.php"
         <div class="contentHeading">
             Sportmassage
         </div>
-        <div class="description">
+        <div class="description hidden">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
                 <a>regenerative Massage nach wettkampfmäßiger Belastung</a>
@@ -65,7 +65,7 @@ include "nav.php"
         <div class="contentHeading">
             Faszientherapie
         </div>
-        <div class="description">
+        <div class="description hidden">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
                 <a>lösen von myofaszialen Triggerpunkten und Adhäsionen</a>
@@ -85,7 +85,7 @@ include "nav.php"
         <div class="contentHeading">
             FUZO
         </div>
-        <div class="description">
+        <div class="description hidden">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
                 <a>die Fußreflexzonenmassage ist vielfältig anwendbar</a>
@@ -109,7 +109,7 @@ include "nav.php"
         <div class="contentHeading">
             Lymphdrainage
         </div>
-        <div class="description">
+        <div class="description hidden">
             <div class="item">
                 <img class="plus" src="images/plus.svg" alt="plus icon">
                 <a>Behandlung von Ödemen nach Sportverletzungen</a>
