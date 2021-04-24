@@ -10,14 +10,15 @@
     <title>F.A.S.T</title>
     <link rel="stylesheet" href="index.css">
     <script src="index.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dashjs/3.2.2/dash.all.min.js" defer></script>
 </head>
 <body>
 <?php
 include "nav.php";
 ?>
 <div id="video">
-    <video class="videoElement" autoplay="autoplay" loop>
-        <source src="FAST.mp4" type="video/mp4"/>
+    <video class="videoElement" preload="none" autoplay muted loop>
+        <source src="video/FAST_manifest.xml" type="application/dash+xml"/>
     </video>
 
     <div class="videoOverlay">
