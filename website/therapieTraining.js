@@ -7,6 +7,8 @@ function expandContent(event) {
 
     if (contentDetails.classList.contains('hidden')) {
         contentDetails.classList.remove('hidden');
+    } else if (contentDetails.classList.contains('noHidden')) {
+        contentDetails.classList.remove('noHidden');
     } else {
         contentDetails.classList.add('hidden');
     }
