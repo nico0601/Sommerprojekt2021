@@ -35,9 +35,9 @@ include "nav.php"
         </div>
         <div class="contentInfo">
             <p>Bei Interesse entweder</p>
-            <p class="bold">telefonisch (<span class="blue">+43 660 12345678</span>)</p>
+            <p class="bold">telefonisch (+43 660 12345678)</p>
             <p>oder</p>
-            <p class="bold">per Email (<span class="blue">werdenichc@hotmail.com</span>)</p>
+            <p class="bold">per Email (werdenichc@hotmail.com)</p>
             <p>Kontakt aufnehmen</p>
         </div>
     </div>

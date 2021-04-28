@@ -4,9 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php
-  include "header.php";
-  ?>
+    <?php
+    include "header.php";
+    ?>
     <title>F.A.S.T - Termine</title>
     <link rel="stylesheet" href="termin.css">
 </head>
@@ -56,20 +56,21 @@ include "nav.php";
         </div>
         <div class="infoDiv">
             <p class="left">Info:</p>
+            <br>
             <p>
-                Es gibt 3 verschiedene Arten von Terminen: <span class="blue">Events</span>,
-                <span class="blue">Hausbesuche</span> und die Behandlung in der <span class="blue">Praxis</span>.
-                <br><br>
-                Events und die Behandlung in der Praxis sind über <span class="blue">Telefon</span>
-                oder <span class="blue">Email</span> auszumachen.
-                <br><br>
+                Es gibt 3 verschiedene Arten von Terminen: Events, Hausbesuche
+                und die Behandlung in der Praxis.
+                <br><br><br>
+                Events und die Behandlung in der Praxis sind über Telefon
+                oder Email auszumachen.
+                <br><br><br>
                 Hausbesuche können nach telefonischer Absprache abgehalten werden.
             </p>
         </div>
         <div class="kontaktDiv">
             <form method="get" action="">
                 <p class="left">Telefon:</p>
-                <p><span class="blue">+43</span> 660 12345678</p>
+                <p id="telNr">+43 660 12345678</p>
                 <p class="left">Email (keine Hausbesuche):</p>
                 <div id="grid">
                     <label for="betreff">Betreff:</label>
@@ -77,7 +78,10 @@ include "nav.php";
                     <label for="Termin">Termin:</label>
                     <input type="date" name="termin" id="termin">
                     <label for="nachricht">Nachricht:</label>
-                    <input type="text" name="nachricht" id="nachricht" placeholder="Art der Behandlung...">
+                    <div class="grow-wrap">
+                        <textarea name="nachricht" id="nachricht" placeholder="Art der Behandlung..."
+                                  oninput="this.parentNode.dataset.replicatedValue = this.value"></textarea>
+                    </div>
                     <label for="email">Email:</label>
                     <input type="email" name="email" id="email">
                 </div>

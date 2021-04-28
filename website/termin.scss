@@ -5,18 +5,18 @@
 
 /* Track */
 .calenderDivDiv::-webkit-scrollbar-track {
-  background: #4D4D4D;
+  background: #4D4D4D !important;
 }
 
 /* Handle */
 .calenderDivDiv::-webkit-scrollbar-thumb {
-  background: #D7D8D9;
+  background: #D7D8D9 !important;
   border-radius: 5px;
 }
 
 /* Handle on hover */
 .calenderDivDiv::-webkit-scrollbar-thumb:hover {
-  background: #a5a5a5;
+  background: #a5a5a5 !important;
 }
 
 
@@ -32,6 +32,7 @@
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .calenderDiv {
@@ -96,19 +97,56 @@
 #grid {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: max-content auto;
   align-items: center;
 }
 .kontaktDiv > *:not(.left) {
   font-weight: 300;
 }
+#telNr {
+  font-weight: normal;
+}
 
-#grid > input {
+#grid > input, #grid > div > textarea {
   border: 2px solid black;
   padding: 5px;
+  min-width: 250px;
+  min-height: 40px;
+  font-size: 18px;
 }
-#grid > input::placeholder {
-  opacity: 0.5;
+#grid > input::placeholder, #grid > div > textarea::placeholder {
+  font-weight: 300;
+}
+
+.grow-wrap {
+  /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+  display: grid;
+}
+.grow-wrap::after {
+  /* Note the weird space! Needed to preventy jumpy behavior */
+  content: attr(data-replicated-value) " ";
+
+  /* This is how textarea text behaves */
+  white-space: pre-wrap;
+
+  /* Hidden from view, clicks, and screen readers */
+  visibility: hidden;
+}
+.grow-wrap > textarea {
+  /* You could leave this, but after a user resizes, then it ruins the auto sizing */
+  resize: none;
+
+  /* Firefox shows scrollbar on growth, you can hide like this. */
+  overflow: hidden;
+}
+.grow-wrap > textarea,
+.grow-wrap::after {
+  /* Identical styling required!! */
+  border: 2px solid black;
+  padding: 5px;
+
+  /* Place on top of each other */
+  grid-area: 1 / 1 / 2 / 2;
 }
 
 #formButton {
@@ -131,6 +169,16 @@
 }
 
 
+@media (max-width: 1250px) {
+  .infoDiv, .kontaktDiv, .calenderDiv {
+    width: 380px;
+  }
+
+  .kontaktDiv {
+
+  }
+}
+
 @media (max-width: 1000px) {
   .contentSection {
     flex-direction: column;
@@ -139,9 +187,5 @@
 
   .calenderDiv, .infoDiv, .kontaktDiv {
     width: 75vw;
-  }
-
-  .kontaktDiv > form {
-    padding-left: 15%;
   }
 }

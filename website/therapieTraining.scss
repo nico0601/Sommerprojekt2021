@@ -9,8 +9,8 @@
 }
 
 .contentSection {
-  width: 500px;
-  margin: 0 50px;
+  width: 400px;
+  margin: 0 40px;
 }
 
 .description {
@@ -30,10 +30,18 @@
 
 @media (max-width: 1000px) {
   .contentSection {
-    width: 90vw;
+    width: 85vw;
+    margin: 0 50px;
+  }
+
+  .description {
+    display: block;
   }
 
   .hidden {
     display: none;
+  }
+  .noHidden {
+    display: block;
   }
 }

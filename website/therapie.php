@@ -23,9 +23,13 @@ include "nav.php"
         </div>
         <?php
         if (isset($_GET['angebot']) && $_GET['angebot'] !== "") {
-            echo ($_GET['angebot'] == 1) ?
-                "<div class='description noHidden'>" :
-                "<div class='description hidden'>";
+            if ($_GET['angebot'] == 1) {
+                echo "<div class='description noHidden'>";
+            } else {
+                echo "<div class='description hidden'>";
+            }
+        } else {
+            echo "<div class='description hidden'>";
         }
         ?>
         <div class="item">
@@ -49,9 +53,13 @@ include "nav.php"
         </div>
         <?php
         if (isset($_GET['angebot']) && $_GET['angebot'] !== "") {
-            echo ($_GET['angebot'] == 2) ?
-                "<div class='description noHidden'>" :
-                "<div class='description hidden'>";
+            if ($_GET['angebot'] == 2) {
+                echo "<div class='description noHidden'>";
+            } else {
+                echo "<div class='description hidden'>";
+            }
+        } else {
+            echo "<div class='description hidden'>";
         }
         ?>
         <div class="item">
@@ -79,9 +87,13 @@ include "nav.php"
         </div>
         <?php
         if (isset($_GET['angebot']) && $_GET['angebot'] !== "") {
-            echo ($_GET['angebot'] == 3) ?
-                "<div class='description noHidden'>" :
-                "<div class='description hidden'>";
+            if ($_GET['angebot'] == 3) {
+                echo "<div class='description noHidden'>";
+            } else {
+                echo "<div class='description hidden'>";
+            }
+        } else {
+            echo "<div class='description hidden'>";
         }
         ?>
         <div class="item">
@@ -105,9 +117,13 @@ include "nav.php"
         </div>
         <?php
         if (isset($_GET['angebot']) && $_GET['angebot'] !== "") {
-            echo ($_GET['angebot'] == 4) ?
-                "<div class='description noHidden'>" :
-                "<div class='description hidden'>";
+            if ($_GET['angebot'] == 4) {
+                echo "<div class='description noHidden'>";
+            } else {
+                echo "<div class='description hidden'>";
+            }
+        } else {
+            echo "<div class='description hidden'>";
         }
         ?>
         <div class="item">
@@ -135,9 +151,13 @@ include "nav.php"
         </div>
         <?php
         if (isset($_GET['angebot']) && $_GET['angebot'] !== "") {
-            echo ($_GET['angebot'] == 5) ?
-                "<div class='description noHidden'>" :
-                "<div class='description hidden'>";
+            if ($_GET['angebot'] == 5) {
+                echo "<div class='description noHidden'>";
+            } else {
+                echo "<div class='description hidden'>";
+            }
+        } else {
+            echo "<div class='description hidden'>";
         }
         ?>
         <div class="item">
