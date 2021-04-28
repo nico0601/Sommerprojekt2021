@@ -1,5 +1,4 @@
 <?php
-
 include "adminSpaceHeader.php";
 ?>
 
@@ -9,7 +8,7 @@ include "adminSpaceHeader.php";
   <?php
   include "../header.php";
   ?>
-    <title>F.A.S.T - Administration</title>
+  <title>F.A.S.T - Admin Template</title>
 </head>
 <body>
 <?php
@@ -17,7 +16,7 @@ include "../nav.php";
 ?>
 
 <div id="heading">
-    <h1>Hello Admin</h1>
+  <h1>Admin Template</h1>
 </div>
 
 <?php
