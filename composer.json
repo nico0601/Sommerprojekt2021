@@ -1,0 +1,9 @@
+{
+  "name": "fast/fast",
+  "type": "project",
+  "require": {
+    "doctrine/dbal": "^3.1",
+    "ext-openssl": "*"
+  },
+  "description": "No description :)"
+}
