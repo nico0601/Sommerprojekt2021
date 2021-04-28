@@ -67,6 +67,7 @@ nav {
   flex-direction: column;
   background: white;
   transition: ease 1s;
+  z-index: 2;
 
   .nav-element {
     font-family: "Roboto", sans-serif;
