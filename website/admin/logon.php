@@ -22,10 +22,30 @@ function isLoggedIn()
     $queryBuilder = $conn->createQueryBuilder();
 
     $token = $_SESSION["token"];
+    $queryBuilder
+      ->select('expiryDate')
+      ->from('tokens')
+      ->where('pk_tokenId = ?')
+      ->setParameter(0, $token);
 
+    $currentDate = date_create();
+    $dbToken = $queryBuilder->fetchOne();
+    $expiryDate = date_create($dbToken);
+
+    if (!$dbToken) {
+      return false;
+    }
+
+    if (date_diff($currentDate, $expiryDate)->invert == 1) {
+      $queryBuilder
+        ->delete("tokens")
+        ->where("pk_tokenId = ?")
+        ->setParameter(0, $token)
+        ->executeQuery();
+      return false;
+    }
+    return true;
   }
-
-  return false;
 }
 
 function isSecure()

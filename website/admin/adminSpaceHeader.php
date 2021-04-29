@@ -26,6 +26,7 @@ if (key_exists("token", $_SESSION)) {
   $expiryDate = date_create($dbToken);
 
   if (!$dbToken) {
+    unset($_SESSION["token"]);
     header("Location: https://" . $_SERVER['SERVER_NAME'] . "/admin/logon.php?tokenExpired");
   }
 
@@ -35,6 +36,7 @@ if (key_exists("token", $_SESSION)) {
       ->where("pk_tokenId = ?")
       ->setParameter(0, $token)
       ->executeQuery();
+    unset($_SESSION["token"]);
     header("Location: https://" . $_SERVER['SERVER_NAME'] . "/admin/logon.php?tokenExpired");
   }
 } else {
