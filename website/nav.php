@@ -25,6 +25,7 @@
                 Angebote
             </div>
             <div class="nav-dropdown">
+                <div class="nav-dropdown-bg"></div>
                 <div class="nav-element">
                     <a class="nav-link" href="/therapie.php"></a>
                     Therapie
@@ -51,6 +52,7 @@
                 Über uns
             </div>
             <div class="nav-dropdown">
+                <div class="nav-dropdown-bg"></div>
                 <div class="nav-element">
                     <a class="nav-link" href="/ueberMich.php"></a>
                     Team
