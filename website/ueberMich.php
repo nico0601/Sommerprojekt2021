@@ -9,7 +9,7 @@
   include "header.php"
   ?>
     <title>F.A.S.T - Über mich</title>
-    <link rel="stylesheet" href="/ueberMich.css">
+    <link rel="stylesheet" href="ueberMich.css">
 </head>
 <body>
 
@@ -25,7 +25,7 @@ include "nav.php"
             <div class="item">
                 <p class="blue oswald left2">Name</p>
                 <p class="oswald left">Christian Werdenich</p>
-                <img class="person" src="/images/Person-echt.jpg" alt="Gründer-Foto">
+                <img class="person" src="images/Person-echt.jpg" alt="Gründer-Foto">
                 <p class="oswald left">Therapeut, Trainer</p>
                 <p class="blue oswald left2">Position</p>
             </div>

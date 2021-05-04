@@ -8,7 +8,7 @@
     include "header.php";
     ?>
     <title>F.A.S.T - Termine</title>
-    <link rel="stylesheet" href="/termin.css">
+    <link rel="stylesheet" href="termin.css">
 </head>
 <body>
 <?php
@@ -75,7 +75,7 @@ include "nav.php";
                 <div id="grid">
                     <label for="betreff">Betreff: <sup>*</sup></label>
                     <input type="text" name="betreff" id="betreff" required>
-                    <label for="Termin">Termin: <sup>*</sup></label>
+                    <label for="termin">Termin: <sup>*</sup></label>
                     <input type="date" name="termin" id="termin" required>
                     <label for="nachricht">Nachricht: <sup>*</sup></label>
                     <div class="grow-wrap">
@@ -84,7 +84,7 @@ include "nav.php";
                     </div>
                     <label for="email">Email: <sup>*</sup></label>
                     <input type="email" name="email" id="email" required>
-                    <p id="required">* ... required</p>
+                    <p id="required">* ... Pflichtfelder</p>
                 </div>
                 <input type="submit" id="formButton" value="Email absenden">
             </form>

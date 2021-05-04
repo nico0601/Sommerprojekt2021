@@ -7,7 +7,7 @@
     ?>
     <title>F.A.S.T - Training</title>
     <script src="therapieTraining.js" defer></script>
-    <link rel="stylesheet" href="/therapieTraining.css">
+    <link rel="stylesheet" href="therapieTraining.css">
 </head>
 <body>
 

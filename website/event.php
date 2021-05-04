@@ -5,7 +5,7 @@
   include "header.php"
   ?>
     <title>F.A.S.T - Events</title>
-    <link rel="stylesheet" href="/event.css">
+    <link rel="stylesheet" href="event.css">
 </head>
 <body>
 <?php
@@ -18,19 +18,19 @@ include "nav.php"
     <div class="contentSection">
         <div class="description">
             <div class="item">
-                <img class="event" src="/images/Event.jpg" alt="Event">
+                <img class="event" src="images/Event.jpg" alt="Event">
             </div>
             <div class="item">
-                <img class="event" src="/images/Event.jpg" alt="Event">
+                <img class="event" src="images/Event.jpg" alt="Event">
             </div>
             <div class="item">
-                <img class="event" src="/images/Event.jpg" alt="Event">
+                <img class="event" src="images/Event.jpg" alt="Event">
             </div>
             <div class="item">
-                <img class="event" src="/images/Event.jpg" alt="Event">
+                <img class="event" src="images/Event.jpg" alt="Event">
             </div>
             <div class="item">
-                <img class="event" src="/images/Event.jpg" alt="Event">
+                <img class="event" src="images/Event.jpg" alt="Event">
             </div>
         </div>
         <div class="contentInfo">
