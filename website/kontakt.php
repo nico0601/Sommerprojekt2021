@@ -5,7 +5,7 @@
   include "header.php"
   ?>
     <title>F.A.S.T - Kontakt</title>
-    <link rel="stylesheet" href="kontakt.css">
+    <link rel="stylesheet" href="/kontakt.css">
 </head>
 <body>
 
@@ -26,10 +26,10 @@ include "nav.php"
                 <p class="right">werdenichc@hotmail.com</p>
                 <div id="socialMediaDiv">
                     <a href="https://www.instagram.com/fascial_sportstherapy/">
-                        <img class="socialMedia" src="images/Instagram_Glyph_Gradient_RGB.png" alt="Instagram">
+                        <img class="socialMedia" src="/images/Instagram_Glyph_Gradient_RGB.png" alt="Instagram">
                     </a>
                     <a href="https://www.instagram.com/fascial_sportstherapy/">
-                        <img class="socialMedia" src="images/f_logo_RGB-Blue_1024.png" alt="Facebook">
+                        <img class="socialMedia" src="/images/f_logo_RGB-Blue_1024.png" alt="Facebook">
                     </a>
                 </div>
             </div>

@@ -19,6 +19,19 @@ h1 {
   font-weight: bold;
 }
 
+.error {
+  background: #ff9191;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px auto;
+  padding: 10px;
+  color: #920000;
+  border: #ff5353 solid 2px;
+}
+
 .blue {
   color: #00ADD0;
 }
@@ -30,8 +43,6 @@ h1 {
 .oswald {
   font-family: "Oswald", sans-serif;
 }
-
-
 
 #heading {
   background: #D7D8D9;
@@ -65,6 +76,7 @@ h1 {
   padding: 20px 0;
   font-family: "Roboto", sans-serif;
 }
+
 .contentInfo > * {
   color: #D7D8D9;
   font-size: 18px !important;
@@ -121,5 +133,9 @@ footer {
 @media (max-width: 1000px) {
   h1 {
     font-size: 40px;
+  }
+
+  .error {
+    width: 75%;
   }
 }

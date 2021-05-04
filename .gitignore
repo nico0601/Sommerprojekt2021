@@ -122,3 +122,12 @@ dist
 /website/headerStyle.css
 /website/headerStyle.css.map
 /website/FAST.mp4
+
+/vendor/
+/composer.lock
+/package-lock.json
+/website/video/FAST.mp4
+/website/video/FAST_1280x720_1500k.webm
+/website/video/FAST_320x180_500k.webm
+/website/video/FAST_640x360_1000k.webm
+/website/video/FAST_640x360_750k.webm
