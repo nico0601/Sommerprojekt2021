@@ -177,3 +177,53 @@
     width: 35vw;
   }
 }
+
+@media (max-width: 650px) {
+  .angebotA {
+    width: 300px;
+    margin: 0 15px;
+  }
+  .button {
+    border: 4px solid white;
+    font-size: 25px;
+    width: 300px;
+  }
+  .nav {
+    width: 40px;
+  }
+}
+
+@media (max-width: 500px) {
+  .angebotA {
+    width: 200px;
+    margin: 0 10px;
+  }
+  .button {
+    border: 3px solid white;
+    font-size: 20px;
+    width: 200px;
+  }
+
+  .therapie, .training {
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 350px) {
+  .angebotA {
+    max-width: 150px;
+    margin: 0 7px;
+  }
+  .button {
+    border: 3px solid white;
+    font-size: 17px;
+    max-width: 150px;
+  }
+  .nav {
+    width: 30px;
+  }
+
+  .therapie, .training {
+    margin: 0 10px;
+  }
+}
