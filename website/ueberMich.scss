@@ -6,19 +6,21 @@
 
 .contentSection {
   width: 100vw;
+  display: flex;
+  justify-content: center;
 }
 
 .description {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
-  margin: 20px 50px;
+  margin: 20px 0;
   display: grid;
   grid-column-gap: 5vw;
   grid-template-columns: 40vw 40vw;
   align-items: center;
   justify-content: center;
   justify-items: center;
-  transform: translateX(2.5vw);
+  //transform: translateX(2.5vw);
 }
 
 .description > *:nth-child(1) {
@@ -73,9 +75,19 @@
   }
 
   .item {
-    margin-bottom: 100px;
+    margin: 0 20px 50px 20px;
   }
   .description > *:nth-child(1) {
-    transform: translateX(2.5vw);
+    transform: translateX(5vw);
+  }
+
+  .left {
+    transform: translateX(-5vw);
+  }
+  .left2 {
+    transform: translateX(-10vw);
+  }
+  .left3 {
+    transform: translateX(-5vw);
   }
 }

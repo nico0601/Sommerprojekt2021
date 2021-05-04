@@ -73,17 +73,18 @@ include "nav.php";
                 <p id="telNr">+43 660 12345678</p>
                 <p class="left">Email (keine Hausbesuche):</p>
                 <div id="grid">
-                    <label for="betreff">Betreff:</label>
-                    <input type="text" name="betreff" id="betreff">
-                    <label for="Termin">Termin:</label>
-                    <input type="date" name="termin" id="termin">
-                    <label for="nachricht">Nachricht:</label>
+                    <label for="betreff">Betreff: <sup>*</sup></label>
+                    <input type="text" name="betreff" id="betreff" required>
+                    <label for="Termin">Termin: <sup>*</sup></label>
+                    <input type="date" name="termin" id="termin" required>
+                    <label for="nachricht">Nachricht: <sup>*</sup></label>
                     <div class="grow-wrap">
                         <textarea name="nachricht" id="nachricht" placeholder="Art der Behandlung..."
-                                  oninput="this.parentNode.dataset.replicatedValue = this.value"></textarea>
+                                  oninput="this.parentNode.dataset.replicatedValue = this.value" required></textarea>
                     </div>
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" id="email">
+                    <label for="email">Email: <sup>*</sup></label>
+                    <input type="email" name="email" id="email" required>
+                    <p id="required">* ... required</p>
                 </div>
                 <input type="submit" id="formButton" value="Email absenden">
             </form>

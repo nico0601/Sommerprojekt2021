@@ -21,9 +21,6 @@ include "nav.php"
 </div>
 <section id="content">
     <div class="contentSection">
-        <div class="contentHeading">
-            Gründer
-        </div>
         <div class="description">
             <div class="item">
                 <p class="blue oswald left2">Name</p>
@@ -33,7 +30,7 @@ include "nav.php"
                 <p class="blue oswald left2">Position</p>
             </div>
             <div class="item">
-                <p class="blue oswald left3">Über mich</p>
+                <p class="blue oswald left3">Information</p>
                 <p id="descriptionText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Quisque fringilla ultrices neque et fringilla. Aliquam euismod enim ante,
                     in aliquet dui porta nec. Integer ut placerat metus. Ut pulvinar mauris quis
