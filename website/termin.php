@@ -27,13 +27,19 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
         'From' => $_POST['email']
     );
 
+    $terminArray = explode("-", $_POST['termin']);
+    $termin = $terminArray[2].".".$terminArray[1].".".$terminArray[0];
+    $heute = date("d.m.Y");
+
     $message = "
-          Ich möchte für den " . $_POST["termin"] . " einen Termin anfragen!\n
+          Ich möchte für den " . $termin . " einen Termin anfragen!\n
           " . $_POST["nachricht"] . "\n
           Mit freundlichen Grüßen
     ";
 
-    $response = mail($to, $_POST['betreff'], $message, $header);
+    if (strtotime($heute) <= strtotime($termin)) {
+        $response = mail($to, $_POST['betreff'], $message, $header);
+    }
 }
 ?>
 <div id="heading">
