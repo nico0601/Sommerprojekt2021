@@ -9,6 +9,7 @@
     ?>
     <title>F.A.S.T - Termine</title>
     <link rel="stylesheet" href="/termin.css">
+    <script type="text/javascript" src="/termin.js" defer></script>
 </head>
 <body>
 <?php
@@ -19,33 +20,26 @@ $to = "7157@htl.rennweg.at";
 
 $pattern = "/^\s*$/mi";
 
-if (isset($_GET['betreff'], $_GET['termin'], $_GET['nachricht'], $_GET['email']) &&
-    !preg_match($pattern, $_GET['betreff']) && !preg_match($pattern, $_GET['termin']) &&
-    !preg_match($pattern, $_GET['nachricht']) && !preg_match($pattern, $_GET['email'])) {
+if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['email']) &&
+    !preg_match($pattern, $_POST['betreff']) && !preg_match($pattern, $_POST['termin']) &&
+    !preg_match($pattern, $_POST['nachricht']) && !preg_match($pattern, $_POST['email'])) {
     $header = array(
-        'From' => $_GET['email']
+        'From' => $_POST['email']
     );
 
-    echo "Wir sind drin!";
+    $terminArray = explode("-", $_POST['termin']);
+    $termin = $terminArray[2].".".$terminArray[1].".".$terminArray[0];
+    $heute = date("d.m.Y");
 
     $message = "
-    <html>
-        <head>
-          <title>Anfrage für Termin</title>
-        </head>
-        <body>
-          <p>Ich möchte für den {$_GET['termin']} einen Termin anfragen!</p>
-          <br>
-          <p>Meine Nachricht:</p>
-          <p>{$_GET['nachricht']}</p>
-          <br>
-          <p>Mit freundlichen Grüßen</p>
-        </body>
-    </html>
+          Ich möchte für den " . $termin . " einen Termin anfragen!\n
+          " . $_POST["nachricht"] . "\n
+          Mit freundlichen Grüßen
     ";
 
-    $response = mail ($to, $_GET['betreff'], $message, $header);
-    echo "Response: " . $response;
+    if (strtotime($heute) <= strtotime($termin)) {
+        $response = mail($to, $_POST['betreff'], $message, $header);
+    }
 }
 ?>
 <div id="heading">
@@ -102,7 +96,7 @@ if (isset($_GET['betreff'], $_GET['termin'], $_GET['nachricht'], $_GET['email'])
             </p>
         </div>
         <div class="kontaktDiv">
-            <form method="get" action="">
+            <form method="post" action="">
                 <p class="left">Telefon:</p>
                 <p id="telNr">+43 660 12345678</p>
                 <p class="left">Email (keine Hausbesuche):</p>
@@ -121,6 +115,13 @@ if (isset($_GET['betreff'], $_GET['termin'], $_GET['nachricht'], $_GET['email'])
                     <p id="required">* ... Pflichtfelder</p>
                 </div>
                 <input type="submit" id="formButton" value="Email absenden">
+                <?php
+                if ($response) {
+                    echo "<div id='erfolgreich'>Email erfolgreich versendet!</div>";
+                }else if ($response === false) {
+                    echo "<div id='fehlgeschlagen'>Email konnte leider nicht versendet werden!</div>";
+                }
+                ?>
             </form>
         </div>
     </div>
