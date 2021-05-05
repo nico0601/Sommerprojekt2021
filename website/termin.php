@@ -13,6 +13,40 @@
 <body>
 <?php
 include "nav.php";
+
+//$to = "fascial.sportstherapy@gmail.com";
+$to = "7157@htl.rennweg.at";
+
+$pattern = "/^\s*$/mi";
+
+if (isset($_GET['betreff'], $_GET['termin'], $_GET['nachricht'], $_GET['email']) &&
+    !preg_match($pattern, $_GET['betreff']) && !preg_match($pattern, $_GET['termin']) &&
+    !preg_match($pattern, $_GET['nachricht']) && !preg_match($pattern, $_GET['email'])) {
+    $header = array(
+        'From' => $_GET['email']
+    );
+
+    echo "Wir sind drin!";
+
+    $message = "
+    <html>
+        <head>
+          <title>Anfrage für Termin</title>
+        </head>
+        <body>
+          <p>Ich möchte für den {$_GET['termin']} einen Termin anfragen!</p>
+          <br>
+          <p>Meine Nachricht:</p>
+          <p>{$_GET['nachricht']}</p>
+          <br>
+          <p>Mit freundlichen Grüßen</p>
+        </body>
+    </html>
+    ";
+
+    $response = mail ($to, $_GET['betreff'], $message, $header);
+    echo "Response: " . $response;
+}
 ?>
 <div id="heading">
     <h1>Termine</h1>
