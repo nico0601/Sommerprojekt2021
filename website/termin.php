@@ -39,6 +39,8 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
 
     if (strtotime($heute) <= strtotime($termin)) {
         $response = mail($to, $_POST['betreff'], $message, $header);
+    }else {
+        $response = false;
     }
 }
 ?>
@@ -116,10 +118,10 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
                 </div>
                 <input type="submit" id="formButton" value="Email absenden">
                 <?php
-                if ($response) {
+                if (isset($response) && $response) {
                     echo "<div id='erfolgreich'>Email erfolgreich versendet!</div>";
-                }else if ($response === false) {
-                    echo "<div id='fehlgeschlagen'>Email konnte leider nicht versendet werden!</div>";
+                }else if (isset($response) && $response === false) {
+                    echo "<div id='fehlgeschlagen'>Email konnte leider nicht versendet werden!<br>(Ist der gewählte Termin in dem Kalender angeführt?)</div>";
                 }
                 ?>
             </form>
