@@ -8,7 +8,7 @@
     include "header.php";
     ?>
     <title>F.A.S.T - Termine</title>
-    <link rel="stylesheet" href="termin.css">
+    <link rel="stylesheet" href="/termin.css">
 </head>
 <body>
 <?php
