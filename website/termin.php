@@ -20,20 +20,20 @@ $to = "7157@htl.rennweg.at";
 
 $pattern = "/^\s*$/mi";
 
-if (isset($_GET['betreff'], $_GET['termin'], $_GET['nachricht'], $_GET['email']) &&
-    !preg_match($pattern, $_GET['betreff']) && !preg_match($pattern, $_GET['termin']) &&
-    !preg_match($pattern, $_GET['nachricht']) && !preg_match($pattern, $_GET['email'])) {
+if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['email']) &&
+    !preg_match($pattern, $_POST['betreff']) && !preg_match($pattern, $_POST['termin']) &&
+    !preg_match($pattern, $_POST['nachricht']) && !preg_match($pattern, $_POST['email'])) {
     $header = array(
-        'From' => $_GET['email']
+        'From' => $_POST['email']
     );
 
     $message = "
-          Ich möchte für den " . $_GET["termin"] . " einen Termin anfragen!\n
-          " . $_GET["nachricht"] . "\n
+          Ich möchte für den " . $_POST["termin"] . " einen Termin anfragen!\n
+          " . $_POST["nachricht"] . "\n
           Mit freundlichen Grüßen
     ";
 
-    $response = mail($to, $_GET['betreff'], $message, $header);
+    $response = mail($to, $_POST['betreff'], $message, $header);
 }
 ?>
 <div id="heading">
@@ -90,7 +90,7 @@ if (isset($_GET['betreff'], $_GET['termin'], $_GET['nachricht'], $_GET['email'])
             </p>
         </div>
         <div class="kontaktDiv">
-            <form method="get" action="">
+            <form method="post" action="">
                 <p class="left">Telefon:</p>
                 <p id="telNr">+43 660 12345678</p>
                 <p class="left">Email (keine Hausbesuche):</p>
