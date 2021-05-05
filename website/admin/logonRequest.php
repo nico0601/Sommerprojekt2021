@@ -58,7 +58,7 @@ try {
     header("Location: https://" . $_SERVER['SERVER_NAME'] . "/admin/logon.php?logonFailed");
   }
 } catch (\Doctrine\DBAL\Exception $e) {
-  echo "Error while checking Password. This is very probably a server error, I advice to try again in a few minutes "
+  echo "An Error occurred. This is very probably a server error, I advice to try again in a few minutes "
     . "or <a href='/contactWebmaster.php'>contact the webmaster</a> <br /> <a href='logon.php'>Return to Login</a>";
 }
 

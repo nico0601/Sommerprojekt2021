@@ -6,67 +6,77 @@ session_start();
 
 include "../../vendor/autoload.php";
 
-if (isLoggedIn()) {
-  header("Location: https://" . $_SERVER['SERVER_NAME'] . "/admin/adminMain.php");
+$loginError = false;
+
+try {
+    if (isLoggedIn()) {
+        header("Location: https://" . $_SERVER['SERVER_NAME'] . "/admin/adminMain.php");
+    }
+} catch (\Doctrine\DBAL\Exception $e) {
+    $loginError = true;
 }
 
+/**
+ * @throws \Doctrine\DBAL\Exception
+ */
 function isLoggedIn()
 {
-  if (key_exists("token", $_SESSION)) {
-    $conn = DriverManager::getConnection(array(
-      'dbname' => 'fastUserDb',
-      'user' => 'phpUser',
-      'password' => 'DanielleAndDorkaAreMyCuddles',
-      'host' => 'localhost',
-      'driver' => 'pdo_mysql'));
-    $queryBuilder = $conn->createQueryBuilder();
+    if (key_exists("token", $_SESSION)) {
+        $conn = DriverManager::getConnection(array(
+            'dbname' => 'fastUserDb',
+            'user' => 'phpUser',
+            'password' => 'DanielleAndDorkaAreMyCuddles',
+            'host' => 'localhost',
+            'driver' => 'pdo_mysql'));
 
-    $token = $_SESSION["token"];
-    $queryBuilder
-      ->select('expiryDate')
-      ->from('tokens')
-      ->where('pk_tokenId = ?')
-      ->setParameter(0, $token);
+        $queryBuilder = $conn->createQueryBuilder();
 
-    $currentDate = date_create();
-    $dbToken = $queryBuilder->fetchOne();
-    $expiryDate = date_create($dbToken);
+        $token = $_SESSION["token"];
+        $queryBuilder
+            ->select('expiryDate')
+            ->from('tokens')
+            ->where('pk_tokenId = ?')
+            ->setParameter(0, $token);
 
-    if (!$dbToken) {
-      return false;
+        $currentDate = date_create();
+        $dbToken = $queryBuilder->fetchOne();
+        $expiryDate = date_create($dbToken);
+
+        if (!$dbToken) {
+            return false;
+        }
+
+        if (date_diff($currentDate, $expiryDate)->invert == 1) {
+            $queryBuilder
+                ->delete("tokens")
+                ->where("pk_tokenId = ?")
+                ->setParameter(0, $token)
+                ->executeQuery();
+            return false;
+        }
+        return true;
     }
-
-    if (date_diff($currentDate, $expiryDate)->invert == 1) {
-      $queryBuilder
-        ->delete("tokens")
-        ->where("pk_tokenId = ?")
-        ->setParameter(0, $token)
-        ->executeQuery();
-      return false;
-    }
-    return true;
-  }
 }
 
 function isSecure()
 {
-  return
-    (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-    || $_SERVER['SERVER_PORT'] == 443;
+    return
+        (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+        || $_SERVER['SERVER_PORT'] == 443;
 }
 
 if (!isSecure()) {
-  header("Location: https://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
-  exit();
+    header("Location: https://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
+    exit();
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php
-  include "../header.php";
-  ?>
+    <?php
+    include "../header.php";
+    ?>
     <link rel="stylesheet" href="/termin.css">
     <title>F.A.S.T</title>
 </head>
@@ -82,20 +92,26 @@ include "../nav.php";
 
 <?php
 if (key_exists("logonFailed", $_GET)) {
-  echo "<div class='error'>
+    echo "<div class='error'>
     <h2>Incorrect username or password</h2>
 </div>";
 }
 
 if (key_exists("tokenExpired", $_GET)) {
-  echo "<div class='error'>
+    echo "<div class='error'>
     <h2>Your token Expired, please log in again</h2>
 </div>";
 }
 
 if (key_exists("noToken", $_GET)) {
-  echo "<div class='error'>
+    echo "<div class='error'>
     <h2>Please log in to access this site</h2>
+</div>";
+}
+
+if ($loginError) {
+    echo "<div class='error'>
+    <h2>An error occured, please try again later</h2>
 </div>";
 }
 ?>
