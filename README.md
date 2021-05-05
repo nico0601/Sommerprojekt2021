@@ -12,4 +12,4 @@ When adding another page that requires login but shouldn't use the Admin Preset,
 include "adminSpaceHeader.php";
 ?>
 ```
-in the file in order to facilitate correct token and login evaluation.
+in the file in order to facilitate correct token and login evaluation. Note that `adminSpaceHeader.php` starts the session and thus has to be the first PHP code in your file
