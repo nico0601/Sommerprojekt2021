@@ -9,6 +9,7 @@
     ?>
     <title>F.A.S.T - Termine</title>
     <link rel="stylesheet" href="/termin.css">
+    <script type="text/javascript" src="/termin.js" defer></script>
 </head>
 <body>
 <?php
@@ -26,26 +27,13 @@ if (isset($_GET['betreff'], $_GET['termin'], $_GET['nachricht'], $_GET['email'])
         'From' => $_GET['email']
     );
 
-    echo "Wir sind drin!";
-
     $message = "
-    <html>
-        <head>
-          <title>Anfrage für Termin</title>
-        </head>
-        <body>
-          <p>Ich möchte für den {$_GET['termin']} einen Termin anfragen!</p>
-          <br>
-          <p>Meine Nachricht:</p>
-          <p>{$_GET['nachricht']}</p>
-          <br>
-          <p>Mit freundlichen Grüßen</p>
-        </body>
-    </html>
+          Ich möchte für den " . $_GET["termin"] . " einen Termin anfragen!\n
+          " . $_GET["nachricht"] . "\n
+          Mit freundlichen Grüßen
     ";
 
-    $response = mail ($to, $_GET['betreff'], $message, $header);
-    echo "Response: " . $response;
+    $response = mail($to, $_GET['betreff'], $message, $header);
 }
 ?>
 <div id="heading">
@@ -121,6 +109,13 @@ if (isset($_GET['betreff'], $_GET['termin'], $_GET['nachricht'], $_GET['email'])
                     <p id="required">* ... Pflichtfelder</p>
                 </div>
                 <input type="submit" id="formButton" value="Email absenden">
+                <?php
+                if ($response) {
+                    echo "<div id='erfolgreich'>Email erfolgreich versendet!</div>";
+                }else if ($response === false) {
+                    echo "<div id='fehlgeschlagen'>Email konnte leider nicht versendet werden!</div>";
+                }
+                ?>
             </form>
         </div>
     </div>
