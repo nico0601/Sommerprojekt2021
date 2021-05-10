@@ -188,12 +188,19 @@
     font-size: 25px;
     width: 300px;
   }
+  .infoButton {
+    width: 200px;
+  }
   .nav {
     width: 40px;
   }
 }
 
 @media (max-width: 500px) {
+  #fastText {
+    margin-top: 3vw;
+  }
+
   .angebotA {
     width: 200px;
     margin: 0 10px;
@@ -203,6 +210,9 @@
     font-size: 20px;
     width: 200px;
   }
+  .infoButton {
+    width: 120px;
+  }
 
   .therapie, .training {
     margin: 0 20px;
@@ -210,6 +220,14 @@
 }
 
 @media (max-width: 350px) {
+  #logo {
+    width: 40vw;
+  }
+
+  //#fastText {
+  //  margin-top: 1vw;
+  //}
+
   .angebotA {
     max-width: 150px;
     margin: 0 7px;
@@ -218,6 +236,10 @@
     border: 3px solid white;
     font-size: 17px;
     max-width: 150px;
+  }
+  .infoButton {
+    width: max-content;
+    font-size: 15px;
   }
   .nav {
     width: 30px;

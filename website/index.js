@@ -2,6 +2,12 @@ let weiter = document.getElementById('weiter')
 let heading = document.getElementById('heading')
 weiter.addEventListener('click', scrollen, false)
 
+if (isMobileDevice()) {
+    weiter.style.display = 'none'
+}else {
+    document.addEventListener('scroll', onscroll, false)
+}
+
 
 let slideIndex1 = 1
 showDivs1(slideIndex1)
@@ -22,6 +28,17 @@ left2.addEventListener('click', minusDivs2, false)
 right2.addEventListener('click', plusDivs2, false)
 
 
+function onscroll() {
+    let whenWeiter = window.innerHeight/3
+
+    if (weiter.style.display !== 'none' && document.scrollingElement.scrollTop >= whenWeiter) {
+        console.log("display none")
+        weiter.style.display = 'none'
+    }else if (weiter.style.display === 'none' && document.scrollingElement.scrollTop < whenWeiter) {
+        console.log("display block")
+        weiter.style.display = 'block'
+    }
+}
 
 function scrollen() {
     weiter.style.display = 'none'
@@ -98,6 +115,12 @@ function showDivs2(n) {
         x[i].style.display = 'none'
     }
     x[slideIndex2 - 1].style.display = 'block'
+}
+
+
+
+function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 }
 
 
