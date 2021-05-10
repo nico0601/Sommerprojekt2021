@@ -180,8 +180,8 @@ input[type=date]:invalid {
 }
 
 #erfolgreich, #fehlgeschlagen {
-  position: absolute;
-  top: 10vh;
+  position: fixed;
+  top: 5vh;
   left: 0;
   right: 0;
   margin: auto;
@@ -194,6 +194,7 @@ input[type=date]:invalid {
   font-weight: bold;
   width: max-content;
   transition: 0.3s;
+  z-index: 10;
 }
 #erfolgreich {
   background: #58dfb2;
