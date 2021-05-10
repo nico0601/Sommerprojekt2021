@@ -27,10 +27,13 @@
   height: auto;
 }
 
+.contentInfo {
+  text-align: center;
+}
+
 
 @media (max-width: 1000px) {
   .contentInfo > * {
-    color: #D7D8D9;
     font-size: 15px;
   }
 }
@@ -38,5 +41,8 @@
 @media (max-width: 650px) {
   .event {
     width: 300px;
+  }
+  .contentInfo > * {
+    font-size: 15px !important;
   }
 }

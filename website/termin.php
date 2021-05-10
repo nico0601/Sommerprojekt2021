@@ -43,6 +43,13 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
         $response = false;
     }
 }
+
+
+if (isset($response) && $response) {
+    echo "<div id='erfolgreich'>Email erfolgreich versendet!</div>";
+}else if (isset($response) && $response === false) {
+    echo "<div id='fehlgeschlagen'>Email konnte leider nicht versendet werden!<br><span id='kleiner'>(Ist der gewählte Termin in dem Kalender angeführt?)</span></div>";
+}
 ?>
 <div id="heading">
     <h1>Termine</h1>
@@ -117,13 +124,6 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
                     <p id="required">* ... Pflichtfelder</p>
                 </div>
                 <input type="submit" id="formButton" value="Email absenden">
-                <?php
-                if (isset($response) && $response) {
-                    echo "<div id='erfolgreich'>Email erfolgreich versendet!</div>";
-                }else if (isset($response) && $response === false) {
-                    echo "<div id='fehlgeschlagen'>Email konnte leider nicht versendet werden!<br>(Ist der gewählte Termin in dem Kalender angeführt?)</div>";
-                }
-                ?>
             </form>
         </div>
     </div>
