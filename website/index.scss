@@ -100,20 +100,20 @@
   padding: 50px 0;
 }
 
-.nav {
-  width: 50px;
-}
-
 .therapie, .training {
   display: none;
   margin: 0 30px;
 }
 
-#buttonLeft1, #buttonLeft2 {
-  transform: scaleX(-1);
-  opacity: 0.5;
+.nav {
+  width: 50px;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
 }
 
+#buttonLeft1, #buttonLeft2 {
+  transform: scaleX(-1);
+  opacity: 0.3;
+}
 #buttonRight1, #buttonRight2 {
   cursor: pointer;
 }

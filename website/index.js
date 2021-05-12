@@ -54,7 +54,7 @@ function plusDivs1() {
         left1.style.cursor = 'pointer'
     }
     if (slideIndex1 + 1 > x.length) {
-        right1.style.opacity = 0.5
+        right1.style.opacity = 0.3
         right1.style.cursor = 'auto'
     }
 }
@@ -67,7 +67,7 @@ function plusDivs2() {
         left2.style.cursor = 'pointer'
     }
     if (slideIndex2 + 1 > x.length) {
-        right2.style.opacity = 0.5
+        right2.style.opacity = 0.3
         right2.style.cursor = 'auto'
     }
 }
@@ -80,7 +80,7 @@ function minusDivs1() {
         right1.style.cursor = 'pointer'
     }
     if (slideIndex1 - 1 <= 0) {
-        left1.style.opacity = 0.5
+        left1.style.opacity = 0.3
         left1.style.cursor = 'auto'
     }
 }
@@ -92,7 +92,7 @@ function minusDivs2() {
         right2.style.cursor = 'pointer'
     }
     if (slideIndex2 - 1 <= 0) {
-        left2.style.opacity = 0.5
+        left2.style.opacity = 0.3
         left2.style.cursor = 'auto'
     }
 }
