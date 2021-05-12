@@ -22,10 +22,15 @@ header {
     text-decoration: none;
   }
 
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 47px;
+  width: 100%;
+  z-index: 20;
+  background: white;
 }
 
 nav {
