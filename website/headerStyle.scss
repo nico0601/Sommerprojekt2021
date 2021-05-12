@@ -6,7 +6,6 @@
 }
 
 header {
-
   :link {
     color: inherit;
     text-decoration: none;
@@ -22,14 +21,19 @@ header {
     text-decoration: none;
   }
 
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 47px;
+  width: 100%;
+  z-index: 20;
+  background: white;
 }
 
 nav {
-  position: relative;
+  top: 0;
   height: 47px;
   display: flex;
   margin: 0 2px;

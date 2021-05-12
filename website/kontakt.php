@@ -42,6 +42,7 @@ include "nav.php"
                     <p>1230 Wieeeha</p>
                 </div>
                 <p class="right2">werdenichc@hotmail.com</p>
+                <a href="/agb.php">Allgemeine Geschäftsbedingungen</a>
             </div>
         </div>
     </div>

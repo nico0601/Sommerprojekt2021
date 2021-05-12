@@ -4,9 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php
-    include "header.php";
-    ?>
+  <?php
+  include "header.php";
+  ?>
     <title>F.A.S.T</title>
     <link rel="stylesheet" href="/index.css">
     <script src="/index.js" defer></script>
@@ -19,7 +19,7 @@ include "nav.php";
 ?>
 <div id="video">
     <video class="videoElement lozad" preload="none" autoplay muted loop playsinline>
-        <!--        <source data-src="/video/FAST_manifest.xml" type="application/dash+xml"/>-->
+<!--        <source data-src="/video/FAST_manifest.xml" type="application/dash+xml"/>-->
         <source data-src="/video/FAST_160x90_250k.webm" type="video/webm">
     </video>
 
@@ -97,7 +97,8 @@ include "nav.php";
                 </div>
                 <div class="item training">
                     <a href="/training.php" class="angebotA">
-                        <button type="submit" name="angebot" value="5" class="button">Nutrition, Gewichtsmanagement</button>
+                        <button type="submit" name="angebot" value="5" class="button">Nutrition, Gewichtsmanagement
+                        </button>
                     </a>
                 </div>
             </form>
