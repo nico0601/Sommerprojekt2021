@@ -11,10 +11,23 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
+  padding-top: 47px;
 }
 
 h1 {
   font-size: 60px;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 30px;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 22px;
   font-family: "Oswald", sans-serif;
   font-weight: bold;
 }
@@ -28,7 +41,11 @@ h1 {
   text-align: center;
   margin: 20px auto;
   padding: 10px;
-  color: #920000;
+
+  * {
+    color: #4D4D4D;
+  }
+
   border: #ff5353 solid 2px;
 }
 
