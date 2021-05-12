@@ -1,3 +1,7 @@
+<?php
+error_reporting(E_ERROR | E_PARSE);
+?>
+
 <meta charset="UTF-8">
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
 
