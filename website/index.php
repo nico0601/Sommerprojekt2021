@@ -44,63 +44,53 @@ include "nav.php";
         <div class="description">
             <img src="/images/pfeil.png" class="nav" id="buttonLeft1" alt="<-">
             <form method="get" action="therapie.php">
+
+                <?php
+                include "getPDO.php";
+
+                $stmt = getPDO()->prepare("SELECT * FROM therapie");
+                $stmt->execute();
+                $stmt = $stmt->fetchAll();
+                $i = 1;
+
+                foreach ($stmt as $therapie) {
+                    echo <<<ENDE
                 <div class="item therapie">
                     <a href="/therapie.php" class="angebotA">
-                        <button type="submit" name="angebot" value="1" class="button">klassische Massage</button>
+                        <button type="submit" name="angebot" value="$i" class="button">$therapie[0]</button>
                     </a>
                 </div>
-                <div class="item therapie">
-                    <a href="/therapie.php" class="angebotA">
-                        <button type="submit" name="angebot" value="2" class="button">Sportmassage</button>
-                    </a>
-                </div>
-                <div class="item therapie">
-                    <a href="/therapie.php" class="angebotA">
-                        <button type="submit" name="angebot" value="3" class="button">Faszientherapie</button>
-                    </a>
-                </div>
-                <div class="item therapie">
-                    <a href="/therapie.php" class="angebotA">
-                        <button type="submit" name="angebot" value="4" class="button">FUZO</button>
-                    </a>
-                </div>
-                <div class="item therapie">
-                    <a href="/therapie.php" class="angebotA">
-                        <button type="submit" name="angebot" value="5" class="button">Lymphdrainage</button>
-                    </a>
-                </div>
+ENDE;
+                    $i++;
+                }
+                ?>
             </form>
+
             <img src="/images/pfeil.png" class="nav" id="buttonRight1" alt="->">
         </div>
         <div class="description">
             <img src="/images/pfeil.png" class="nav" id="buttonLeft2" alt="<-">
+
             <form method="get" action="training.php">
+                <?php
+                $stmt = getPDO()->prepare("SELECT * FROM training");
+                $stmt->execute();
+                $stmt = $stmt->fetchAll();
+                $i = 1;
+
+                foreach ($stmt as $training) {
+                    echo <<<ENDE
                 <div class="item training">
                     <a href="/training.php" class="angebotA">
-                        <button type="submit" name="angebot" value="1" class="button">Functional Training</button>
+                        <button type="submit" name="angebot" value="$i" class="button">$training[0]</button>
                     </a>
                 </div>
-                <div class="item training">
-                    <a href="/training.php" class="angebotA">
-                        <button type="submit" name="angebot" value="2" class="button">Faszientraining</button>
-                    </a>
-                </div>
-                <div class="item training">
-                    <a href="/training.php" class="angebotA">
-                        <button type="submit" name="angebot" value="3" class="button">Speedtraining</button>
-                    </a>
-                </div>
-                <div class="item training">
-                    <a href="/training.php" class="angebotA">
-                        <button type="submit" name="angebot" value="4" class="button">Testing</button>
-                    </a>
-                </div>
-                <div class="item training">
-                    <a href="/training.php" class="angebotA">
-                        <button type="submit" name="angebot" value="5" class="button">Nutrition, Gewichtsmanagement</button>
-                    </a>
-                </div>
+ENDE;
+                    $i++;
+                }
+                ?>
             </form>
+
             <img src="/images/pfeil.png" class="nav" id="buttonRight2" alt="->">
         </div>
     </div>
