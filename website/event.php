@@ -37,7 +37,7 @@ include "nav.php"
             <p>Bei Interesse entweder</p>
             <p class="bold">telefonisch (+43 660 12345678)</p>
             <p>oder</p>
-            <p class="bold">per Email (werdenichc@hotmail.com)</p>
+            <p class="bold">per Email (fascial.sportstherapy@gmail.com)</p>
             <p>Kontakt aufnehmen</p>
         </div>
     </div>

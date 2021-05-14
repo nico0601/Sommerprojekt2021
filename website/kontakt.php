@@ -23,13 +23,10 @@ include "nav.php"
                 <p>Telefon:</p>
                 <p class="right">+43 660 12345678</p>
                 <p>Email:</p>
-                <p class="right">werdenichc@hotmail.com</p>
+                <p class="right">fascial.sportstherapy@gmail.com</p>
                 <div id="socialMediaDiv">
                     <a href="https://www.instagram.com/fascial_sportstherapy/">
                         <img class="socialMedia" src="/images/Instagram_Glyph_Gradient_RGB.png" alt="Instagram">
-                    </a>
-                    <a href="https://www.instagram.com/fascial_sportstherapy/">
-                        <img class="socialMedia" src="/images/f_logo_RGB-Blue_1024.png" alt="Facebook">
                     </a>
                 </div>
             </div>
@@ -41,7 +38,7 @@ include "nav.php"
                     <p>Das Haus am Toast 22</p>
                     <p>1230 Wieeeha</p>
                 </div>
-                <p class="right2">werdenichc@hotmail.com</p>
+                <p class="right2">fascial.sportstherapy@gmail.com</p>
             </div>
         </div>
     </div>

@@ -44,6 +44,8 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
     }else {
         $response = false;
     }
+}else if (isset($_POST['betreff']) || isset($_POST['termin']) || isset($_POST['nachricht']) || isset($_POST['email'])) {
+    $response = false;
 }
 
 
@@ -65,31 +67,31 @@ if (isset($response) && $response) {
                     <p class="oswald day">Mi</p>
                     <p class="time">08:00 &ndash; 11:30</p>
                     <p class="location">Praxis</p>
-                    <p class="blue date">14.04</p>
+                    <p class="blue date">16.06</p>
                 </div>
                 <div class="item calender">
                     <p class="oswald day">Do</p>
                     <p class="time">10:00 &ndash; 11:00</p>
                     <p class="location">Event</p>
-                    <p class="blue date">15.04</p>
+                    <p class="blue date">17.06</p>
                 </div>
                 <div class="item calender">
                     <p class="oswald day">Do</p>
                     <p class="time">15:00 &ndash; 16:30</p>
                     <p class="location">Praxis</p>
-                    <p class="blue date">22.04</p>
+                    <p class="blue date">24.06</p>
                 </div>
                 <div class="item calender">
                     <p class="oswald day">Fr</p>
                     <p class="time">09:00 &ndash; 09:30</p>
                     <p class="location">Praxis</p>
-                    <p class="blue date">23.04</p>
+                    <p class="blue date">25.06</p>
                 </div>
                 <div class="item calender">
                     <p class="oswald day">Di</p>
                     <p class="time">10:00 &ndash; 12:30</p>
                     <p class="location">Event</p>
-                    <p class="blue date">27.04</p>
+                    <p class="blue date">29.06</p>
                 </div>
             </div>
         </div>
@@ -125,6 +127,7 @@ if (isset($response) && $response) {
                     <input type="email" name="email" id="email" required>
                     <p id="required">* ... Pflichtfelder</p>
                 </div>
+                <p id="required">automatische Email an: fascial.sportstherapy@gmail.com</p>
                 <input type="submit" id="formButton" value="Email absenden">
             </form>
         </div>

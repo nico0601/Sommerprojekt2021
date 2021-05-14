@@ -62,6 +62,12 @@
 }
 
 
+@media (max-width: 1300px) {
+  .item {
+    width: max-content;
+    padding: 20px;
+  }
+}
 
 @media (max-width: 1000px) {
   .description {
@@ -73,6 +79,7 @@
   .item {
     width: 90vw;
     word-wrap: anywhere;
+    padding: 20px 100px;
   }
 
   .right {
@@ -80,6 +87,12 @@
   }
   .right2 {
     margin-left: 10vw;
+  }
+}
+
+@media (max-width: 750px) {
+  .item {
+    padding: 20px 40px;
   }
 }
 
