@@ -17,21 +17,21 @@ include "nav.php"
 <section id="content">
     <div class="contentSection">
         <div class="description">
+            <?php
+            include "getPDO.php";
+
+            $stmt = getPDO()->prepare("SELECT * FROM event");
+            $stmt->execute();
+            $stmt = $stmt->fetchAll();
+
+            foreach ($stmt as $event) {
+                echo <<<ENDE
             <div class="item">
-                <img class="event" src="/images/Event.jpg" alt="Event">
+                <img class="event" src="$event[0]" alt="Event">
             </div>
-            <div class="item">
-                <img class="event" src="/images/Event.jpg" alt="Event">
-            </div>
-            <div class="item">
-                <img class="event" src="/images/Event.jpg" alt="Event">
-            </div>
-            <div class="item">
-                <img class="event" src="/images/Event.jpg" alt="Event">
-            </div>
-            <div class="item">
-                <img class="event" src="/images/Event.jpg" alt="Event">
-            </div>
+ENDE;
+            }
+            ?>
         </div>
         <div class="contentInfo">
             <p>Bei Interesse entweder</p>
