@@ -14,6 +14,7 @@
 <body>
 <?php
 include "nav.php";
+include "getPDO.php";
 
 //$to = "fascial.sportstherapy@gmail.com";
 $to = "7157@htl.rennweg.at";
@@ -27,9 +28,17 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
         'From' => $_POST['email']
     );
 
-    $terminArray = explode("-", $_POST['termin']);
-    $termin = $terminArray[2].".".$terminArray[1].".".$terminArray[0];
-    $heute = date("d.m.Y");
+    $termin = $_POST['termin'];
+    $validtermin = false;
+    $available = getPDO()->prepare("SELECT * FROM termin");
+    $available->execute();
+    $available = $available->fetchAll();
+
+    foreach ($available as $termine) {
+        if ($termin == $termine[0]) {
+            $validtermin = true;
+        }
+    }
 
     $message = "
           Ich möchte für den " . $termin . " einen Termin anfragen!\n
@@ -37,7 +46,7 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
           Mit freundlichen Grüßen
     ";
 
-    if (strtotime($heute) <= strtotime($termin)) {
+    if ($validtermin) {
         try {
             $response = mail($to, $_POST['betreff'], $message, $header);
         } catch (Exception $ex) {}
@@ -63,36 +72,60 @@ if (isset($response) && $response) {
         <div class="calenderDiv">
             <p class="left">Freie Termine:</p>
             <div class="calenderDivDiv">
+                <?php
+                $stmt = getPDO()->prepare("SELECT * FROM termin");
+                $stmt->execute();
+                $stmt = $stmt->fetchAll();
+
+                foreach ($stmt as $termin) {
+                    $von = explode(":", $termin[1]);
+                    $von = $von[0].":".$von[1];
+
+                    $bis = explode(":", $termin[2]);
+                    $bis = $bis[0].":".$bis[1];
+
+                    $datumArray = explode('-', $termin[0]);
+                    $datum = $datumArray[2].".".$datumArray[1].".".substr($datumArray[0], 2);
+
+                    $tag = strtotime($termin[0]);
+                    $tag = date('D', $tag);
+
+                    switch ($tag) {
+                        case "Mon":
+                            $tag = "Mo";
+                            break;
+                        case "Tue":
+                            $tag = "Di";
+                            break;
+                        case "Wed":
+                            $tag = "Mi";
+                            break;
+                        case "Thu":
+                            $tag = "Do";
+                            break;
+                        case "Fri":
+                            $tag = "Fr";
+                            break;
+                        case "Sat":
+                            $tag = "Sa";
+                            break;
+                        case "Sun":
+                            $tag = "So";
+                            break;
+                        default:
+                            $tag = "n.V";
+                    }
+
+                    echo <<<ENDE
                 <div class="item calender">
-                    <p class="oswald day">Mi</p>
-                    <p class="time">08:00 &ndash; 11:30</p>
-                    <p class="location">Praxis</p>
-                    <p class="blue date">16.06</p>
+                    <p class="oswald day">$tag</p>
+                    <p class="time">$von &ndash; $bis</p>
+                    <p class="location">$termin[3]</p>
+                    <p class="blue date">$datum</p>
                 </div>
-                <div class="item calender">
-                    <p class="oswald day">Do</p>
-                    <p class="time">10:00 &ndash; 11:00</p>
-                    <p class="location">Event</p>
-                    <p class="blue date">17.06</p>
-                </div>
-                <div class="item calender">
-                    <p class="oswald day">Do</p>
-                    <p class="time">15:00 &ndash; 16:30</p>
-                    <p class="location">Praxis</p>
-                    <p class="blue date">24.06</p>
-                </div>
-                <div class="item calender">
-                    <p class="oswald day">Fr</p>
-                    <p class="time">09:00 &ndash; 09:30</p>
-                    <p class="location">Praxis</p>
-                    <p class="blue date">25.06</p>
-                </div>
-                <div class="item calender">
-                    <p class="oswald day">Di</p>
-                    <p class="time">10:00 &ndash; 12:30</p>
-                    <p class="location">Event</p>
-                    <p class="blue date">29.06</p>
-                </div>
+ENDE;
+                }
+                ?>
             </div>
         </div>
         <div class="infoDiv">
@@ -117,7 +150,27 @@ if (isset($response) && $response) {
                     <label for="betreff">Betreff: <sup>*</sup></label>
                     <input type="text" name="betreff" id="betreff" required>
                     <label for="termin">Termin: <sup>*</sup></label>
-                    <input type="date" name="termin" id="termin" required>
+                    <?php
+                    $stmt = getPDO()->prepare("SELECT * FROM termin");
+                    $stmt->execute();
+                    $stmt = $stmt->fetchAll();
+                    $i = 0;
+                    $min = '';
+                    $max = '';
+
+                    foreach ($stmt as $termin) {
+                        if ($i == 0) {
+                            $min = $termin[0];
+                        }
+                        if ($i == sizeof($stmt)-1) {
+                            $max = $termin[0];
+                        }
+                        $i++;
+                    }
+
+                    echo '<input type="date" name="termin" id="termin" min="'.$min.'" max="'.$max.'" pattern="\d{2}.\d{2}.\d{4}" required>'
+                    ?>
+
                     <label for="nachricht">Nachricht: <sup>*</sup></label>
                     <div class="grow-wrap">
                         <textarea name="nachricht" id="nachricht" placeholder="Art der Behandlung..."

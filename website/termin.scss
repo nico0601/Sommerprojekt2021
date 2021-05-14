@@ -173,9 +173,10 @@ input[type=date]:invalid {
   font-weight: bold;
   width: 200px;
   transition: 0.2s;
+  outline: none;
 }
 
-#formButton:hover {
+#formButton:hover, #formButton:focus {
   background: rgba(215, 216, 217, 0.7);
   color: #4D4D4D;
 }
@@ -214,7 +215,7 @@ input[type=date]:invalid {
 }
 
 
-@media (max-width: 1250px) {
+@media (max-width: 1400px) {
   .contentSection {
     display: flex;
     flex-wrap: wrap;
@@ -225,6 +226,10 @@ input[type=date]:invalid {
   .contentSection > div {
     width: 35vw;
     margin: 20px 50px;
+  }
+
+  .item {
+    padding: 15px;
   }
 }
 
@@ -242,6 +247,10 @@ input[type=date]:invalid {
 
   .contentSection > div {
     width: 75vw;
+  }
+
+  .item {
+    padding: 10px;
   }
 
   .left {
@@ -263,5 +272,15 @@ input[type=date]:invalid {
   }
   #kleiner {
     font-size: 3.5vw;
+  }
+
+  .item {
+    padding: 5px;
+  }
+  .item > *.oswald {
+    font-size: 25px;
+  }
+  .calenderDiv {
+    font-size: 13px;
   }
 }
