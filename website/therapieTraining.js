@@ -7,8 +7,10 @@ function expandContent(event) {
 
     if (contentDetails.classList.contains('hidden')) {
         contentDetails.classList.remove('hidden');
+        contentDetails.scrollIntoView({behavior: "smooth", block: "start"})
     } else if (contentDetails.classList.contains('noHidden')) {
         contentDetails.classList.remove('noHidden');
+        contentDetails.scrollIntoView({behavior: "smooth", block: "start"})
     } else {
         contentDetails.classList.add('hidden');
     }

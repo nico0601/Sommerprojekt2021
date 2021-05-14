@@ -4,7 +4,7 @@ weiter.addEventListener('click', scrollen, false)
 
 if (isMobileDevice()) {
     weiter.style.display = 'none'
-}else {
+} else {
     document.addEventListener('scroll', onscroll, false)
 }
 
@@ -29,13 +29,21 @@ right2.addEventListener('click', plusDivs2, false)
 
 
 function onscroll() {
-    let whenWeiter = window.innerHeight/3
+    let whenWeiter
+    if (window.innerWidth <= 1000) {
+        whenWeiter = 0
+    } else if (window.innerWidth <= 1500) {
+        whenWeiter = window.innerHeight / 5
+    } else {
+        whenWeiter = window.innerHeight / 3
+    }
+
+    console.log("Breite: " + window.innerWidth)
+    console.log("Höhe: " + whenWeiter)
 
     if (weiter.style.display !== 'none' && document.scrollingElement.scrollTop >= whenWeiter) {
-        console.log("display none")
         weiter.style.display = 'none'
-    }else if (weiter.style.display === 'none' && document.scrollingElement.scrollTop < whenWeiter) {
-        console.log("display block")
+    } else if (weiter.style.display === 'none' && document.scrollingElement.scrollTop < whenWeiter) {
         weiter.style.display = 'block'
     }
 }
@@ -98,7 +106,6 @@ function minusDivs2() {
 }
 
 
-
 function showDivs1(n) {
     let x = document.querySelectorAll(".therapie")
 
@@ -118,11 +125,9 @@ function showDivs2(n) {
 }
 
 
-
 function isMobileDevice() {
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 }
-
 
 
 const observer = lozad(); // lazy loads elements with default selector as '.lozad'
