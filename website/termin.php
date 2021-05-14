@@ -40,6 +40,9 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
         }
     }
 
+    $termin = explode("-", $termin);
+    $termin = $termin[2].".".$termin[1].".".$termin[0];
+
     $message = "
           Ich möchte für den " . $termin . " einen Termin anfragen!\n
           " . $_POST["nachricht"] . "\n
