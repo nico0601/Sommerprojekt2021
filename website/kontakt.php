@@ -39,6 +39,7 @@ include "nav.php"
                     <p>1230 Wieeeha</p>
                 </div>
                 <p class="right2">fascial.sportstherapy@gmail.com</p>
+                <a href="/agb.php">Allgemeine Geschäftsbedingungen</a>
             </div>
         </div>
     </div>
