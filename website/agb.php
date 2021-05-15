@@ -17,6 +17,7 @@ include "nav.php";
 </div>
 
 <div class="agbText">
+    <a href="Datenschutzerklarung.pdf" target="_blank" style="font-style: italic">PDF Version</a>
     <h2>Inhaltsverzeichnis</h2>
     <ul>
         <li>Datenschutz</li>
