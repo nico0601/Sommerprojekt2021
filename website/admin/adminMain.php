@@ -20,6 +20,8 @@ include "../nav.php";
     <h1>Hello Admin</h1>
 </div>
 
+<a href="editTherapie.php">Therapie</a>
+
 <?php
 include "../footer.php";
 ?>

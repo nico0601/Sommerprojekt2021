@@ -52,6 +52,14 @@ h3 {
   color: #00ADD0;
 }
 
+.nowrap-text {
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: "...";
+  width: 60vw;
+  max-width: 60vw;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -62,11 +70,16 @@ h3 {
 
 #heading {
   background: #D7D8D9;
-  height: 100px;
+  min-height: 100px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  word-wrap: anywhere;
+
+  h1 {
+    text-align: center;
+  }
 }
 
 .contentHeading {
