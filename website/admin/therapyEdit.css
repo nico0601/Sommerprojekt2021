@@ -1,5 +1,7 @@
 .table-input {
-  width: 100%;
-}
+  width: 100%; }
+
+.tbody-hidden {
+  display: none; }
 
 /*# sourceMappingURL=therapyEdit.css.map */

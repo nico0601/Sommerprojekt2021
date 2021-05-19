@@ -54,10 +54,24 @@ h3 {
 
 .nowrap-text {
   white-space: nowrap;
-  overflow: hidden !important;
   text-overflow: "...";
-  width: 60vw;
-  max-width: 60vw;
+  width: 100%;
+  display: block;
+  overflow: hidden !important;
+}
+
+.expand-icon {
+  font-size: 1.2em;
+  margin-top: -2px;
+  right: 0;
+  position: absolute;
+}
+
+.nowrap-container {
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: calc(100% - 1.3em) 1.3em;
+  position: relative;
 }
 
 .bold {
