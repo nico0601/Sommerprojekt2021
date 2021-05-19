@@ -16,4 +16,4 @@ function var_dump_ret($mixed = null)
     return $content;
 }
 
-var_dump_pre($_POST);
+var_dump_pre(json_decode($_POST["fragment"]));
