@@ -26,10 +26,10 @@ include "nav.php";
     <div class="videoOverlay">
         <img id="logo" src="/images/logo%20-%20hell.png" alt="Logo">
         <div id="buttonDiv">
-            <a href="/kontakt.php" class="infoA">
+            <a href="/kontakt" class="infoA">
                 <button type="button" class="button infoButton">Kontakt</button>
             </a>
-            <a href="/termin.php" class="infoA">
+            <a href="/termin" class="infoA">
                 <button type="button" class="button infoButton">Termin</button>
             </a>
         </div>
@@ -56,7 +56,7 @@ include "nav.php";
                 foreach ($stmt as $therapie) {
                     echo <<<ENDE
                 <div class="item therapie">
-                    <a href="/therapie.php" class="angebotA">
+                    <a href="/therapie" class="angebotA">
                         <button type="submit" name="angebot" value="$i" class="button">$therapie[0]</button>
                     </a>
                 </div>
@@ -81,7 +81,7 @@ ENDE;
                 foreach ($stmt as $training) {
                     echo <<<ENDE
                 <div class="item training">
-                    <a href="/training.php" class="angebotA">
+                    <a href="/training" class="angebotA">
                         <button type="submit" name="angebot" value="$i" class="button">$training[0]</button>
                     </a>
                 </div>

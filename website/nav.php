@@ -14,51 +14,51 @@
             <span class="material-icons icon nav-expand-icon">close</span>
         </div>
         <div class="nav-element">
-            <a class="nav-link" href="/index.php"></a>
+            <a class="nav-link" href="/home"></a>
             <span class="material-icons icon">home</span>
             Home
         </div>
         <div class="nav-dropdown-element">
             <div class="nav-element">
-                <a class="nav-link" href="/event.php"></a>
+                <a class="nav-link" href="/event"></a>
                 <span class="material-icons icon">more_horiz</span>
                 Angebote
             </div>
             <div class="nav-dropdown">
                 <div class="nav-dropdown-bg"></div>
                 <div class="nav-element">
-                    <a class="nav-link" href="/therapie.php"></a>
+                    <a class="nav-link" href="/therapie"></a>
                     Therapie
                 </div>
                 <div class="nav-element">
-                    <a class="nav-link" href="/training.php"></a>
+                    <a class="nav-link" href="/training"></a>
                     Training
                 </div>
                 <div class="nav-element">
-                    <a class="nav-link" href="/event.php"></a>
+                    <a class="nav-link" href="/event"></a>
                     Events
                 </div>
             </div>
         </div>
         <div class="nav-element">
-            <a class="nav-link" href="/termin.php"></a>
+            <a class="nav-link" href="/termin"></a>
             <span class="material-icons icon">event</span>
             Termine
         </div>
         <div class="nav-dropdown-element">
             <div class="nav-element">
-                <a class="nav-link" href="/ueberMich.php"></a>
+                <a class="nav-link" href="/ueberMich"></a>
                 <span class="material-icons icon">person</span>
                 Über uns
             </div>
             <div class="nav-dropdown">
                 <div class="nav-dropdown-bg"></div>
                 <div class="nav-element">
-                    <a class="nav-link" href="/ueberMich.php"></a>
+                    <a class="nav-link" href="/ueberMich"></a>
                     Team
                 </div>
                 <div class="nav-element">
-                    <a class="nav-link" href="/kontakt.php"></a>
+                    <a class="nav-link" href="/kontakt"></a>
                     Kontakt
                 </div>
             </div>
