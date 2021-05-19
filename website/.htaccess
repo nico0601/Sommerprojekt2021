@@ -1,0 +1,8 @@
+RewriteEngine on
+RewriteRule ^home/?$ index.php [NC]
+RewriteRule ^events/?$ event.php [NC]
+RewriteRule ^therapie-angebote/?$ therapie.php [NC]
+RewriteRule ^training-angebote/?$ training.php [NC]
+RewriteRule ^termine/?$ termin.php [NC]
+RewriteRule ^ueber-mich/?$ ueberMich.php [NC]
+RewriteRule ^kontakt/?$ kontakt.php [NC]
