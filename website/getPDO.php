@@ -1,5 +1,10 @@
 <?php
 
+use Doctrine\DBAL\DriverManager;
+use Doctrine\DBAL\Types\Type;
+
+include "../vendor/autoload.php";
+
 function getPDO()
 {
     // Test-Zweck (Bplaced):
@@ -16,15 +21,24 @@ function getPDO()
 //    return $pdo;
 
     // Test-Zweck (XAMPP):
-    $host = "localhost";
-    $db = "fast_db";
-    $user = "root";
-    $passwd = "";
+//    $host = "localhost";
+//    $db = "fast_db";
+//    $user = "root";
+//    $passwd = "";
+//
+//    try {
+//        $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", "$user", "$passwd");
+//    } catch (PDOException $e) {
+//        echo 'Verbindung fehlgeschlagen';
+//    }
+//    return $pdo;
 
-    try {
-        $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", "$user", "$passwd");
-    } catch (PDOException $e) {
-        echo 'Verbindung fehlgeschlagen';
-    }
-    return $pdo;
+    $conn = DriverManager::getConnection(array(
+        'dbname' => 'fast_db',
+        'user' => 'root',
+        'password' => '',
+        'host' => 'localhost',
+        'driver' => 'pdo_mysql'));
+    return $queryBuilder = $conn->createQueryBuilder();
+
 }

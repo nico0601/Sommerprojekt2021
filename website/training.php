@@ -21,15 +21,16 @@ include "nav.php"
     <?php
     include "getPDO.php";
 
-    $stmt = getPDO()->prepare("SELECT * FROM training");
-    $stmt->execute();
-    $stmt = $stmt->fetchAll();
+    $queryBuilder = getPDO()
+        ->select("*")
+        ->from('training');
+    $trainings = $queryBuilder->fetchAllAssociative();
     $i = 1;
 
-    foreach ($stmt as $training) {
+    foreach ($trainings as $training) {
         echo <<<ENDE
     <div class="contentSection">
-        <div class="contentHeading">$training[0]</div>
+        <div class="contentHeading">{$training["pk_training_name"]}</div>
 ENDE;
 
         if (isset($_GET['angebot']) && $_GET['angebot'] !== "") {
@@ -42,15 +43,18 @@ ENDE;
             echo "<div class='description hidden'>";
         }
 
-        $stmt2 = getPDO()->prepare("SELECT * FROM beschreibungTr WHERE fk_pk_training_name = ?");
-        $stmt2->execute(array($training[0]));
-        $stmt2 = $stmt2->fetchAll();
+        $queryBuilder = getPDO()
+            ->select("*")
+            ->from('beschreibungTr')
+            ->where('fk_pk_training_name = ?')
+            ->setParameter(0, $training["pk_training_name"]);
+        $angebote = $queryBuilder->fetchAllAssociative();
 
-        foreach ($stmt2 as $angebot) {
+        foreach ($angebote as $angebot) {
             echo <<<ENDE
             <div class="item">
                 <img class="plus" src="/images/plus.svg" alt="plus icon">
-                <a>$angebot[1]</a>
+                <a>{$angebot["beschreibung"]}</a>
             </div>
 ENDE;
 

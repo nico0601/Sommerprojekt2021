@@ -30,12 +30,13 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
 
     $termin = $_POST['termin'];
     $validtermin = false;
-    $available = getPDO()->prepare("SELECT * FROM termin");
-    $available->execute();
-    $available = $available->fetchAll();
+    $queryBuilder = getPDO()
+        ->select("*")
+        ->from('termin');
+    $available = $queryBuilder->fetchAllAssociative();
 
     foreach ($available as $termine) {
-        if ($termin == $termine[0]) {
+        if ($termin == $termine["pk_datum"]) {
             $validtermin = true;
         }
     }
@@ -76,21 +77,22 @@ if (isset($response) && $response) {
             <p class="left">Freie Termine:</p>
             <div class="calenderDivDiv">
                 <?php
-                $stmt = getPDO()->prepare("SELECT * FROM termin");
-                $stmt->execute();
-                $stmt = $stmt->fetchAll();
+                $queryBuilder = getPDO()
+                    ->select("*")
+                    ->from('termin');
+                $termine = $queryBuilder->fetchAllAssociative();
 
-                foreach ($stmt as $termin) {
-                    $von = explode(":", $termin[1]);
+                foreach ($termine as $termin) {
+                    $von = explode(":", $termin["zeit_von"]);
                     $von = $von[0].":".$von[1];
 
-                    $bis = explode(":", $termin[2]);
+                    $bis = explode(":", $termin["zeit_bis"]);
                     $bis = $bis[0].":".$bis[1];
 
-                    $datumArray = explode('-', $termin[0]);
+                    $datumArray = explode('-', $termin["pk_datum"]);
                     $datum = $datumArray[2].".".$datumArray[1].".".substr($datumArray[0], 2);
 
-                    $tag = strtotime($termin[0]);
+                    $tag = strtotime($termin["pk_datum"]);
                     $tag = date('D', $tag);
 
                     switch ($tag) {
@@ -123,7 +125,7 @@ if (isset($response) && $response) {
                 <div class="item calender">
                     <p class="oswald day">$tag</p>
                     <p class="time">$von &ndash; $bis</p>
-                    <p class="location">$termin[3]</p>
+                    <p class="location">{$termin["location"]}</p>
                     <p class="blue date">$datum</p>
                 </div>
 ENDE;
@@ -154,19 +156,25 @@ ENDE;
                     <input type="text" name="betreff" id="betreff" required>
                     <label for="termin">Termin: <sup>*</sup></label>
                     <?php
-                    $stmt = getPDO()->prepare("SELECT * FROM termin");
-                    $stmt->execute();
-                    $stmt = $stmt->fetchAll();
+                    $queryBuilder = getPDO()
+                        ->select("*")
+                        ->from('termin');
+                    $termine = $queryBuilder->fetchAllAssociative();
                     $i = 0;
                     $min = '';
                     $max = '';
 
-                    foreach ($stmt as $termin) {
+                    foreach ($termine as $termin) {
                         if ($i == 0) {
-                            $min = $termin[0];
-                        }
-                        if ($i == sizeof($stmt)-1) {
-                            $max = $termin[0];
+                            $min = $termin["pk_datum"];
+                            $max = $termin["pk_datum"];
+                        }else {
+                            if (strtotime($min) > strtotime($termin["pk_datum"])) {
+                                $min = $termin["pk_datum"];
+                            }
+                            if (strtotime($max) < strtotime($termin["pk_datum"])) {
+                                $max = $termin["pk_datum"];
+                            }
                         }
                         $i++;
                     }

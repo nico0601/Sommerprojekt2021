@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php
-  include "header.php"
-  ?>
+    <?php
+    include "header.php"
+    ?>
     <title>F.A.S.T - Events</title>
     <link rel="stylesheet" href="/event.css">
 </head>
@@ -20,14 +20,15 @@ include "nav.php"
             <?php
             include "getPDO.php";
 
-            $stmt = getPDO()->prepare("SELECT * FROM event");
-            $stmt->execute();
-            $stmt = $stmt->fetchAll();
+            $queryBuilder = getPDO()
+                ->select("*")
+                ->from('event');
+            $events = $queryBuilder->fetchAllAssociative();
 
-            foreach ($stmt as $event) {
+            foreach ($events as $event) {
                 echo <<<ENDE
             <div class="item">
-                <img class="event" src="$event[0]" alt="Event">
+                <img class="event" src="{$event["pk_event"]}" alt="Event">
             </div>
 ENDE;
             }

@@ -48,16 +48,17 @@ include "nav.php";
                 <?php
                 include "getPDO.php";
 
-                $stmt = getPDO()->prepare("SELECT * FROM therapie");
-                $stmt->execute();
-                $stmt = $stmt->fetchAll();
+                $queryBuilder = getPDO()
+                    ->select("*")
+                    ->from('therapie');
+                $therapien = $queryBuilder->fetchAllAssociative();
                 $i = 1;
 
-                foreach ($stmt as $therapie) {
+                foreach ($therapien as $therapie) {
                     echo <<<ENDE
                 <div class="item therapie">
                     <a href="/therapie" class="angebotA">
-                        <button type="submit" name="angebot" value="$i" class="button">$therapie[0]</button>
+                        <button type="submit" name="angebot" value="$i" class="button">{$therapie["pk_therapie_name"]}</button>
                     </a>
                 </div>
 ENDE;
@@ -73,16 +74,17 @@ ENDE;
 
             <form method="get" action="training.php">
                 <?php
-                $stmt = getPDO()->prepare("SELECT * FROM training");
-                $stmt->execute();
-                $stmt = $stmt->fetchAll();
+                $queryBuilder = getPDO()
+                    ->select("*")
+                    ->from('training');
+                $trainings = $queryBuilder->fetchAllAssociative();
                 $i = 1;
 
-                foreach ($stmt as $training) {
+                foreach ($trainings as $training) {
                     echo <<<ENDE
                 <div class="item training">
                     <a href="/training" class="angebotA">
-                        <button type="submit" name="angebot" value="$i" class="button">$training[0]</button>
+                        <button type="submit" name="angebot" value="$i" class="button">{$training["pk_training_name"]}</button>
                     </a>
                 </div>
 ENDE;

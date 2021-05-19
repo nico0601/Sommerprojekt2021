@@ -34,12 +34,13 @@ include "nav.php"
                 <?php
                 include "getPDO.php";
 
-                $stmt = getPDO()->prepare("SELECT * FROM ueber_mich");
-                $stmt->execute();
-                $stmt = $stmt->fetchAll();
+                $queryBuilder = getPDO()
+                    ->select("*")
+                    ->from('ueber_mich');
+                $stmt = $queryBuilder->fetchAllAssociative();
 
                 foreach ($stmt as $ueber_mich) {
-                    echo "<p id='descriptionText'>$ueber_mich[1]</p>";
+                    echo "<p id='descriptionText'>{$ueber_mich["infotext"]}</p>";
                 }
                 ?>
             </div>
