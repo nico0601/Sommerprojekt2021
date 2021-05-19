@@ -8,6 +8,13 @@ include "../vendor/autoload.php";
 function getPDO()
 {
     // Test-Zweck (Bplaced):
+//    $conn = DriverManager::getConnection(array(
+//        'dbname' => 'quiz_db',
+//        'user' => 'quiz_admin',
+//        'password' => 'quiz',
+//        'host' => 'localhost',
+//        'driver' => 'pdo_mysql'));
+//    return $queryBuilder = $conn->createQueryBuilder();
 //    $host = "localhost";
 //    $db = "quiz_db";
 //    $user = "quiz_admin";
@@ -21,6 +28,14 @@ function getPDO()
 //    return $pdo;
 
     // Test-Zweck (XAMPP):
+    $conn = DriverManager::getConnection(array(
+        'dbname' => 'fast_db',
+        'user' => 'root',
+        'password' => '',
+        'host' => 'localhost',
+        'driver' => 'pdo_mysql'));
+    return $queryBuilder = $conn->createQueryBuilder();
+
 //    $host = "localhost";
 //    $db = "fast_db";
 //    $user = "root";
@@ -32,13 +47,5 @@ function getPDO()
 //        echo 'Verbindung fehlgeschlagen';
 //    }
 //    return $pdo;
-
-    $conn = DriverManager::getConnection(array(
-        'dbname' => 'fast_db',
-        'user' => 'root',
-        'password' => '',
-        'host' => 'localhost',
-        'driver' => 'pdo_mysql'));
-    return $queryBuilder = $conn->createQueryBuilder();
 
 }
