@@ -139,11 +139,15 @@ ENDE;
             <p>
                 Es gibt 3 verschiedene Arten von Terminen: Events, Hausbesuche
                 und die Behandlung in der Praxis.
-                <br><br><br>
+                <br><br>
                 Events und die Behandlung in der Praxis sind über Telefon
                 oder Email auszumachen.
-                <br><br><br>
-                Hausbesuche können nach telefonischer Absprache abgehalten werden.
+                <br><br>
+                Hausbesuche können nach telefonischer Absprache in Wien, Niederösterreich
+                und Burgenland abgehalten werden.
+                <br><br>
+                Termine können aus der Tabelle "Freie Termine" abgelesen werden. Bei der
+                Terminauswahl sind nur verfügbare Termine anklickbar / anwählbar.
             </p>
         </div>
         <div class="kontaktDiv">
