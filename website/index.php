@@ -29,7 +29,7 @@ include "nav.php";
             <a href="/kontakt" class="infoA">
                 <button type="button" class="button infoButton">Kontakt</button>
             </a>
-            <a href="/termin" class="infoA">
+            <a href="/termine" class="infoA">
                 <button type="button" class="button infoButton">Termin</button>
             </a>
         </div>
