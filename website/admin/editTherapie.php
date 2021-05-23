@@ -130,7 +130,8 @@ TABLE;
 
         ?>
         <tr>
-            <td colspan="2"><button class="pure-button" type="button">Angebot hinzufügen</button></td>
+            <td><button class="pure-button" type="button">Angebot hinzufügen</button></td>
+            <td></td>
         </tr>
         </tbody>
     </table>

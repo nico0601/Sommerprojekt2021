@@ -1,4 +1,9 @@
 <?php
+
+use Doctrine\DBAL\DriverManager;
+
+include "adminSpaceHeader.php";
+
 function var_dump_pre($mixed = null)
 {
     echo '<pre>';
@@ -16,4 +21,38 @@ function var_dump_ret($mixed = null)
     return $content;
 }
 
-var_dump_pre(json_decode($_POST["fragment"]));
+$fragment = (json_decode($_POST["fragment"]));
+
+$conn = DriverManager::getConnection(array(
+    'dbname' => 'fast_db',
+    'user' => 'phpUser',
+    'password' => 'DanielleAndDorkaAreMyCuddles',
+    'host' => 'localhost',
+    'driver' => 'pdo_mysql'));
+
+$queryBuilder = $conn->createQueryBuilder();
+
+$queryBuilder->delete('therapie');
+try {
+    $queryBuilder->executeQuery();
+} catch (\Doctrine\DBAL\Exception $e) {
+    echo $e;
+}
+
+$queryBuilder = $conn->createQueryBuilder();
+foreach ($fragment as $therapyName => $therapy) {
+    $queryBuilder->insert("therapie")
+        ->values(array(
+            "pk_therapie_name" => '?',
+            "fk_pk_id" => '?'
+        ))
+        ->setParameter(0, $therapyName)
+        ->setParameter(1, 1);
+
+
+    try {
+        $queryBuilder->executeQuery();
+    } catch (\Doctrine\DBAL\Exception $e) {
+        echo $e;
+    }
+}
