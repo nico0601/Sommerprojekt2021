@@ -9,7 +9,7 @@
     ?>
     <title>F.A.S.T - Termine</title>
     <link rel="stylesheet" href="/termin.css">
-    <script type="text/javascript" src="/termin.js" defer></script>
+    <script type="text/javascript" src="/response.js" defer></script>
 </head>
 <body>
 <?php
