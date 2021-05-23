@@ -49,6 +49,20 @@ foreach ($fragment as $therapyName => $therapy) {
         ->setParameter(0, $therapyName)
         ->setParameter(1, 1);
 
+    foreach ($therapy as $descriptionItemName) {
+        $queryBuilder = $conn->createQueryBuilder();
+
+        $queryBuilder->insert("beschreibungTh")
+            ->values(array(
+                "fk_pk_therapie_name" => '?',
+                "beschreibung" => '?',
+                "pk_beschreibungTh_id" => '?'
+            ))
+            ->setParameter(0, $therapyName)
+            ->setParameter(1, $descriptionItemName)
+            ->setParameter(2, 1);
+
+    }
 
     try {
         $queryBuilder->executeQuery();
@@ -56,3 +70,5 @@ foreach ($fragment as $therapyName => $therapy) {
         echo $e;
     }
 }
+
+var_dump_pre($fragment);
