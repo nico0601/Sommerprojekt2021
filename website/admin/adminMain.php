@@ -20,6 +20,16 @@ include "../nav.php";
     <h1>Hello Admin</h1>
 </div>
 
+<section id="content">
+    <div class="contentSection">
+        <div class="description">
+            <form method="get" action="editEvent.php">
+                <button type="submit">edit Event</button>
+            </form>
+        </div>
+    </div>
+</section>
+
 <?php
 include "../footer.php";
 ?>
