@@ -67,11 +67,22 @@ h3 {
   position: absolute;
 }
 
+.delete-icon {
+  font-size: 1.2em;
+  //margin-top: -2px;
+  position: absolute;
+}
+
+.delete-col {
+  padding: 0;
+}
+
 .nowrap-container {
   width: 100%;
   display: inline-grid;
   grid-template-columns: calc(100% - 1.3em) 1.3em;
   position: relative;
+  cursor: pointer;
 }
 
 .bold {

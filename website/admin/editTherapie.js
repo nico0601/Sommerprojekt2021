@@ -98,7 +98,7 @@ function rowClick(event, expandArea) {
 }
 
 function addRowButtonClick(event, button) {
-    let html = '<tr>\n' +
+    let newNode = button.parentElement.parentElement.previousSibling.cloneNode(true);
         '<td colspan="2"><textarea class="table-input"></textarea></td>\n' +
         '</tr>';
 
@@ -163,3 +163,11 @@ function submitForm() {
 
 }
 
+function createElementFromHTML(htmlString) {
+    let div = document.createElement('template');
+    div.innerHTML = htmlString;
+
+    console.log(div.innerText);
+
+    return div.content.firstChild;
+}

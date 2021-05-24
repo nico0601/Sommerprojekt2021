@@ -21,7 +21,11 @@ function var_dump_ret($mixed = null)
     return $content;
 }
 
-$fragment = (json_decode($_POST["fragment"]));
+$fragment = json_decode($_POST["fragment"]);
+
+if (empty($_POST["fragment"]) || !(array)$fragment) {
+    header("Location: editTherapie.php");
+}
 
 $conn = DriverManager::getConnection(array(
     'dbname' => 'fast_db',
@@ -30,45 +34,50 @@ $conn = DriverManager::getConnection(array(
     'host' => 'localhost',
     'driver' => 'pdo_mysql'));
 
-$queryBuilder = $conn->createQueryBuilder();
+$conn->setAutoCommit(false);
 
-$queryBuilder->delete('therapie');
 try {
-    $queryBuilder->executeQuery();
-} catch (\Doctrine\DBAL\Exception $e) {
-    echo $e;
-}
+    $conn->connect();
 
-$queryBuilder = $conn->createQueryBuilder();
-foreach ($fragment as $therapyName => $therapy) {
-    $queryBuilder->insert("therapie")
-        ->values(array(
-            "pk_therapie_name" => '?',
-            "fk_pk_id" => '?'
-        ))
-        ->setParameter(0, $therapyName)
-        ->setParameter(1, 1);
+    $queryBuilder = $conn->createQueryBuilder();
 
-    foreach ($therapy as $descriptionItemName) {
-        $queryBuilder = $conn->createQueryBuilder();
+    $queryBuilder->delete('therapie');
+    $queryBuilder->executeStatement();
 
-        $queryBuilder->insert("beschreibungTh")
+    $queryBuilder = $conn->createQueryBuilder();
+    foreach ($fragment as $therapyName => $therapy) {
+        $queryBuilder->insert("therapie")
             ->values(array(
-                "fk_pk_therapie_name" => '?',
-                "beschreibung" => '?',
-                "pk_beschreibungTh_id" => '?'
+                "pk_therapie_name" => '?',
+                "fk_pk_id" => '?'
             ))
             ->setParameter(0, $therapyName)
-            ->setParameter(1, $descriptionItemName)
-            ->setParameter(2, 1);
+            ->setParameter(1, 1);
 
-    }
-
-    try {
         $queryBuilder->executeQuery();
-    } catch (\Doctrine\DBAL\Exception $e) {
-        echo $e;
+
+        foreach ($therapy as $descriptionItemName) {
+            $queryBuilder = $conn->createQueryBuilder();
+
+            $queryBuilder->insert("beschreibungTh")
+                ->values(array(
+                    "fk_pk_therapie_name" => '?',
+                    "beschreibung" => '?'
+                ))
+                ->setParameter(0, $therapyName)
+                ->setParameter(1, $descriptionItemName);
+
+            $queryBuilder->executeQuery();
+        }
     }
+
+    var_dump_pre($fragment);
+
+    $conn->commit();
+} catch (Exception $e) {
+    $conn->rollBack();
+    echo "Caught it! :D<br>";
+    throw $e;
 }
 
-var_dump_pre($fragment);
+header("Location: editTherapie.php");
