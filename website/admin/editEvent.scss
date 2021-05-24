@@ -31,12 +31,15 @@ button {
   background-color: transparent;
 }
 .x {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   cursor: pointer;
   border: none;
   border-radius: 10000px;
-  background-image: url("../images/x.svg");
+  background-image: url("../images/x.png");
+  background-size: 65%;
+  background-repeat: no-repeat;
+  background-position: center center;
   transition: 0.2s;
   outline: none;
 }
@@ -95,6 +98,10 @@ button {
 @media (max-width: 650px) {
   .event {
     width: 300px;
+  }
+  .x {
+    width: 50px;
+    height: 50px;
   }
 }
 
