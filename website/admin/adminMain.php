@@ -26,6 +26,9 @@ include "../nav.php";
             <form method="get" action="editEvent.php">
                 <button type="submit">edit Event</button>
             </form>
+            <form method="get" action="editTermin.php">
+                <button type="submit">edit Termin</button>
+            </form>
         </div>
     </div>
 </section>

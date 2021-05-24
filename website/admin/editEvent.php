@@ -22,11 +22,6 @@ if (isset($_POST['delete']) && $_POST['delete'] != "") {
     $event = new Event($_POST['delete']);
     $event->delete();
 }
-
-if (isset($_POST['link']) && $_POST['link'] != "") {
-    $event = new Event($_POST['link']);
-    $event->insert();
-}
 ?>
 
 <div id="heading">
@@ -37,7 +32,7 @@ if (isset($_POST['link']) && $_POST['link'] != "") {
     <div class="contentSection">
         <div class="description">
             <?php
-            include_once "../getPDO.php";
+            include_once "getPDO.php";
 
             $queryBuilder = getPDO()
                 ->select("*")

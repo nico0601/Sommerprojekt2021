@@ -1,5 +1,5 @@
 <?php
-include_once "../getPDO.php";
+include_once "getPDO.php";
 
 class Event
 {
@@ -67,7 +67,11 @@ class Event
                 ->where('pk_event = ?')
                 ->setParameter(0, $this->event);
             $queryBuilder->execute();
-            $this->success("delete");
+            if (unlink("..".$this->event)) {
+                $this->success("delete");
+            } else {
+                $this->duplicateText("delete");
+            }
         } else {
             $this->otherError();
         }
@@ -89,7 +93,7 @@ class Event
             $queryBuilder->execute();
             $this->success("insert");
         } else if ($this->duplicate) {
-            $this->duplicateText();
+            $this->duplicateText("insert");
         } else {
             $this->otherError();
         }
@@ -108,11 +112,12 @@ ENDE;
     /**
      * Error Message for duplicated Database Entries
      */
-    public function duplicateText()
+    public function duplicateText($function)
     {
+        $text = $function == "delete" ? "gelöscht" : ($function == "insert" ? "vorhanden" : "");
         echo <<<ENDE
         <div id='fehlgeschlagen' class='error'>
-            <h2>Dieses Event ist bereits vorhanden!</h2>
+            <h2>Dieses Event ist bereits $text!</h2>
         </div>
 
 ENDE;

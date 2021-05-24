@@ -24,11 +24,9 @@ include "../nav.php";
 <section id="content">
     <div class="contentSection">
         <div class="description">
-            <form action="editEvent.php" method="post">
-                <div id="linkDiv">
-                    <label for="link">Bild-Link:</label>
-                    <input type="text" id="link" name="link" placeholder="z.B. /images/Event.jpg">
-                </div>
+            <form enctype="multipart/form-data" action="accept.php" method="post">
+                <input type="hidden" name="MAX_FILE_SIZE" value="30000000000" />
+                <input type="file" name="event" accept="image/*" multiple>
                 <input type="submit" id="formButton" value="Erstellen">
             </form>
         </div>
