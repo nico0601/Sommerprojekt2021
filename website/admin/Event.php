@@ -21,7 +21,9 @@ class Event
     private string $eventPattern = "/^[\w\d `'{}()%&\-@#$~!_^\/]+\.[\w]+$/";
 
     /**
-     * Event constructor. Set event "pk" / "link to event image"
+     * Event constructor.
+     * Set event "pk" / "link to event image"
+     * check event if there is a duplicate entry
      * @param $event
      * @throws \Doctrine\DBAL\Exception
      */
