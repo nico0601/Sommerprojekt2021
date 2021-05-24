@@ -47,8 +47,9 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
     $message = "
           Ich möchte für den " . $termin . " einen Termin anfragen!\n
           " . $_POST["nachricht"] . "\n
-          Mit freundlichen Grüßen
-    ";
+          Mit freundlichen Grüßen\n
+          Gesendet von: ".$_POST['email']
+    ;
 
     if ($validtermin) {
         try {
@@ -77,56 +78,24 @@ if (isset($response) && $response) {
             <p class="left">Freie Termine:</p>
             <div class="calenderDivDiv">
                 <?php
+                include_once "admin/Termin.php";
+
                 $queryBuilder = getPDO()
                     ->select("*")
                     ->from('termin');
                 $termine = $queryBuilder->fetchAllAssociative();
 
                 foreach ($termine as $termin) {
-                    $von = explode(":", $termin["zeit_von"]);
-                    $von = $von[0].":".$von[1];
 
-                    $bis = explode(":", $termin["zeit_bis"]);
-                    $bis = $bis[0].":".$bis[1];
-
-                    $datumArray = explode('-', $termin["pk_datum"]);
-                    $datum = $datumArray[2].".".$datumArray[1].".".substr($datumArray[0], 2);
-
-                    $tag = strtotime($termin["pk_datum"]);
-                    $tag = date('D', $tag);
-
-                    switch ($tag) {
-                        case "Mon":
-                            $tag = "Mo";
-                            break;
-                        case "Tue":
-                            $tag = "Di";
-                            break;
-                        case "Wed":
-                            $tag = "Mi";
-                            break;
-                        case "Thu":
-                            $tag = "Do";
-                            break;
-                        case "Fri":
-                            $tag = "Fr";
-                            break;
-                        case "Sat":
-                            $tag = "Sa";
-                            break;
-                        case "Sun":
-                            $tag = "So";
-                            break;
-                        default:
-                            $tag = "n.V";
-                    }
+                    $termin = new Termin($termin);
+                    $termin = $termin->getValues();
 
                     echo <<<ENDE
                 <div class="item calender">
-                    <p class="oswald day">$tag</p>
-                    <p class="time">$von &ndash; $bis</p>
+                    <p class="oswald day">{$termin["tag"]}</p>
+                    <p class="time">{$termin["zeit_von"]} &ndash; {$termin["zeit_bis"]}</p>
                     <p class="location">{$termin["location"]}</p>
-                    <p class="blue date">$datum</p>
+                    <p class="blue date">{$termin["pk_datum"]}</p>
                 </div>
 ENDE;
                 }
