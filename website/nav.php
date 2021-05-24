@@ -1,5 +1,5 @@
 <header>
-    <a href="/index.php"><img class="logo" src="/images/logo.png" alt="Logo"></a>
+    <a href="/home"><img class="logo" src="/images/logo.png" alt="Logo"></a>
 
     <div id="nav-expand-icon-container">
         <a id="nav-icon-link" href="javascript:void(0)">Open Navigation</a>
