@@ -32,6 +32,7 @@
   align-items: center;
   flex-direction: column;
 }
+
 .contentSection > div {
   width: 50vw;
 }
@@ -46,7 +47,7 @@
 .calenderDivDiv {
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 55vh;
   overflow-y: scroll;
   padding: 0 10px;
   background: #4D4D4D;
@@ -87,14 +88,17 @@
   grid-row: 1 / 4;
   grid-column: 2;
 }
+
 .location {
   grid-row: 1 / 4;
   grid-column: 3;
 }
+
 .date {
   grid-row: 2 / 4;
   grid-column: 1;
 }
+
 .edit {
   grid-row: 1 / 4;
   grid-column: 4;
@@ -113,9 +117,20 @@
 }
 
 
+.description {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  margin: 20px 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 button {
   background-color: transparent;
 }
+
 .x, .adapt {
   width: 60px;
   height: 60px;
@@ -130,17 +145,19 @@ button {
   outline: none;
   margin: 0 5px;
 }
+
 .adapt {
   background-image: url("../images/adapt.png");
 }
+
 .x:hover, .x:focus, .adapt:hover, .adapt:focus {
   background-color: #d7d8d9;
 }
 
-#formButton {
+.formButton {
   cursor: pointer;
   padding: 10px;
-  margin: 30px 0;
+  margin: 30px 10px;
   background: transparent;
   border: 6px solid #D7D8D9;
   border-radius: 0;
@@ -153,9 +170,30 @@ button {
   outline: none;
 }
 
-#formButton:hover, #formButton:focus {
+.formButton:hover, .formButton:focus {
   background: rgba(215, 216, 217, 0.7);
   color: #4D4D4D;
+}
+
+
+#erfolgreich, #fehlgeschlagen {
+  position: fixed;
+  top: 55px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  border-radius: 0;
+  font-weight: bold;
+  width: max-content;
+  transition: 0.3s;
+  z-index: 10;
+}
+#erfolgreich {
+  background: #58dfb2;
+  color: white;
+  border: 2px solid #39b189;
 }
 
 
@@ -196,6 +234,16 @@ button {
     width: 40px;
     height: 40px;
   }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 650px) {
+  .formButton {
+    margin: 10px 10px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -232,5 +280,13 @@ button {
   }
   .calenderDiv {
     font-size: 13px;
+  }
+
+  #erfolgreich, #fehlgeschlagen {
+    padding: 5px;
+    border-width: 1px;
+  }
+  h2 {
+    font-size: 4vw;
   }
 }

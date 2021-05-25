@@ -16,6 +16,12 @@ include "adminSpaceHeader.php";
 <body>
 <?php
 include "../nav.php";
+include_once "Termin.php";
+
+if (isset($_POST['delete']) && $_POST['delete'] != "") {
+    $termin = new Termin($_POST['delete'], "", "", "");
+    $termin->delete();
+}
 ?>
 <div id="heading">
     <h1>Edit Termine</h1>
@@ -27,7 +33,6 @@ include "../nav.php";
             <p class="left">Freie Termine:</p>
             <div class="calenderDivDiv">
                 <?php
-                include_once "Termin.php";
 
                 $queryBuilder = getPDO()
                     ->select("*")
@@ -36,15 +41,17 @@ include "../nav.php";
 
                 foreach ($termine as $termin) {
 
-                    $termin = new Termin($termin);
-                    $termin = $termin->getValues();
+                    $terminObject = new Termin($termin['pk_datum'], $termin['zeit_von'], $termin['zeit_bis'], $termin['location']);
+                    $terminObject = $terminObject->getValues();
+
+                    var_dump($terminObject['pk_datum']);
 
                     echo <<<ENDE
                     <div class="item calender">
-                        <p class="oswald day">{$termin["tag"]}</p>
-                        <p class="time">{$termin["zeit_von"]} &ndash; {$termin["zeit_bis"]}</p>
-                        <p class="location">{$termin["location"]}</p>
-                        <p class="blue date">{$termin["pk_datum"]}</p>
+                        <p class="oswald day">{$terminObject["tag"]}</p>
+                        <p class="time">{$terminObject["zeit_von"]} &ndash; {$terminObject["zeit_bis"]}</p>
+                        <p class="location">{$terminObject["location"]}</p>
+                        <p class="blue date">{$terminObject["pk_datum"]}</p>
                         <div class="edit">
                             <form action="" method="post">
                                 <button type="submit" class="x" name="delete" value="{$termin["pk_datum"]}"/>
@@ -61,7 +68,10 @@ ENDE;
         </div>
         <div class="description">
             <form action="newTermin.php" method="post">
-                <input type="submit" id="formButton" value="Neuer Termin">
+                <input type="submit" class="formButton" value="Neuer Termin">
+            </form>
+            <form action="/admin" method="get">
+                <input type="submit" class="formButton" value="Zurück">
             </form>
         </div>
     </div>

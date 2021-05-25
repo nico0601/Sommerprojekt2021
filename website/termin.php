@@ -87,7 +87,7 @@ if (isset($response) && $response) {
 
                 foreach ($termine as $termin) {
 
-                    $termin = new Termin($termin);
+                    $termin = new Termin($termin['pk_datum'], $termin['zeit_von'], $termin['zeit_bis'], $termin['location']);
                     $termin = $termin->getValues();
 
                     echo <<<ENDE

@@ -4,19 +4,61 @@ include_once "../getPDO.php";
 class Termin
 {
     /**
-     * Termin with all information
-     * @var array
+     * @var string
      */
-    private array $termin;
+    private string $date;
+    /**
+     * @var string
+     */
+    private string $von;
+    /**
+     * @var string
+     */
+    private string $bis;
+    /**
+     * @var string
+     */
+    private string $location;
+
+    private string $datePattern = "/^[\d]{4}-[\d]{2}-[\d]{2}$/";
+    private string $timePattern = "/^[\d]{2}:[\d]{2}$/";
+    private string $locationPattern = "/^[\w\d `'{}()%&\-@#$~!_^\/]*$/";
 
     /**
      * Termin constructor.
-     * Set termin array with all values
-     * @param array $termin
+     * @param string $date
+     * @param string $von
+     * @param string $bis
+     * @param string $location
      */
-    public function __construct(array $termin)
+    public function __construct(string $date, string $von, string $bis, string $location)
     {
-        $this->termin = $termin;
+        $this->date = $date;
+        $this->von = $von;
+        $this->bis = $bis;
+        $this->location = $location;
+    }
+
+
+    /**
+     * Deletes given termin from database
+     */
+    public function delete()
+    {
+        if (preg_match($this->datePattern, $this->date)) {
+            $queryBuilder = getPDO()
+                ->delete('termin')
+                ->where('pk_datum = ?')
+                ->setParameter(0, $this->date);
+
+            if ($queryBuilder->execute()) {
+                $this->success("delete");
+            } else {
+                $this->duplicateText("delete");
+            }
+        } else {
+            $this->otherError();
+        }
     }
 
     /**
@@ -25,44 +67,90 @@ class Termin
      * @return array
      */
     public function getValues() {
-        $von = explode(":", $this->termin["zeit_von"]);
-        $this->termin["zeit_von"] = $von[0].":".$von[1];
+        $von = explode(":", $this->von);
+        $this->von = $von[0].":".$von[1];
 
-        $bis = explode(":", $this->termin["zeit_bis"]);
-        $this->termin["zeit_bis"] = $bis[0].":".$bis[1];
+        $bis = explode(":", $this->bis);
+        $this->bis = $bis[0].":".$bis[1];
 
-        $datumArray = explode('-', $this->termin["pk_datum"]);
-        $tag = strtotime($this->termin["pk_datum"]);
+        $datumArray = explode('-', $this->date);
+        $tag = strtotime($this->date);
 
-        $this->termin["pk_datum"] = $datumArray[2].".".$datumArray[1].".".substr($datumArray[0], 2);
+        $this->date = $datumArray[2].".".$datumArray[1].".".substr($datumArray[0], 2);
         $tag = date('D', $tag);
 
         switch ($tag) {
             case "Mon":
-                $this->termin["tag"] = "Mo";
+                $tag = "Mo";
                 break;
             case "Tue":
-                $this->termin["tag"] = "Di";
+                $tag = "Di";
                 break;
             case "Wed":
-                $this->termin["tag"] = "Mi";
+                $tag = "Mi";
                 break;
             case "Thu":
-                $this->termin["tag"] = "Do";
+                $tag = "Do";
                 break;
             case "Fri":
-                $this->termin["tag"] = "Fr";
+                $tag = "Fr";
                 break;
             case "Sat":
-                $this->termin["tag"] = "Sa";
+                $tag = "Sa";
                 break;
             case "Sun":
-                $this->termin["tag"] = "So";
+                $tag = "So";
                 break;
             default:
-                $this->termin["tag"] = "n.V";
+                $tag = "n.V";
         }
 
-        return $this->termin;
+        return array(
+            'pk_datum' => $this->date,
+            'zeit_von' => $this->von,
+            'zeit_bis' => $this->bis,
+            'location' => $this->location,
+            'tag' => $tag
+        );
+    }
+
+    /**
+     * Success Message
+     * @param $function
+     */
+    public function success($function) {
+        $text = $function == "delete" ? "gelöscht" : ($function == "insert" ? "hinzugefügt" : "");
+        echo <<<ENDE
+        <div id='erfolgreich'>
+            <h2>Dieses Event wurde erfolgreich $text!</h2>
+        </div>
+
+ENDE;
+    }
+
+    /**
+     * Error Message for duplicated Database Entries
+     */
+    public function duplicateText($function)
+    {
+        $text = $function == "delete" ? "gelöscht" : ($function == "insert" ? "vorhanden" : "");
+        echo <<<ENDE
+        <div id='fehlgeschlagen' class='error'>
+            <h2>Dieses Event ist bereits $text!</h2>
+        </div>
+
+ENDE;
+    }
+
+    /**
+     * Error Message for any other Error (f.e. does not match the expected pattern)
+     */
+    public function otherError() {
+        echo <<<ENDE
+        <div id='fehlgeschlagen' class='error'>
+            <h2>Dieses Event entspricht nicht den Anforderungen!</h2>
+        </div>
+
+ENDE;
     }
 }
