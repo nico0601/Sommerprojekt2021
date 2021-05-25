@@ -53,7 +53,10 @@ ENDE;
         </div>
         <div class="description">
             <form action="newEvent.php" method="post">
-                <input type="submit" id="formButton" value="Neues Event">
+                <input type="submit" class="formButton" value="Neues Event">
+            </form>
+            <form action="/admin" method="get">
+                <input type="submit" class="formButton" value="Zurück">
             </form>
         </div>
     </div>
