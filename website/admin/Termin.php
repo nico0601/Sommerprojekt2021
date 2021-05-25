@@ -67,6 +67,21 @@ class Termin
      * @return array
      */
     public function getValues() {
+        if ($this->von == "" || $this->bis == "" || $this->location == "") {
+            $queryBuilder = getPDO()
+                ->select("*")
+                ->from("termin")
+                ->where("pk_datum = ?")
+                ->setParameter(0, $this->date);
+            $termine = $queryBuilder->fetchAllAssociative();
+
+            foreach ($termine as $termin) {
+                $this->von = $termin['zeit_von'];
+                $this->bis = $termin['zeit_bis'];
+                $this->location = $termin['location'];
+            }
+        }
+
         $von = explode(":", $this->von);
         $this->von = $von[0].":".$von[1];
 
