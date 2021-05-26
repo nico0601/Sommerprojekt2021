@@ -99,13 +99,16 @@ class Event
         }
     }
 
+    /**
+     * Success Message
+     * @param $function
+     */
     public function success($function) {
         $text = $function == "delete" ? "gelöscht" : ($function == "insert" ? "hinzugefügt" : "");
         echo <<<ENDE
         <div id='erfolgreich'>
             <h2>Dieses Event wurde erfolgreich $text!</h2>
         </div>
-
 ENDE;
     }
 
@@ -119,7 +122,6 @@ ENDE;
         <div id='fehlgeschlagen' class='error'>
             <h2>Dieses Event ist bereits $text!</h2>
         </div>
-
 ENDE;
     }
 
@@ -131,7 +133,6 @@ ENDE;
         <div id='fehlgeschlagen' class='error'>
             <h2>Dieses Event entspricht nicht den Anforderungen!</h2>
         </div>
-
 ENDE;
     }
 }

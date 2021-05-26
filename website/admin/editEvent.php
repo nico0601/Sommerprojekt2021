@@ -1,5 +1,4 @@
 <?php
-
 include "adminSpaceHeader.php";
 ?>
 
@@ -21,6 +20,11 @@ require_once "Event.php";
 if (isset($_POST['delete']) && $_POST['delete'] != "") {
     $event = new Event($_POST['delete']);
     $event->delete();
+}
+if (isset($_SESSION['file']) && $_SESSION['file'] != "") {
+    $event = new Event($_SESSION['file']);
+    $event->insert();
+    $_SESSION['file'] = "";
 }
 ?>
 
