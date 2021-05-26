@@ -15,6 +15,7 @@ if (key_exists("token", $_SESSION)) {
     $queryBuilder = $conn->createQueryBuilder();
 
     $token = $_SESSION["token"];
+
     $queryBuilder
         ->select('expiryDate')
         ->from('tokens')
