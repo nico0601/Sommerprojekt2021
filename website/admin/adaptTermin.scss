@@ -11,6 +11,12 @@
   flex-direction: column;
 }
 
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 
 .item {
   flex-direction: column;
@@ -37,7 +43,7 @@ input:not([type="submit"]) {
 .description {
   background: #4D4D4D;
   width: max-content;
-  margin: 20px 50px;
+  margin: 50px;
 }
 
 .calender {
@@ -59,7 +65,7 @@ input:not([type="submit"]) {
 .location {
   grid-row: 1 / 3;
   grid-column: 3;
-  width: 100px;
+  width: 150px;
 }
 
 #dash {
@@ -117,11 +123,15 @@ input:not([type="submit"]) {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
   .calender {
     display: flex;
     align-items: center;
     flex-direction: column;
+  }
+
+  .description {
+    margin: 50px 20px;
   }
 }
 
@@ -131,6 +141,10 @@ input:not([type="submit"]) {
   }
   .item > *.oswald {
     font-size: 25px;
+  }
+
+  .location {
+    width: 100px;
   }
 }
 

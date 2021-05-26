@@ -18,9 +18,39 @@ include "adminSpaceHeader.php";
 include "../nav.php";
 include_once "Termin.php";
 
+function update($which, $set, $where)
+{
+    $queryBuilder = getPDO()
+        ->update('termin')
+        ->set($which, '?')
+        ->where('pk_datum = ?')
+        ->setParameter(0, $set)
+        ->setParameter(1, $where);
+    return $queryBuilder->executeQuery();
+}
+
 if (isset($_POST['delete']) && $_POST['delete'] != "") {
     $termin = new Termin($_POST['delete'], "", "", "");
     $termin->delete();
+}
+
+if (isset($_POST['von'], $_POST['bis'], $_POST['location'], $_POST['termin']) &&
+    $_POST['von'] !== "" && $_POST['bis'] !== "" && $_POST['location'] !== "" && $_POST['termin'] !== "") {
+
+    $termin = new Termin($_POST['termin'], $_POST['von'], $_POST['bis'], $_POST['location']);
+
+    if (
+        update('pk_datum', $_POST['termin'], $_SESSION['old']) &&
+        update('zeit_von', $_POST['von'], $_POST['termin']) &&
+        update('zeit_bis', $_POST['bis'], $_POST['termin']) &&
+        update('location', $_POST['location'], $_POST['termin'])) {
+
+        $termin->success('update');
+    } else {
+        $termin->duplicateText('update');
+    }
+
+    $_SESSION['old'] = "";
 }
 ?>
 <div id="heading">

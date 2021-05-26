@@ -1,5 +1,4 @@
 <?php
-
 include "adminSpaceHeader.php";
 ?>
 
@@ -22,31 +21,54 @@ include "../nav.php";
 
 <section id="content">
     <div class="contentSection">
-        <form>
+        <form method="post" action="editTermin.php">
             <div class="description">
                 <?php
                 include_once "Termin.php";
 
                 if (isset($_POST['adapt']) && $_POST['adapt'] != "") {
-                    $termin = new Termin($_POST['adapt'], "", "", "");
-                    $termin = $termin->getValues();
+                    $terminValues = new Termin($_POST['adapt'], "", "", "");
+                    $terminValues = $terminValues->getValues();
+
+                    $_SESSION['old'] = $_POST['adapt'];
+
+                    $queryBuilder = getPDO()
+                        ->select("*")
+                        ->from('termin');
+                    $termine = $queryBuilder->fetchAllAssociative();
+                    $i = 0;
+                    $min = '';
+                    $max = '';
+
+                    foreach ($termine as $termin) {
+                        if ($i == 0) {
+                            $min = $termin["pk_datum"];
+                            $max = $termin["pk_datum"];
+                        }else {
+                            if (strtotime($min) > strtotime($termin["pk_datum"])) {
+                                $min = $termin["pk_datum"];
+                            }
+                            if (strtotime($max) < strtotime($termin["pk_datum"])) {
+                                $max = $termin["pk_datum"];
+                            }
+                        }
+                        $i++;
+                    }
 
                     echo <<<ENDE
                 <div class="item calender">
-                    <input type="text" maxlength="2" class="oswald day" value="{$termin['tag']}">
+                    <input type="text" class="oswald day" value="{$terminValues['tag']}" maxlength="2" required>
                     <div class="timeDiv">
-                        <input type="time" class="time" value="{$termin["zeit_von"]}"> <span id="dash">&ndash;</span> <input type="time" value="{$termin["zeit_bis"]}">
+                        <input type="time" class="time" name="von" value="{$terminValues["zeit_von"]}" required> <span id="dash">&ndash;</span> <input type="time" class="time" name="bis" value="{$terminValues["zeit_bis"]}" required>
                     </div>
-                    <input type="text" class="location" value="{$termin["location"]}">
-                    <input type="date" class="blue date" value="{$_POST['adapt']}">
+                    <input type="text" class="location" name="location" value="{$terminValues["location"]}" required>
+                    <input type="date" class="blue date" name="termin" value="{$_POST['adapt']}" min="$min" max="$max" pattern="\d{2}.\d{2}.\d{4}" required>
                 </div>
 ENDE;
                 }
                 ?>
             </div>
-        </form>
-        <form action="editTermin.php" method="get">
-            <input type="submit" class="formButton" value="Zurück">
+            <input type="submit" class="formButton" value="Adapt Termin">
         </form>
     </div>
 </section>

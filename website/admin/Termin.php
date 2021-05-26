@@ -134,12 +134,11 @@ class Termin
      * @param $function
      */
     public function success($function) {
-        $text = $function == "delete" ? "gelöscht" : ($function == "insert" ? "hinzugefügt" : "");
+        $text = $function == "delete" ? "gelöscht" : ($function == "insert" ? "hinzugefügt" : ($function == "update" ? "abgeändert" : ""));
         echo <<<ENDE
         <div id='erfolgreich'>
-            <h2>Dieses Event wurde erfolgreich $text!</h2>
+            <h2>Dieser Termin wurde erfolgreich $text!</h2>
         </div>
-
 ENDE;
     }
 
@@ -148,12 +147,11 @@ ENDE;
      */
     public function duplicateText($function)
     {
-        $text = $function == "delete" ? "gelöscht" : ($function == "insert" ? "vorhanden" : "");
+        $text = $function == "delete" ? "gelöscht" : ($function == "insert" || $function == "update" ? "vorhanden" : "");
         echo <<<ENDE
         <div id='fehlgeschlagen' class='error'>
-            <h2>Dieses Event ist bereits $text!</h2>
+            <h2>Dieser Termin ist bereits $text!</h2>
         </div>
-
 ENDE;
     }
 
@@ -163,9 +161,8 @@ ENDE;
     public function otherError() {
         echo <<<ENDE
         <div id='fehlgeschlagen' class='error'>
-            <h2>Dieses Event entspricht nicht den Anforderungen!</h2>
+            <h2>Dieser Termin entspricht nicht den Anforderungen!</h2>
         </div>
-
 ENDE;
     }
 }
