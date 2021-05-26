@@ -44,7 +44,7 @@ include "../nav.php";
                         if ($i == 0) {
                             $min = $termin["pk_datum"];
                             $max = $termin["pk_datum"];
-                        }else {
+                        } else {
                             if (strtotime($min) > strtotime($termin["pk_datum"])) {
                                 $min = $termin["pk_datum"];
                             }
@@ -57,18 +57,23 @@ include "../nav.php";
 
                     echo <<<ENDE
                 <div class="item calender">
-                    <input type="text" class="oswald day" value="{$terminValues['tag']}" maxlength="2" required>
+                    <input type="text" class="oswald day input" value="{$terminValues['tag']}" maxlength="2" required>
                     <div class="timeDiv">
-                        <input type="time" class="time" name="von" value="{$terminValues["zeit_von"]}" required> <span id="dash">&ndash;</span> <input type="time" class="time" name="bis" value="{$terminValues["zeit_bis"]}" required>
+                        <input type="time" class="time input" name="von" value="{$terminValues["zeit_von"]}" required> <span id="dash">&ndash;</span> <input type="time" class="time input" name="bis" value="{$terminValues["zeit_bis"]}" required>
                     </div>
-                    <input type="text" class="location" name="location" value="{$terminValues["location"]}" required>
-                    <input type="date" class="blue date" name="termin" value="{$_POST['adapt']}" min="$min" max="$max" pattern="\d{2}.\d{2}.\d{4}" required>
+                    <input type="text" class="location input" name="location" value="{$terminValues["location"]}" required>
+                    <input type="date" class="blue date input" name="termin" value="{$_POST['adapt']}" min="$min" max="$max" pattern="\d{2}.\d{2}.\d{4}" required>
                 </div>
 ENDE;
                 }
                 ?>
             </div>
-            <input type="submit" class="formButton" value="Adapt Termin">
+            <div id="buttonDiv">
+                <input type="submit" class="formButton" value="Adapt Termin">
+                <a href="editTermin.php">
+                    <input type="button" class="formButton" value="Zurück">
+                </a>
+            </div>
         </form>
     </div>
 </section>
