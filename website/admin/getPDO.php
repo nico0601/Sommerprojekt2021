@@ -3,7 +3,7 @@
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Types\Type;
 
-include "../vendor/autoload.php";
+include "../../vendor/autoload.php";
 
 function getPDO()
 {
@@ -28,10 +28,13 @@ function getPDO()
 //    return $pdo;
 
     // Test-Zweck (XAMPP):
-    $host = "localhost";
-    $db = "fast_db";
-    $user = "phpUser";
-    $passwd = "DanielleAndDorkaAreMyCuddles";
+    $conn = DriverManager::getConnection(array(
+        'dbname' => 'fast_db',
+        'user' => 'root',
+        'password' => '',
+        'host' => 'localhost',
+        'driver' => 'pdo_mysql'));
+    return $queryBuilder = $conn->createQueryBuilder();
 
 //    $host = "localhost";
 //    $db = "fast_db";

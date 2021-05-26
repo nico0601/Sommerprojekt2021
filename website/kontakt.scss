@@ -66,6 +66,7 @@
   .item {
     width: max-content;
     padding: 20px;
+    margin: 50px;
   }
 }
 
@@ -99,5 +100,18 @@
 @media (max-width: 500px) {
   .item {
     padding: 20px;
+  }
+
+
+  .item > *:nth-child(1) {
+    font-size: 28px;
+  }
+  .right, .right2, .right > p, .right2 > p {
+    font-family: "Roboto", sans-serif !important;
+    font-size: 17px !important;
+  }
+  .item > *, .item > div > * {
+    color: #D7D8D9;
+    font-size: 20px;
   }
 }

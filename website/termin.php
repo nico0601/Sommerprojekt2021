@@ -9,7 +9,7 @@
     ?>
     <title>F.A.S.T - Termine</title>
     <link rel="stylesheet" href="/termin.css">
-    <script type="text/javascript" src="/termin.js" defer></script>
+    <script type="text/javascript" src="/response.js" defer></script>
 </head>
 <body>
 <?php
@@ -30,12 +30,13 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
 
     $termin = $_POST['termin'];
     $validtermin = false;
-    $available = getPDO()->prepare("SELECT * FROM termin");
-    $available->execute();
-    $available = $available->fetchAll();
+    $queryBuilder = getPDO()
+        ->select("*")
+        ->from('termin');
+    $available = $queryBuilder->fetchAllAssociative();
 
     foreach ($available as $termine) {
-        if ($termin == $termine[0]) {
+        if ($termin == $termine["pk_datum"]) {
             $validtermin = true;
         }
     }
@@ -46,8 +47,9 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
     $message = "
           Ich möchte für den " . $termin . " einen Termin anfragen!\n
           " . $_POST["nachricht"] . "\n
-          Mit freundlichen Grüßen
-    ";
+          Mit freundlichen Grüßen\n
+          Gesendet von: ".$_POST['email']
+    ;
 
     if ($validtermin) {
         try {
@@ -76,55 +78,24 @@ if (isset($response) && $response) {
             <p class="left">Freie Termine:</p>
             <div class="calenderDivDiv">
                 <?php
-                $stmt = getPDO()->prepare("SELECT * FROM termin");
-                $stmt->execute();
-                $stmt = $stmt->fetchAll();
+                include_once "admin/Termin.php";
 
-                foreach ($stmt as $termin) {
-                    $von = explode(":", $termin[1]);
-                    $von = $von[0].":".$von[1];
+                $queryBuilder = getPDO()
+                    ->select("*")
+                    ->from('termin');
+                $termine = $queryBuilder->fetchAllAssociative();
 
-                    $bis = explode(":", $termin[2]);
-                    $bis = $bis[0].":".$bis[1];
+                foreach ($termine as $termin) {
 
-                    $datumArray = explode('-', $termin[0]);
-                    $datum = $datumArray[2].".".$datumArray[1].".".substr($datumArray[0], 2);
-
-                    $tag = strtotime($termin[0]);
-                    $tag = date('D', $tag);
-
-                    switch ($tag) {
-                        case "Mon":
-                            $tag = "Mo";
-                            break;
-                        case "Tue":
-                            $tag = "Di";
-                            break;
-                        case "Wed":
-                            $tag = "Mi";
-                            break;
-                        case "Thu":
-                            $tag = "Do";
-                            break;
-                        case "Fri":
-                            $tag = "Fr";
-                            break;
-                        case "Sat":
-                            $tag = "Sa";
-                            break;
-                        case "Sun":
-                            $tag = "So";
-                            break;
-                        default:
-                            $tag = "n.V";
-                    }
+                    $termin = new Termin($termin['pk_datum'], $termin['zeit_von'], $termin['zeit_bis'], $termin['location']);
+                    $termin = $termin->getValues();
 
                     echo <<<ENDE
                 <div class="item calender">
-                    <p class="oswald day">$tag</p>
-                    <p class="time">$von &ndash; $bis</p>
-                    <p class="location">$termin[3]</p>
-                    <p class="blue date">$datum</p>
+                    <p class="oswald day">{$termin["tag"]}</p>
+                    <p class="time">{$termin["zeit_von"]} &ndash; {$termin["zeit_bis"]}</p>
+                    <p class="location">{$termin["location"]}</p>
+                    <p class="blue date">{$termin["pk_datum"]}</p>
                 </div>
 ENDE;
                 }
@@ -137,11 +108,15 @@ ENDE;
             <p>
                 Es gibt 3 verschiedene Arten von Terminen: Events, Hausbesuche
                 und die Behandlung in der Praxis.
-                <br><br><br>
+                <br><br>
                 Events und die Behandlung in der Praxis sind über Telefon
                 oder Email auszumachen.
-                <br><br><br>
-                Hausbesuche können nach telefonischer Absprache abgehalten werden.
+                <br><br>
+                Hausbesuche können nach telefonischer Absprache in Wien, Niederösterreich
+                und Burgenland abgehalten werden.
+                <br><br>
+                Termine können aus der Tabelle "Freie Termine" abgelesen werden. Bei der
+                Terminauswahl sind nur verfügbare Termine anklickbar / anwählbar.
             </p>
         </div>
         <div class="kontaktDiv">
@@ -154,19 +129,25 @@ ENDE;
                     <input type="text" name="betreff" id="betreff" required>
                     <label for="termin">Termin: <sup>*</sup></label>
                     <?php
-                    $stmt = getPDO()->prepare("SELECT * FROM termin");
-                    $stmt->execute();
-                    $stmt = $stmt->fetchAll();
+                    $queryBuilder = getPDO()
+                        ->select("*")
+                        ->from('termin');
+                    $termine = $queryBuilder->fetchAllAssociative();
                     $i = 0;
                     $min = '';
                     $max = '';
 
-                    foreach ($stmt as $termin) {
+                    foreach ($termine as $termin) {
                         if ($i == 0) {
-                            $min = $termin[0];
-                        }
-                        if ($i == sizeof($stmt)-1) {
-                            $max = $termin[0];
+                            $min = $termin["pk_datum"];
+                            $max = $termin["pk_datum"];
+                        }else {
+                            if (strtotime($min) > strtotime($termin["pk_datum"])) {
+                                $min = $termin["pk_datum"];
+                            }
+                            if (strtotime($max) < strtotime($termin["pk_datum"])) {
+                                $max = $termin["pk_datum"];
+                            }
                         }
                         $i++;
                     }

@@ -20,15 +20,20 @@ include "nav.php"
     <?php
     include "getPDO.php";
 
-    $stmt = getPDO()->prepare("SELECT * FROM therapie");
-    $stmt->execute();
-    $stmt = $stmt->fetchAll();
+    ini_set('display_errors', '1');
+    ini_set('display_startup_errors', '1');
+    error_reporting(E_ALL);
+
+    $queryBuilder = getPDO()
+        ->select("*")
+        ->from('therapie');
+    $therapien = $queryBuilder->fetchAllAssociative();
     $i = 1;
 
-    foreach ($stmt as $therapie) {
+    foreach ($therapien as $therapie) {
         echo <<<ENDE
     <div class="contentSection">
-        <div class="contentHeading">$therapie[0]</div>
+        <div class="contentHeading">{$therapie["therapie_name"]}</div>
 ENDE;
 
         if (isset($_GET['angebot']) && $_GET['angebot'] !== "") {
@@ -41,15 +46,18 @@ ENDE;
             echo "<div class='description hidden'>";
         }
 
-        $stmt2 = getPDO()->prepare("SELECT * FROM beschreibungTh WHERE fk_pk_therapie_name = ?");
-        $stmt2->execute(array($therapie[0]));
-        $stmt2 = $stmt2->fetchAll();
+        $queryBuilder = getPDO()
+            ->select("*")
+            ->from('beschreibungTh')
+            ->where('fk_pk_therapie_id = ?')
+            ->setParameter(0, $therapie["pk_th_id"]);
+        $angebote = $queryBuilder->fetchAllAssociative();
 
-        foreach ($stmt2 as $angebot) {
+        foreach ($angebote as $angebot) {
             echo <<<ENDE
             <div class="item">
                 <img class="plus" src="/images/plus.svg" alt="plus icon">
-                <a>$angebot[1]</a>
+                <a>{$angebot["beschreibung"]}</a>
             </div>
 ENDE;
 

@@ -46,3 +46,9 @@
     font-size: 15px !important;
   }
 }
+
+@media (max-width: 350px) {
+  .event {
+    width: 150px;
+  }
+}

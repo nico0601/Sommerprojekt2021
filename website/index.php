@@ -26,10 +26,10 @@ include "nav.php";
     <div class="videoOverlay">
         <img id="logo" src="/images/logo%20-%20hell.png" alt="Logo">
         <div id="buttonDiv">
-            <a href="/kontakt.php" class="infoA">
+            <a href="/kontakt" class="infoA">
                 <button type="button" class="button infoButton">Kontakt</button>
             </a>
-            <a href="/termin.php" class="infoA">
+            <a href="/termine" class="infoA">
                 <button type="button" class="button infoButton">Termin</button>
             </a>
         </div>
@@ -48,16 +48,17 @@ include "nav.php";
                 <?php
                 include "getPDO.php";
 
-                $stmt = getPDO()->prepare("SELECT * FROM therapie");
-                $stmt->execute();
-                $stmt = $stmt->fetchAll();
+                $queryBuilder = getPDO()
+                    ->select("*")
+                    ->from('therapie');
+                $therapien = $queryBuilder->fetchAllAssociative();
                 $i = 1;
 
-                foreach ($stmt as $therapie) {
+                foreach ($therapien as $therapie) {
                     echo <<<ENDE
                 <div class="item therapie">
-                    <a href="/therapie.php" class="angebotA">
-                        <button type="submit" name="angebot" value="$i" class="button">$therapie[0]</button>
+                    <a href="/therapie" class="angebotA">
+                        <button type="submit" name="angebot" value="$i" class="button">{$therapie["therapie_name"]}</button>
                     </a>
                 </div>
 ENDE;
@@ -73,16 +74,17 @@ ENDE;
 
             <form method="get" action="training.php">
                 <?php
-                $stmt = getPDO()->prepare("SELECT * FROM training");
-                $stmt->execute();
-                $stmt = $stmt->fetchAll();
+                $queryBuilder = getPDO()
+                    ->select("*")
+                    ->from('training');
+                $trainings = $queryBuilder->fetchAllAssociative();
                 $i = 1;
 
-                foreach ($stmt as $training) {
+                foreach ($trainings as $training) {
                     echo <<<ENDE
                 <div class="item training">
-                    <a href="/training.php" class="angebotA">
-                        <button type="submit" name="angebot" value="$i" class="button">$training[0]</button>
+                    <a href="/training" class="angebotA">
+                        <button type="submit" name="angebot" value="$i" class="button">{$training["training_name"]}</button>
                     </a>
                 </div>
 ENDE;

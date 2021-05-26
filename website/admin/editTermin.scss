@@ -28,8 +28,13 @@
 
 .contentSection {
   width: 100vw;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(33vw, max-content));
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.contentSection > div {
+  width: 50vw;
 }
 
 .calenderDiv {
@@ -42,7 +47,7 @@
 .calenderDivDiv {
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 55vh;
   overflow-y: scroll;
   padding: 0 10px;
   background: #4D4D4D;
@@ -72,99 +77,87 @@
 
 .calender {
   display: grid;
-  grid-template-columns: repeat(3, minmax(max-content, 1fr));
-  grid-template-rows: max-content max-content;
+  grid-template-columns: repeat(4, minmax(max-content, 1fr));
+  grid-template-rows: repeat(2, minmax(max-content, 1fr));
   align-items: center;
   justify-items: center;
   border-bottom: #D7D8D9 solid 2px;
 }
 
 .time {
-  grid-row: 1 / 3;
+  grid-row: 1 / 4;
   grid-column: 2;
 }
 
 .location {
-  grid-row: 1 / 3;
+  grid-row: 1 / 4;
   grid-column: 3;
 }
 
-.infoDiv, .kontaktDiv {
-  margin: 20px 80px;
-  font-size: 18px;
+.date {
+  grid-row: 2 / 4;
+  grid-column: 1;
 }
 
-#grid {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: max-content auto;
-  align-items: center;
+.edit {
+  grid-row: 1 / 4;
+  grid-column: 4;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.kontaktDiv {
+  margin: 20px 80px;
+  font-size: 18px;
 }
 
 .kontaktDiv > *:not(.left) {
   font-weight: 300;
 }
 
-#telNr {
-  font-weight: normal;
+
+.description {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  margin: 20px 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-#grid > input, #grid > div > textarea {
-  border: 2px solid black;
-  padding: 5px;
-  min-width: 250px;
-  min-height: 40px;
-  font-size: 18px;
+button {
+  background-color: transparent;
 }
 
-input[type=date]:invalid {
-  color: #4D4D4D;
-  font-weight: 300;
+.x, .adapt {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10000px;
+  background-image: url("../images/x.png");
+  background-size: 65%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: 0.2s;
+  outline: none;
+  margin: 0 5px;
 }
 
-#grid > input::placeholder, #grid > div > textarea::placeholder {
-  font-weight: 300;
+.adapt {
+  background-image: url("../images/adapt.png");
 }
 
-.grow-wrap {
-  /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
-  display: grid;
+.x:hover, .x:focus, .adapt:hover, .adapt:focus {
+  background-color: #d7d8d9;
 }
 
-.grow-wrap::after {
-  /* Note the weird space! Needed to preventy jumpy behavior */
-  content: attr(data-replicated-value) " ";
-
-  /* This is how textarea text behaves */
-  white-space: pre-wrap;
-
-  /* Hidden from view, clicks, and screen readers */
-  visibility: hidden;
-}
-
-.grow-wrap > textarea {
-  /* You could leave this, but after a user resizes, then it ruins the auto sizing */
-  resize: none;
-
-  /* Firefox shows scrollbar on growth, you can hide like this. */
-  overflow: hidden;
-}
-
-.grow-wrap > textarea,
-.grow-wrap::after {
-  /* Identical styling required!! */
-  border: 2px solid black;
-  padding: 5px;
-
-  /* Place on top of each other */
-  grid-area: 1 / 1 / 2 / 2;
-}
-
-
-#formButton {
+.formButton {
   cursor: pointer;
   padding: 10px;
-  margin: 30px 0;
+  margin: 30px 10px;
   background: transparent;
   border: 6px solid #D7D8D9;
   border-radius: 0;
@@ -177,15 +170,11 @@ input[type=date]:invalid {
   outline: none;
 }
 
-#formButton:hover, #formButton:focus {
+.formButton:hover, .formButton:focus {
   background: rgba(215, 216, 217, 0.7);
   color: #4D4D4D;
 }
 
-#required {
-  margin-top: 20px;
-  font-size: 12px;
-}
 
 #erfolgreich, #fehlgeschlagen {
   position: fixed;
@@ -201,49 +190,32 @@ input[type=date]:invalid {
   transition: 0.3s;
   z-index: 10;
 }
-
 #erfolgreich {
   background: #58dfb2;
   color: white;
   border: 2px solid #39b189;
 }
 
-#kleiner {
-  color: white;
-  font-family: "Oswald", sans-serif;
-  font-size: 20px;
-  font-weight: normal;
-}
-
 
 @media (max-width: 1400px) {
-  .contentSection {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    flex-direction: row;
-  }
-
   .contentSection > div {
-    width: 35vw;
+    width: 65vw;
     margin: 20px 50px;
   }
 
   .item {
     padding: 15px;
   }
+
+  .x, .adapt {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 @media (max-width: 1000px) {
   .contentSection {
     align-items: center;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-  #kleiner {
-    font-size: 15px;
   }
 
   .contentSection > div {
@@ -257,11 +229,57 @@ input[type=date]:invalid {
   .left {
     transform: translateX(-5vw);
   }
+
+  .x, .adapt {
+    width: 40px;
+    height: 40px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 650px) {
+  .formButton {
+    margin: 10px 10px;
+  }
 }
 
 @media (max-width: 500px) {
-  #grid > input, #grid > div > textarea {
-    min-width: 100px;
+  .calender {
+    grid-template-columns: repeat(3, minmax(max-content, 1fr));
+    grid-template-rows: repeat(3, minmax(max-content, 1fr));
+  }
+
+  .time {
+    grid-row: 1 / 3;
+    grid-column: 2;
+  }
+  .location {
+    grid-row: 1 / 3;
+    grid-column: 3;
+  }
+  .date {
+    grid-row: 2;
+    grid-column: 1;
+  }
+  .edit {
+    grid-row: 3;
+    grid-column: 1 / 4;
+  }
+
+  .item {
+    padding: 5px;
+  }
+  .item > p {
+    margin: 0;
+  }
+  .item > *.oswald {
+    font-size: 25px;
+  }
+  .calenderDiv {
+    font-size: 13px;
   }
 
   #erfolgreich, #fehlgeschlagen {
@@ -270,18 +288,5 @@ input[type=date]:invalid {
   }
   h2 {
     font-size: 4vw;
-  }
-  #kleiner {
-    font-size: 3.5vw;
-  }
-
-  .item {
-    padding: 5px;
-  }
-  .item > *.oswald {
-    font-size: 25px;
-  }
-  .calenderDiv {
-    font-size: 13px;
   }
 }
