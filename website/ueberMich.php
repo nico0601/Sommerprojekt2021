@@ -40,7 +40,7 @@ include "nav.php"
                 $stmt = $queryBuilder->fetchAllAssociative();
 
                 foreach ($stmt as $ueber_mich) {
-                    echo "<p id='descriptionText'>{$ueber_mich["infotext"]}</p>";
+                    echo "<p id='descriptionText'>".nl2br($ueber_mich["infotext"])."</p>";
                 }
                 ?>
             </div>

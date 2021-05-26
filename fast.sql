@@ -158,7 +158,16 @@ VALUES (1, 'Kraft, Ausdauer, Balance, Beweglichkeit, Mobiltiy, Propriozeption, .
        (22, 'Körperfettanalyse, BMI', 4);
 
 INSERT INTO ueber_mich(pk_person_id, infotext, fk_pk_id)
-VALUES (1, 'Mein Name ist...', 1);
+VALUES (1,
+        'WIR SIND FAST
+        FAscial Sports Therapy
+
+        situativ eingesetzte Therapietechniken und eine individuelle Trainingssteuerung helfen Ihnen Ihre Ziele zu erreichen.
+        Wir vereinen die Therapie mit dem Training und führen unsere Kunden mit individueller Betreuung nach Verletzungen oder Erkrankungen zurück auf die Spur und helfen unterschiedliche Leistungslevel im Sport und Alltag zu steigern und vorbeugend die Gesundheit zu fördern.
+
+        „form follows function“ unter diesem Gesichtspunkt zurück zu einem gesunden, ursprünglichen Bewegungsmuster „to bring you on top of your game, where ever you are“
+',
+        1);
 
 INSERT INTO termin(pk_datum, zeit_von, zeit_bis, location, fk_pk_id)
 VALUES ('2021-06-16', '08:00', '11:30', 'Praxis', 1),
