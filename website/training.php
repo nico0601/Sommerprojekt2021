@@ -30,7 +30,7 @@ include "nav.php"
     foreach ($trainings as $training) {
         echo <<<ENDE
     <div class="contentSection">
-        <div class="contentHeading">{$training["pk_training_name"]}</div>
+        <div class="contentHeading">{$training["training_name"]}</div>
 ENDE;
 
         if (isset($_GET['angebot']) && $_GET['angebot'] !== "") {
@@ -46,8 +46,8 @@ ENDE;
         $queryBuilder = getPDO()
             ->select("*")
             ->from('beschreibungTr')
-            ->where('fk_pk_training_name = ?')
-            ->setParameter(0, $training["pk_training_name"]);
+            ->where('fk_pk_training_id = ?')
+            ->setParameter(0, $training["pk_tr_id"]);
         $angebote = $queryBuilder->fetchAllAssociative();
 
         foreach ($angebote as $angebot) {

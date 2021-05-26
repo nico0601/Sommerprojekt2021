@@ -58,7 +58,7 @@ include "nav.php";
                     echo <<<ENDE
                 <div class="item therapie">
                     <a href="/therapie" class="angebotA">
-                        <button type="submit" name="angebot" value="$i" class="button">{$therapie["pk_therapie_name"]}</button>
+                        <button type="submit" name="angebot" value="$i" class="button">{$therapie["therapie_name"]}</button>
                     </a>
                 </div>
 ENDE;
@@ -84,7 +84,7 @@ ENDE;
                     echo <<<ENDE
                 <div class="item training">
                     <a href="/training" class="angebotA">
-                        <button type="submit" name="angebot" value="$i" class="button">{$training["pk_training_name"]}</button>
+                        <button type="submit" name="angebot" value="$i" class="button">{$training["training_name"]}</button>
                     </a>
                 </div>
 ENDE;

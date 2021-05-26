@@ -20,6 +20,10 @@ include "nav.php"
     <?php
     include "getPDO.php";
 
+    ini_set('display_errors', '1');
+    ini_set('display_startup_errors', '1');
+    error_reporting(E_ALL);
+
     $queryBuilder = getPDO()
         ->select("*")
         ->from('therapie');
@@ -29,7 +33,7 @@ include "nav.php"
     foreach ($therapien as $therapie) {
         echo <<<ENDE
     <div class="contentSection">
-        <div class="contentHeading">{$therapie["pk_therapie_name"]}</div>
+        <div class="contentHeading">{$therapie["therapie_name"]}</div>
 ENDE;
 
         if (isset($_GET['angebot']) && $_GET['angebot'] !== "") {
@@ -45,8 +49,8 @@ ENDE;
         $queryBuilder = getPDO()
             ->select("*")
             ->from('beschreibungTh')
-            ->where('fk_pk_therapie_name = ?')
-            ->setParameter(0, $therapie["pk_therapie_name"]);
+            ->where('fk_pk_therapie_id = ?')
+            ->setParameter(0, $therapie["pk_th_id"]);
         $angebote = $queryBuilder->fetchAllAssociative();
 
         foreach ($angebote as $angebot) {
