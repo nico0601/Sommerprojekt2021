@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     foreach ($results as $therapy => $therapyDetails) {
         $queryBuilder = $conn->createQueryBuilder();
 
-        $queryBuilder->select('*')
+        $queryBuilder->select('pk_beschreibungTh_id, beschreibung')
             ->from('beschreibungTh')
             ->where('fk_pk_therapie_id = ?')
             ->setParameter(0, $therapy);
@@ -67,9 +67,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     echo json_encode($therapiesOut);
 }
 
-if ($_SERVER['REQUEST_METHOD'] != 'GET') {
+if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     if (array_key_exists('id', $_GET)) {
         $request = file_get_contents("php://input");
+        if ($_SERVER['CONTENT_TYPE'] == 'application/json') {
+            $data = json_decode($request, true);
 
+            foreach ($data as $therapyId => $therapy) {
+                $queryBuilder = $conn->createQueryBuilder();
+                $queryBuilder->update('therapie')
+                    ->set('therapie_name', ':name')
+                    ->where('pk_th_id = :id')
+                    ->setParameter('name', $therapy["therapie_name"])
+                    ->setParameter('id', $therapyId);
+                $queryBuilder->executeStatement();
+
+                foreach ($therapy["description"] as $description) {
+                    $queryBuilder = $conn->createQueryBuilder();
+                    $queryBuilder->update('beschreibungTh')
+                        ->set('beschreibung', ':descr')
+                        ->where('pk_beschreibungTh_id = :id')
+                        ->setParameter('descr', $description["beschreibung"])
+                        ->setParameter('id', $description["pk_beschreibungTh_id"]);
+                    $queryBuilder->executeStatement();
+                }
+
+            }
+            echo "Successfully Updated";
+        }
     }
 }

@@ -33,6 +33,14 @@ function getPDO()
     $user = "phpUser";
     $passwd = "DanielleAndDorkaAreMyCuddles";
 
+    $conn = DriverManager::getConnection(array(
+        'dbname' => $db,
+        'user' => $user,
+        'password' => $passwd,
+        'host' => $host,
+        'driver' => 'pdo_mysql'));
+    return $queryBuilder = $conn->createQueryBuilder();
+
 //    $host = "localhost";
 //    $db = "fast_db";
 //    $user = "root";
