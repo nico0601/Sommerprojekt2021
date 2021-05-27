@@ -32,27 +32,44 @@ $conn = DriverManager::getConnection(array(
     'password' => 'DanielleAndDorkaAreMyCuddles',
     'host' => 'localhost',
     'driver' => 'pdo_mysql'));
+
 $queryBuilder = $conn->createQueryBuilder();
 
-$queryBuilder->select('pk_therapie_name')
-    ->from('therapie');
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (array_key_exists('id', $_GET)) {
+        $queryBuilder->select('pk_th_id, therapie_name')
+            ->from('therapie')
+            ->where('pk_th_id = ?')
+            ->setParameter(0, $_GET['id']);
+    } else {
+        $queryBuilder->select('pk_th_id, therapie_name')
+            ->from('therapie');
+    }
 
-$results = $queryBuilder->fetchAllAssociativeIndexed();
+    $results = $queryBuilder->fetchAllAssociativeIndexed();
 
-$therapiesOut = $results;
+    $therapiesOut = $results;
 
-foreach ($results as $therapy => $null) {
-    $queryBuilder = $conn->createQueryBuilder();
+    foreach ($results as $therapy => $therapyDetails) {
+        $queryBuilder = $conn->createQueryBuilder();
 
-    $queryBuilder->select('*')
-        ->from('beschreibungTh')
-        ->where('fk_pk_therapie_name = ?')
-        ->setParameter(0, $therapy);
+        $queryBuilder->select('*')
+            ->from('beschreibungTh')
+            ->where('fk_pk_therapie_id = ?')
+            ->setParameter(0, $therapy);
 
-    $results = $queryBuilder->fetchAllAssociative();
+        $results = $queryBuilder->fetchAllAssociative();
 
-    $therapiesOut[$therapy] = $results;
+        $therapiesOut[$therapy]['description'] = $results;
+    }
+
+    header('content-type: application/json');
+    echo json_encode($therapiesOut);
 }
 
-header('content-type: application/json');
-echo json_encode($therapiesOut);
+if ($_SERVER['REQUEST_METHOD'] != 'GET') {
+    if (array_key_exists('id', $_GET)) {
+        $request = file_get_contents("php://input");
+
+    }
+}

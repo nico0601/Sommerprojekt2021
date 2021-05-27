@@ -1,4 +1,87 @@
-let expandAreas = document.getElementsByClassName("expand-area");
+// Create Logic
+let table = document.getElementById('table');
+let tHead = table.querySelector('thead');
+
+let httpRequest = new XMLHttpRequest();
+httpRequest.onreadystatechange = insertData;
+httpRequest.open('GET', '/api/therapy.php');
+httpRequest.send();
+
+function insertData(x) {
+    if (x.target.readyState === 4) {
+        let responseJson = JSON.parse(x.target.response);
+        let count = 0;
+        for (const therapyId in responseJson) {
+            if (!responseJson.hasOwnProperty(therapyId)) {
+                continue;
+            }
+            let therapy = responseJson[therapyId];
+
+            let oddRow = "";
+            if (count % 2 === 0) {
+                oddRow = 'pure-table-odd'
+            }
+            count++;
+
+            let htmlText = '<tbody class="' + oddRow + '">\n' +
+                '        <tr>\n' +
+                '        <td><input class="table-input therapy-names" type="text" value="' + therapy.therapie_name + '"></td>\n' +
+                '        <td class="expand-area">\n' +
+                '            <div class="nowrap-container">\n' +
+                '                <span class="nowrap-text">{{ concatDescription }}</span>\n' +
+                '                <span class="material-icons expand-icon">expand_more</span>\n' +
+                '            </div>\n' +
+                '        </td>\n' +
+                '        </tr>\n' +
+                '        </tbody>\n' +
+                '        <tbody class="description-container tbody-hidden ' + oddRow + '">\n';
+
+            let concatDescr = "";
+            for (const description of therapy.description) {
+                concatDescr += description.beschreibung + ", ";
+                htmlText += '<tr>\n' +
+                    '<td colspan="2"><textarea class="table-input">' + description.beschreibung + '</textarea></td>\n' +
+                    '</tr>'
+            }
+            concatDescr = concatDescr.substr(0, concatDescr.length - 2)
+            console.log(concatDescr);
+
+            htmlText += '<tr>\n' +
+                '        <td colspan="2">\n' +
+                '            <button class="pure-button add-row" type="button">Add row</button>\n' +
+                '        </td>\n' +
+                '        </tr>\n' +
+                '        </tbody>';
+
+            htmlText = htmlText.replace('\{\{ concatDescription \}\}', concatDescr)
+            tHead.insertAdjacentHTML('afterend', htmlText);
+        }
+        afterDataInsert();
+    }
+}
+
+
+// User Input Logic
+
+let expandAreas;
+
+function afterDataInsert() {
+    expandAreas = document.getElementsByClassName("expand-area");
+
+    for (let i = 0; i < expandAreas.length; i++) {
+        expandAreas[i].addEventListener("click", (e) => {
+            rowClick(e, expandAreas[i])
+        });
+    }
+
+    let addRowButtons = document.getElementsByClassName("add-row");
+
+    for (let i = 0; i < addRowButtons.length; i++) {
+        addRowButtons[i].addEventListener("click", (e) => {
+            addRowButtonClick(e, addRowButtons[i])
+        });
+    }
+}
 
 function rowClick(event, expandArea) {
     let hiddenArea = expandArea.parentElement.parentElement.nextElementSibling;
@@ -13,23 +96,13 @@ function rowClick(event, expandArea) {
     }
 }
 
-for (let i = 0; i < expandAreas.length; i++) {
-    expandAreas[i].addEventListener("click", (e) => {
-        rowClick(e, expandAreas[i])
-    });
-}
-
-let addRowButtons = document.getElementsByClassName("add-row");
-
 function addRowButtonClick(event, button) {
-    let newNode = button.parentElement.parentElement.previousSibling.cloneNode(true);
-    button.parentElement.parentElement.parentElement.insertBefore(newNode, button.parentElement.parentElement);
-}
+    let html = '<tr>\n' +
+        '<td colspan="2"><textarea class="table-input"></textarea></td>\n' +
+        '</tr>';
 
-for (let i = 0; i < addRowButtons.length; i++) {
-    addRowButtons[i].addEventListener("click", (e) => {
-        addRowButtonClick(e, addRowButtons[i])
-    });
+    let buttonRow = button.closest('tr');
+    buttonRow.insertAdjacentHTML('beforebegin', html);
 }
 
 function submitForm() {
@@ -50,18 +123,32 @@ function submitForm() {
         }
     }
 
-    let hiddenForm = document.createElement("form");
-    hiddenForm.action = "therapyEditSubmit.php";
-    hiddenForm.method = 'POST'
+    let httpRequest = new XMLHttpRequest();
 
-    let hiddenInput=document.createElement('input');
-    hiddenInput.type='hidden';
-    hiddenInput.name='fragment';
-    hiddenInput.value=JSON.stringify(output);
-    hiddenForm.appendChild(hiddenInput);
+    function test(x) {
+        if (x.target.readyState === 4) {
+            console.log(x.target);
+            document.querySelector('#result').innerHTML =
+                '<pre>' + x.target.response + '</pre>';
+        }
+    }
 
-    document.body.appendChild(hiddenForm);
-    hiddenForm.submit();
+    httpRequest.onreadystatechange = test;
+    httpRequest.open('POST', '/api/therapy.php?id=1');
+    httpRequest.send('fragment=' + escape(JSON.stringify(output)));
+
+    // let hiddenForm = document.createElement("form");
+    // hiddenForm.action = "/api/therapy.php";
+    // hiddenForm.method = 'POST'
+    //
+    // let hiddenInput = document.createElement('input');
+    // hiddenInput.type = 'hidden';
+    // hiddenInput.name = 'fragment';
+    // hiddenInput.value = JSON.stringify(output);
+    // hiddenForm.appendChild(hiddenInput);
+    //
+    // document.body.appendChild(hiddenForm);
+    // hiddenForm.submit();
 
 }
 
