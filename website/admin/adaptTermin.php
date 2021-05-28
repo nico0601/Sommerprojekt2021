@@ -32,28 +32,7 @@ include "../nav.php";
 
                     $_SESSION['old'] = $_POST['adapt'];
 
-                    $queryBuilder = getPDO()
-                        ->select("*")
-                        ->from('termin');
-                    $termine = $queryBuilder->fetchAllAssociative();
-                    $i = 0;
-                    $min = '';
-                    $max = '';
-
-                    foreach ($termine as $termin) {
-                        if ($i == 0) {
-                            $min = $termin["pk_datum"];
-                            $max = $termin["pk_datum"];
-                        } else {
-                            if (strtotime($min) > strtotime($termin["pk_datum"])) {
-                                $min = $termin["pk_datum"];
-                            }
-                            if (strtotime($max) < strtotime($termin["pk_datum"])) {
-                                $max = $termin["pk_datum"];
-                            }
-                        }
-                        $i++;
-                    }
+                    $heute = date("Y-m-d");
 
                     echo <<<ENDE
                 <div class="item calender">
@@ -62,7 +41,7 @@ include "../nav.php";
                         <input type="time" class="time input" name="von" value="{$terminValues["zeit_von"]}" required> <span id="dash">&ndash;</span> <input type="time" class="time input" name="bis" value="{$terminValues["zeit_bis"]}" required>
                     </div>
                     <input type="text" class="location input" name="location" value="{$terminValues["location"]}" required>
-                    <input type="date" class="blue date input" name="termin" value="{$_POST['adapt']}" min="$min" max="$max" pattern="\d{2}.\d{2}.\d{4}" required>
+                    <input type="date" class="blue date input" name="termin" value="{$_POST['adapt']}" min="$heute" pattern="\d{2}.\d{2}.\d{4}" required>
                 </div>
 ENDE;
                 }
