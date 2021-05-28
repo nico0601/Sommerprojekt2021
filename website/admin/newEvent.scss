@@ -28,7 +28,6 @@ label {
 input {
   border: 2px solid black;
   padding: 5px;
-  min-width: 250px;
   min-height: 40px;
   font-size: 18px;
 }
@@ -72,9 +71,11 @@ input::placeholder {
 }
 
 @media (max-width: 650px) {
-  .formButton {
-    margin: 10px;
+  #buttonDiv > a {
     width: 150px;
+  }
+  .formButton {
+    width: 150px !important;
   }
 }
 
@@ -83,7 +84,6 @@ input::placeholder {
     align-items: flex-start;
   }
   input {
-    width: 80vw;
     min-width: 50px;
   }
 }

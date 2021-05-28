@@ -150,9 +150,11 @@ form {
 }
 
 @media (max-width: 650px) {
-  .formButton {
-    margin: 10px;
+  #buttonDiv > a {
     width: 150px;
+  }
+  .formButton {
+    width: 150px !important;
   }
 }
 
