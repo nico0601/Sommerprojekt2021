@@ -33,6 +33,11 @@ function insertData(x) {
                 '                <span class="material-icons expand-icon">expand_more</span>\n' +
                 '            </div>\n' +
                 '        </td>\n' +
+                '        <td class="delete-col">\n' +
+                '            <span class="material-icons delete-icon">\n' +
+                '            clear\n' +
+                '            </span>\n' +
+                '        </td>' +
                 '        </tr>\n' +
                 '        </tbody>\n' +
                 '        <tbody class="description-container tbody-hidden ' + oddRow + '">\n';
@@ -41,9 +46,14 @@ function insertData(x) {
             for (const description of therapy.description) {
                 concatDescr += description.beschreibung + ", ";
                 htmlText += '<tr class="description-row">\n' +
-                    '<td colspan="2"><textarea class="table-input" name="' + description.pk_beschreibungTh_id + '">'
-                    + description.beschreibung + '</textarea></td>\n' +
-                    '</tr>'
+                    '<td colspan="2"><textarea class="table-input" name="' + description.pk_beschreibungTh_id + '">' +
+                    description.beschreibung + '</textarea></td>\n' +
+                    '        <td class="delete-col">\n' +
+                    '            <span class="material-icons delete-icon">\n' +
+                    '            clear\n' +
+                    '            </span>\n' +
+                    '        </td>' +
+                    '</tr>';
             }
             concatDescr = concatDescr.substr(0, concatDescr.length - 2)
 
@@ -98,7 +108,7 @@ function rowClick(event, expandArea) {
 }
 
 function addRowButtonClick(event, button) {
-    let newNode = button.parentElement.parentElement.previousSibling.cloneNode(true);
+    let html = '<tr>\n' +
         '<td colspan="2"><textarea class="table-input"></textarea></td>\n' +
         '</tr>';
 
@@ -163,11 +173,3 @@ function submitForm() {
 
 }
 
-function createElementFromHTML(htmlString) {
-    let div = document.createElement('template');
-    div.innerHTML = htmlString;
-
-    console.log(div.innerText);
-
-    return div.content.firstChild;
-}

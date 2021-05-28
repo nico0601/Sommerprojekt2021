@@ -69,12 +69,19 @@ h3 {
 
 .delete-icon {
   font-size: 1.2em;
+  height: 1.2em;
   //margin-top: -2px;
   position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 .delete-col {
-  padding: 0;
+  position: relative;
 }
 
 .nowrap-container {

@@ -51,6 +51,9 @@ include "../nav.php";
         <tr>
             <th style="width: max(20vw, 150px)">Therapie Name</th>
             <th>Unterpunkte</th>
+            <th class="delete-col" style="width: 2.5em">
+                <span class="material-icons delete-icon">clear</span>
+            </th>
         </tr>
         </thead>
         <tr>
