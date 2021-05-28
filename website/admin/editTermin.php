@@ -18,6 +18,10 @@ include "adminSpaceHeader.php";
 include "../nav.php";
 include_once "Termin.php";
 
+$datePattern = "/^[\d]{4}-[\d]{2}-[\d]{2}$/";
+$timePattern = "/^[\d]{2}:[\d]{2}$/";
+$locationPattern = "/^[\w\d `'{}()%&\-@#$~!_^\/]*$/";
+
 function update($which, $set, $where)
 {
     $queryBuilder = getPDO()
@@ -34,8 +38,17 @@ if (isset($_POST['delete']) && $_POST['delete'] != "") {
     $termin->delete();
 }
 
+if (isset($_POST['newVon'], $_POST['newBis'], $_POST['newLocation'], $_POST['newTermin']) &&
+    $_POST['newVon'] != "" && $_POST['newBis'] != "" && $_POST['newLocation'] != "" && $_POST['newTermin'] != "") {
+
+    $termin = new Termin($_POST['newTermin'], $_POST['newVon'], $_POST['newBis'], $_POST['newLocation']);
+    $termin->insert();
+}
+
 if (isset($_POST['von'], $_POST['bis'], $_POST['location'], $_POST['termin']) &&
-    $_POST['von'] !== "" && $_POST['bis'] !== "" && $_POST['location'] !== "" && $_POST['termin'] !== "") {
+    preg_match($timePattern, $_POST['von']) && preg_match($timePattern, $_POST['bis']) &&
+    preg_match($datePattern, $_POST['termin']) && preg_match($locationPattern, $_POST['location']) &&
+    preg_match($datePattern, $_SESSION['old'])) {
 
     $termin = new Termin($_POST['termin'], $_POST['von'], $_POST['bis'], $_POST['location']);
 
@@ -97,7 +110,7 @@ ENDE;
             </div>
         </div>
         <div class="description">
-            <form action="newTermin.php" method="post">
+            <form action="newTermin.php" method="get">
                 <input type="submit" class="formButton" value="Neuer Termin">
             </form>
             <form action="/admin" method="get">

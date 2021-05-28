@@ -10,6 +10,7 @@ include "adminSpaceHeader.php";
     ?>
     <title>F.A.S.T - adapt Termin</title>
     <link rel="stylesheet" href="adaptTermin.css">
+    <script type="text/javascript" src="day.js" defer></script>
 </head>
 <body>
 <?php
@@ -36,12 +37,12 @@ include "../nav.php";
 
                     echo <<<ENDE
                 <div class="item calender">
-                    <input type="text" class="oswald day input" value="{$terminValues['tag']}" maxlength="2" required>
+                    <input type="text" class="oswald day input" id="day" value="{$terminValues['tag']}" maxlength="2" readonly>
                     <div class="timeDiv">
                         <input type="time" class="time input" name="von" value="{$terminValues["zeit_von"]}" required> <span id="dash">&ndash;</span> <input type="time" class="time input" name="bis" value="{$terminValues["zeit_bis"]}" required>
                     </div>
                     <input type="text" class="location input" name="location" value="{$terminValues["location"]}" required>
-                    <input type="date" class="blue date input" name="termin" value="{$_POST['adapt']}" min="$heute" pattern="\d{2}.\d{2}.\d{4}" required>
+                    <input type="date" class="blue date input" id="date" name="termin" value="{$_POST['adapt']}" min="$heute" pattern="\d{2}.\d{2}.\d{4}" required>
                 </div>
 ENDE;
                 }

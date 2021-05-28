@@ -62,11 +62,49 @@ class Termin
     }
 
     /**
+     * Inserts given values into database
+     */
+    public function insert()
+    {
+        if (preg_match($this->datePattern, $this->date) &&
+            preg_match($this->timePattern, $this->von) &&
+            preg_match($this->timePattern, $this->bis) &&
+            preg_match($this->locationPattern, $this->location)) {
+
+            $queryBuilder = getPDO()
+                ->insert('termin')
+                ->values(array(
+                    'pk_datum' => '?',
+                    'zeit_von' => '?',
+                    'zeit_bis' => '?',
+                    'location' => '?',
+                    'fk_pk_id' => '?'
+                ))
+                ->setParameter(0, $this->date)
+                ->setParameter(1, $this->von)
+                ->setParameter(2, $this->bis)
+                ->setParameter(3, $this->location)
+                ->setParameter(4, 1);
+
+            try {
+                $queryBuilder->execute();
+                $this->success("insert");
+            } catch (Exception $ex) {
+                $this->duplicateText("insert");
+            }
+        } else {
+            $this->otherError();
+        }
+    }
+
+    /**
      * Returns termin values in german language
      * adds value "tag" in german language
      * @return array
+     * @throws \Doctrine\DBAL\Exception
      */
-    public function getValues() {
+    public function getValues()
+    {
         if ($this->von == "" || $this->bis == "" || $this->location == "") {
             $queryBuilder = getPDO()
                 ->select("*")
@@ -83,15 +121,15 @@ class Termin
         }
 
         $von = explode(":", $this->von);
-        $this->von = $von[0].":".$von[1];
+        $this->von = $von[0] . ":" . $von[1];
 
         $bis = explode(":", $this->bis);
-        $this->bis = $bis[0].":".$bis[1];
+        $this->bis = $bis[0] . ":" . $bis[1];
 
         $datumArray = explode('-', $this->date);
         $tag = strtotime($this->date);
 
-        $this->date = $datumArray[2].".".$datumArray[1].".".substr($datumArray[0], 2);
+        $this->date = $datumArray[2] . "." . $datumArray[1] . "." . substr($datumArray[0], 2);
         $tag = date('D', $tag);
 
         switch ($tag) {
@@ -133,7 +171,8 @@ class Termin
      * Success Message
      * @param $function
      */
-    public function success($function) {
+    public function success($function)
+    {
         $text = $function == "delete" ? "gelöscht" : ($function == "insert" ? "hinzugefügt" : ($function == "update" ? "abgeändert" : ""));
         echo <<<ENDE
         <div id='erfolgreich'>
@@ -158,7 +197,8 @@ ENDE;
     /**
      * Error Message for any other Error (f.e. does not match the expected pattern)
      */
-    public function otherError() {
+    public function otherError()
+    {
         echo <<<ENDE
         <div id='fehlgeschlagen' class='error'>
             <h2>Dieser Termin entspricht nicht den Anforderungen!</h2>

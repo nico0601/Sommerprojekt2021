@@ -11,7 +11,6 @@ if (isset($_FILES['event']['tmp_name']) && $_FILES['event']['tmp_name'] != "" &&
 
     $saveFolder = '/images/';
     $_SESSION['file'] = $saveFolder . $_FILES['event']['name'];
-    $_SESSION['size'] = filesize($_FILES['event']['tmp_name']);
 }
 
 header("Location: editEvent.php");
