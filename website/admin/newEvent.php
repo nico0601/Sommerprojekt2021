@@ -25,7 +25,7 @@ include "../nav.php";
     <div class="contentSection">
         <div class="description">
             <form enctype="multipart/form-data" action="accept.php" method="post">
-                <input type="hidden" name="MAX_FILE_SIZE" value="30000000000"/>
+                <input type="hidden" name="MAX_FILE_SIZE" value="50000000"/>
                 <input type="file" name="event" accept="image/*">
                 <div id="buttonDiv">
                     <input type="submit" class="formButton" value="Erstellen">
