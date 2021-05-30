@@ -58,7 +58,7 @@ include "../nav.php";
         </thead>
         <tr>
             <td>
-                <button class="pure-button" type="button">Angebot hinzufügen</button>
+                <button class="pure-button" id="add-offer" type="button">Angebot hinzufügen</button>
             </td>
             <td></td>
         </tr>

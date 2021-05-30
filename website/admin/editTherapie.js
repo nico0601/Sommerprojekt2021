@@ -33,7 +33,7 @@ function insertData(x) {
                 '                <span class="material-icons expand-icon">expand_more</span>\n' +
                 '            </div>\n' +
                 '        </td>\n' +
-                '        <td class="delete-col">\n' +
+                '        <td class="delete-col delete-offer">\n' +
                 '            <span class="material-icons delete-icon">\n' +
                 '            clear\n' +
                 '            </span>\n' +
@@ -48,7 +48,7 @@ function insertData(x) {
                 htmlText += '<tr class="description-row">\n' +
                     '<td colspan="2"><textarea class="table-input" name="' + description.pk_beschreibungTh_id + '">' +
                     description.beschreibung + '</textarea></td>\n' +
-                    '        <td class="delete-col">\n' +
+                    '        <td class="delete-col delete-row">\n' +
                     '            <span class="material-icons delete-icon">\n' +
                     '            clear\n' +
                     '            </span>\n' +
@@ -75,6 +75,7 @@ function insertData(x) {
 // User Input Logic
 
 let expandAreas;
+let changesExecution = [];
 
 function afterDataInsert() {
     expandAreas = document.getElementsByClassName("expand-area");
@@ -92,6 +93,18 @@ function afterDataInsert() {
             addRowButtonClick(e, addRowButtons[i])
         });
     }
+
+    let deleteRows = document.getElementsByClassName('delete-row');
+
+    for (let i = 0; i < deleteRows.length; i++) {
+        deleteRows[i].addEventListener("click", deleteRow);
+    }
+
+    let deleteOffers = document.getElementsByClassName('delete-offer');
+
+    for (let i = 0; i < deleteOffers.length; i++) {
+        deleteOffers[i].addEventListener("click", deleteOffer);
+    }
 }
 
 function rowClick(event, expandArea) {
@@ -108,12 +121,32 @@ function rowClick(event, expandArea) {
 }
 
 function addRowButtonClick(event, button) {
-    let html = '<tr>\n' +
+    let html = '<tr class="description-row ">' +
         '<td colspan="2"><textarea class="table-input"></textarea></td>\n' +
+        '<td class="delete-col delete-row">\n' +
+        '    <span class="material-icons delete-icon ">\n' +
+        '    clear\n' +
+        '    </span>\n' +
+        '</td>' +
         '</tr>';
 
     let buttonRow = button.closest('tr');
     buttonRow.insertAdjacentHTML('beforebegin', html);
+}
+
+function deleteRow(event) {
+    event.target.closest('tr').remove();
+
+}
+
+document.getElementById('add-offer').addEventListener("click", addOfferButtonClick);
+
+function addOfferButtonClick(event) {
+    let httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = putPostResp;
+    httpRequest.open('POST', '/api/therapy.php');
+    httpRequest.setRequestHeader('Content-Type', 'application/json');
+    httpRequest.send();
 }
 
 function submitForm() {
@@ -144,32 +177,19 @@ function submitForm() {
     }
 
     let httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = putPostResp;
+    httpRequest.open('PUT', '/api/therapy.php');
+    httpRequest.setRequestHeader('Content-Type', 'application/json');
+    httpRequest.send(JSON.stringify(output));
+}
 
-    function test(x) {
-        if (x.target.readyState === 4) {
-            console.log(x.target);
+function putPostResp(x) {
+    if (x.target.readyState === 4) {
+        if (x.target.status === 204) {
+            location.reload();
+        } else {
             document.querySelector('#result').innerHTML =
                 '<pre>' + x.target.response + '</pre>';
         }
     }
-
-    httpRequest.onreadystatechange = test;
-    httpRequest.open('PUT', '/api/therapy.php?id=1');
-    httpRequest.setRequestHeader('Content-Type', 'application/json');
-    httpRequest.send(JSON.stringify(output));
-
-    // let hiddenForm = document.createElement("form");
-    // hiddenForm.action = "/api/therapy.php";
-    // hiddenForm.method = 'POST'
-    //
-    // let hiddenInput = document.createElement('input');
-    // hiddenInput.type = 'hidden';
-    // hiddenInput.name = 'fragment';
-    // hiddenInput.value = JSON.stringify(output);
-    // hiddenForm.appendChild(hiddenInput);
-    //
-    // document.body.appendChild(hiddenForm);
-    // hiddenForm.submit();
-
 }
-
