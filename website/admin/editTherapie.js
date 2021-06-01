@@ -58,7 +58,7 @@ function insertData(x) {
             concatDescr = concatDescr.substr(0, concatDescr.length - 2)
 
             htmlText += '<tr>\n' +
-                '        <td colspan="2">\n' +
+                '        <td colspan="3">\n' +
                 '            <button class="pure-button add-row" type="button">Add row</button>\n' +
                 '        </td>\n' +
                 '        </tr>\n' +
@@ -75,23 +75,19 @@ function insertData(x) {
 // User Input Logic
 
 let expandAreas;
-let changesExecution = [];
+let deleteList = [];
 
 function afterDataInsert() {
     expandAreas = document.getElementsByClassName("expand-area");
 
     for (let i = 0; i < expandAreas.length; i++) {
-        expandAreas[i].addEventListener("click", (e) => {
-            rowClick(e, expandAreas[i])
-        });
+        expandAreas[i].addEventListener("click", rowClick);
     }
 
     let addRowButtons = document.getElementsByClassName("add-row");
 
     for (let i = 0; i < addRowButtons.length; i++) {
-        addRowButtons[i].addEventListener("click", (e) => {
-            addRowButtonClick(e, addRowButtons[i])
-        });
+        addRowButtons[i].addEventListener("click", addRowButtonClick);
     }
 
     let deleteRows = document.getElementsByClassName('delete-row');
@@ -107,12 +103,12 @@ function afterDataInsert() {
     }
 }
 
-function rowClick(event, expandArea) {
-    let hiddenArea = expandArea.parentElement.parentElement.nextElementSibling;
+function rowClick(event) {
+    let hiddenArea = event.target.closest('tbody').nextElementSibling;
 
     if (hiddenArea.classList.contains("tbody-hidden")) {
         for (let i = 0; i < expandAreas.length; i++) {
-            expandAreas[i].parentElement.parentElement.nextElementSibling.classList.add("tbody-hidden");
+            expandAreas[i].closest('tbody').nextElementSibling.classList.add("tbody-hidden");
         }
         hiddenArea.classList.remove("tbody-hidden");
     } else {
@@ -120,7 +116,7 @@ function rowClick(event, expandArea) {
     }
 }
 
-function addRowButtonClick(event, button) {
+function addRowButtonClick(event) {
     let html = '<tr class="description-row ">' +
         '<td colspan="2"><textarea class="table-input"></textarea></td>\n' +
         '<td class="delete-col delete-row">\n' +
@@ -130,13 +126,31 @@ function addRowButtonClick(event, button) {
         '</td>' +
         '</tr>';
 
-    let buttonRow = button.closest('tr');
+    let buttonRow = event.target.closest('tr');
     buttonRow.insertAdjacentHTML('beforebegin', html);
 }
 
 function deleteRow(event) {
-    event.target.closest('tr').remove();
+    let row = event.target.closest('tr');
+    let descrId = row.querySelector('textarea').name;
 
+    deleteList.push('/api/beschreibungTh.php?id=' + descrId);
+
+    row.remove();
+
+    console.log(deleteList);
+}
+
+function deleteOffer(event) {
+    let body = event.target.closest('tbody');
+    let descrId = body.querySelector('.therapy-names').name;
+
+    deleteList.push('/api/therapy.php?id=' + descrId);
+
+    body.nextElementSibling.remove();
+    body.remove();
+
+    console.log(deleteList);
 }
 
 document.getElementById('add-offer').addEventListener("click", addOfferButtonClick);
@@ -174,6 +188,13 @@ function submitForm() {
                 output[therapyId].description.push(descriptionData);
             }
         }
+    }
+
+    for (const deleteListKey of deleteList) {
+        let httpRequest = new XMLHttpRequest();
+        httpRequest.onreadystatechange = putPostResp;
+        httpRequest.open('DELETE', deleteListKey);
+        httpRequest.send()
     }
 
     let httpRequest = new XMLHttpRequest();
