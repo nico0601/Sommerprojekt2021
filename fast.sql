@@ -80,11 +80,11 @@ VALUES (1);
 
 
 INSERT INTO event(pk_event, fk_pk_id)
-VALUES ('/images/Event.jpg', 1),
-       ('/images/Event1.jpg', 1),
-       ('/images/Event2.jpg', 1),
-       ('/images/Event3.jpg', 1),
-       ('/images/Event4.jpg', 1);
+VALUES ('/events/Event.jpg', 1),
+       ('/events/Event1.jpg', 1),
+       ('/events/Event2.jpg', 1),
+       ('/events/Event3.jpg', 1),
+       ('/events/Event4.jpg', 1);
 
 INSERT INTO therapie(pk_th_id, therapie_name, fk_pk_id)
 VALUES (1, 'klassische Massage', 1),
