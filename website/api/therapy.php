@@ -97,3 +97,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
         }
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+    if (array_key_exists('id', $_GET)) {
+        $queryBuilder = $conn->createQueryBuilder();
+        $queryBuilder->delete('therapie')
+            ->where('pk_th_id = :id')
+            ->setParameter('id', $_GET['id']);
+        $queryBuilder->executeStatement();
+    }
+}
