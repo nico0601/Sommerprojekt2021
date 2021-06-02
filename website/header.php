@@ -3,6 +3,10 @@ error_reporting(E_ERROR | E_PARSE);
 ?>
 
 <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="description" content="Fascial Sports Therapy - Form Follows Function: To Bring You On Top Of Your Game, Where Ever You Are">
+<meta name="keywords" content="FAST, Therapy, Sport, Sportstherapy, Fascial, Fascial Sports, Fascial Sportstherapy">
+<meta name="author" content="Christian Werdenich">
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
