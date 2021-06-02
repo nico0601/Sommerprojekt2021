@@ -38,9 +38,6 @@ function onscroll() {
         whenWeiter = window.innerHeight / 3
     }
 
-    console.log("Breite: " + window.innerWidth)
-    console.log("Höhe: " + whenWeiter)
-
     if (weiter.style.display !== 'none' && document.scrollingElement.scrollTop >= whenWeiter) {
         weiter.style.display = 'none'
     } else if (weiter.style.display === 'none' && document.scrollingElement.scrollTop < whenWeiter) {
