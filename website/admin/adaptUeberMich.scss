@@ -1,0 +1,180 @@
+#content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contentSection, .contentSection > form {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.description {
+  width: 65vw;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  margin: 20px 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+.grow-wrap {
+  /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+  display: grid;
+
+  /* Adjust textarea size */
+  width: 55vw !important;
+}
+
+.grow-wrap::after {
+  /* Note the weird space! Needed to preventy jumpy behavior */
+  content: attr(data-replicated-value) " ";
+
+  /* This is how textarea text behaves */
+  white-space: pre-wrap;
+
+  /* Hidden from view, clicks, and screen readers */
+  visibility: hidden;
+}
+
+.grow-wrap > textarea {
+  /* You could leave this, but after a user resizes, then it ruins the auto sizing */
+  resize: none;
+
+  /* Firefox shows scrollbar on growth, you can hide like this. */
+  overflow: hidden;
+}
+
+.grow-wrap > textarea,
+.grow-wrap::after {
+  /* Identical styling required!! */
+  border: 2px solid black;
+  padding: 5px;
+
+  /* Place on top of each other */
+  grid-area: 1 / 1 / 2 / 2;
+
+  /* Adjust textarea size */
+  width: 55vw !important;
+}
+
+
+.formButton {
+  cursor: pointer;
+  padding: 10px;
+  margin: 30px 10px;
+  background: transparent;
+  border: 6px solid #D7D8D9;
+  border-radius: 0;
+  color: #4D4D4D;
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  width: 200px;
+  transition: 0.2s;
+  outline: none;
+}
+
+.formButton:hover, .formButton:focus {
+  background: rgba(215, 216, 217, 0.7);
+  color: #4D4D4D;
+}
+
+#buttonDiv {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+#buttonDiv > a {
+  margin: 30px 10px;
+  width: 200px;
+}
+#buttonDiv > a > input {
+  margin: 0;
+  width: 200px;
+}
+
+
+#erfolgreich, #fehlgeschlagen {
+  position: fixed;
+  top: 55px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  border-radius: 0;
+  font-weight: bold;
+  width: max-content;
+  transition: 0.3s;
+  z-index: 10;
+}
+#erfolgreich {
+  background: #58dfb2;
+  color: white;
+  border: 2px solid #39b189;
+}
+
+@media (max-width: 1000px) {
+  h2 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 650px) {
+  .event {
+    width: 300px;
+  }
+  .adapt {
+    width: 50px;
+    height: 50px;
+  }
+
+  #buttonDiv > a {
+    width: 150px;
+  }
+  .formButton {
+    width: 150px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  #erfolgreich, #fehlgeschlagen {
+    padding: 5px;
+    border-width: 1px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  .description {
+    width: 85vw;
+  }
+
+  .grow-wrap {
+    /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+    display: grid;
+
+    /* Adjust textarea size */
+    width: 75vw !important;
+  }
+  .grow-wrap > textarea,
+  .grow-wrap::after {
+    /* Identical styling required!! */
+    border: 2px solid black;
+    padding: 5px;
+
+    /* Place on top of each other */
+    grid-area: 1 / 1 / 2 / 2;
+
+    /* Adjust textarea size */
+    width: 75vw !important;
+  }
+}
