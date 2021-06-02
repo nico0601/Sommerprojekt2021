@@ -102,47 +102,47 @@ VALUES (1, 'Functional Training', 1),
 
 
 INSERT INTO beschreibungTh(pk_beschreibungTh_id, beschreibung, fk_pk_therapie_id)
-VALUES (1, 'löst Verspannungen und Verkrampfungen in der Muskulatur', 1),
-       (2, 'wohltuend, durchblutungsfördernd', 1),
+VALUES (1, 'Löst Verspannungen und Verkrampfungen in der Muskulatur', 1),
+       (2, 'Wohltuend, durchblutungsfördernd', 1),
        (3, 'Entspannung', 1),
 
-       (4, 'regenerative Massage nach wettkampfmäßiger Belastung', 2),
+       (4, 'Regenerative Massage nach wettkampfmäßiger Belastung', 2),
        (5, 'Behandlung von sportartspezifischen Verletzungen und Restriktionen', 2),
        (6, 'Prävention von Verletzungen durch rechtzeitiges behandeln von Verhärtungen und Verspannung',
         2),
        (7, 'Analyse und Behandlung von strukturellen Problematiken', 2),
 
-       (8, 'lösen von myofaszialen Triggerpunkten und Adhäsionen', 3),
+       (8, 'Lösen von myofaszialen Triggerpunkten und Adhäsionen', 3),
        (9, 'Myofaszial Taping und foam Rolling', 3),
        (10, 'Segmentmassage', 3),
 
-       (11, 'die Fußreflexzonenmassage ist vielfältig anwendbar', 4),
+       (11, 'Die Fußreflexzonenmassage ist vielfältig anwendbar', 4),
        (12, 'Stärkung des Parasympathikus zum Stressabbau', 4),
-       (13, 'gezielte Behandlung von Magen Darmproblematiken', 4),
-       (14, 'vegetativer Ausgleich und Entspannung', 4),
+       (13, 'Gezielte Behandlung von Magen Darmproblematiken', 4),
+       (14, 'Vegetativer Ausgleich und Entspannung', 4),
 
        (15, 'Behandlung von Ödemen nach Sportverletzungen', 5),
-       (16, 'regenerative Drainagen nach schweren wettkampfmäßigen Belastungen zur Vorbeugung von muskulären Problemen',
+       (16, 'Regenerative Drainagen nach schweren wettkampfmäßigen Belastungen zur Vorbeugung von muskulären Problemen',
         5),
-       (17, 'klassische Lymphdrainage zur Behebung von Lymphstauproblematiken', 5),
+       (17, 'Klassische Lymphdrainage zur Behebung von Lymphstauproblematiken', 5),
        (18, 'Stressabbau, Entspannung', 5),
-       (19, 'bei Schlafstörungen', 5);
+       (19, 'Bei Schlafstörungen', 5);
 
 INSERT INTO beschreibungTr(pk_beschreibungTr_id, beschreibung, fk_pk_training_id)
 VALUES (1, 'Kraft, Ausdauer, Balance, Beweglichkeit, Mobiltiy, Propriozeption, ...', 1),
        (2, 'Ziel: Vorbereitung auf persönliche Anforderungen', 1),
        (3, 'Gruppen- oder Einzeltrainings', 1),
-       (4, 'mit Bodyweight Training oder mit Kettlebell, TRX, Gymball, Miniband, Plyobox, Medizinball und Co.',
+       (4, 'Mit Bodyweight Training oder mit Kettlebell, TRX, Gymball, Miniband, Plyobox, Medizinball und Co.',
         1),
 
        (5, 'Training mit der foam Roll', 2),
        (6, 'Gruppentraining', 2),
-       (7, 'für mehr Mobilität und Range of Motion', 2),
+       (7, 'Für mehr Mobilität und Range of Motion', 2),
        (8, 'Verletzungsprophylaxe', 2),
        (9, 'Regeneration', 2),
 
        (10, 'Analyse, Speedcheck, individuell abgestimmte Trainingspläne', 3),
-       (11, 'sportartspezifisches Speedtraining', 2),
+       (11, 'Sportartspezifisches Speedtraining', 2),
        (12, 'Core Performance Training', 2),
 
        (13, 'Muskuläre Dysbalancen', 3),
@@ -155,7 +155,12 @@ VALUES (1, 'Kraft, Ausdauer, Balance, Beweglichkeit, Mobiltiy, Propriozeption, .
        (19, 'Was? braucht der Körper Wann?', 4),
        (20, 'Isst Analyse', 4),
        (21, 'Zielvereinbarung mit Monitoring (Vorher, Nachher)', 4),
-       (22, 'Körperfettanalyse, BMI', 4);
+       (22, 'Körperfettanalyse, BMI', 4),
+
+       (23, 'Tipps für die richtige Ernährung in den einzelnen Wettkampfphasen', 5),
+       (24, 'Was? braucht der Körper Wann?', 5),
+       (25, 'Zielvereinbarung mit Monitoring (Vorher, Nachher)', 5),
+       (26, 'Körperfettanalyse, BMI', 5);
 
 INSERT INTO ueber_mich(pk_person_id, infotext, fk_pk_id)
 VALUES (1,
