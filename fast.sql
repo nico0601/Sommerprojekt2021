@@ -159,13 +159,13 @@ VALUES (1, 'Kraft, Ausdauer, Balance, Beweglichkeit, Mobiltiy, Propriozeption, .
 
 INSERT INTO ueber_mich(pk_person_id, infotext, fk_pk_id)
 VALUES (1,
-        'WIR SIND FAST
-        FAscial Sports Therapy
+'WIR SIND FAST
+FAscial Sports Therapy
 
-        situativ eingesetzte Therapietechniken und eine individuelle Trainingssteuerung helfen Ihnen Ihre Ziele zu erreichen.
-        Wir vereinen die Therapie mit dem Training und führen unsere Kunden mit individueller Betreuung nach Verletzungen oder Erkrankungen zurück auf die Spur und helfen unterschiedliche Leistungslevel im Sport und Alltag zu steigern und vorbeugend die Gesundheit zu fördern.
+situativ eingesetzte Therapietechniken und eine individuelle Trainingssteuerung helfen Ihnen Ihre Ziele zu erreichen.
+Wir vereinen die Therapie mit dem Training und führen unsere Kunden mit individueller Betreuung nach Verletzungen oder Erkrankungen zurück auf die Spur und helfen unterschiedliche Leistungslevel im Sport und Alltag zu steigern und vorbeugend die Gesundheit zu fördern.
 
-        „form follows function“ unter diesem Gesichtspunkt zurück zu einem gesunden, ursprünglichen Bewegungsmuster „to bring you on top of your game, where ever you are“
+„form follows function“ unter diesem Gesichtspunkt zurück zu einem gesunden, ursprünglichen Bewegungsmuster „to bring you on top of your game, where ever you are“
 ',
         1);
 
