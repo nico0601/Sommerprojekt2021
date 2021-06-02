@@ -1,14 +1,14 @@
 <?php
-
 include "adminSpaceHeader.php";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php
-  include "../header.php";
-  ?>
+    <?php
+    include "../header.php";
+    ?>
+    <link rel="stylesheet" type="text/css" href="adminMain.css"/>
     <title>F.A.S.T - Administration</title>
 </head>
 <body>
@@ -20,21 +20,13 @@ include "../nav.php";
     <h1>Hello Admin</h1>
 </div>
 
-<section id="content">
-    <div class="contentSection">
-        <div class="description">
-            <form method="get" action="editEvent.php">
-                <button type="submit">edit Event</button>
-            </form>
-            <form method="get" action="editTermin.php">
-                <button type="submit">edit Termin</button>
-            </form>
-            <form method="get" action="editUeberMich.php">
-                <button type="submit">edit Über mich</button>
-            </form>
-        </div>
-    </div>
-</section>
+<div class="centeredFlex">
+    <button onclick="location.href='editEvent.php'" class="formButton">Edit Events</button>
+    <button onclick="location.href='editTermin.php'" class="formButton">Edit Calendar</button>
+    <button onclick="location.href='editUeberMich.php'" class="formButton">Edit About me</button>
+    <button onclick="location.href='editTherapie.php'" class="formButton">Edit Therapy</button>
+    <button onclick="location.href='editTraining.php'" class="formButton">Edit Training</button>
+</div>
 
 <?php
 include "../footer.php";
