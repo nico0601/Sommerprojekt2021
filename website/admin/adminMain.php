@@ -21,6 +21,7 @@ include "../nav.php";
 </div>
 
 <a href="editTherapie.php">Therapie</a>
+<a href="editTraining.php">Training</a>
 
 <?php
 include "../footer.php";

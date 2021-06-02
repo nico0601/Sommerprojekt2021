@@ -4,7 +4,7 @@ let tHead = table.querySelector('thead');
 
 let httpRequest = new XMLHttpRequest();
 httpRequest.onreadystatechange = insertData;
-httpRequest.open('GET', '/api/therapy.php');
+httpRequest.open('GET', '/api/training.php');
 httpRequest.send();
 
 function insertData(x) {
@@ -12,11 +12,14 @@ function insertData(x) {
         let responseJson = JSON.parse(x.target.response);
 
         let count = 0;
-        for (const therapyId in responseJson) {
-            if (!responseJson.hasOwnProperty(therapyId)) {
+        for (const trainingId in responseJson) {
+            if (!responseJson.hasOwnProperty(trainingId)) {
                 continue;
             }
-            let therapy = responseJson[therapyId];
+
+            console.log(responseJson[trainingId]);
+
+            let training = responseJson[trainingId];
 
             let oddRow = "";
             if (count % 2 === 0) {
@@ -26,7 +29,7 @@ function insertData(x) {
 
             let htmlText = '<tbody class="' + oddRow + '">\n' +
                 '        <tr>\n' +
-                '        <td><input class="table-input therapy-names" maxlength="50" type="text" name="' + therapyId + '" value="' + therapy.therapie_name + '"></td>\n' +
+                '        <td><input class="table-input training-names" maxlength="50" type="text" name="' + trainingId + '" value="' + training.training_name + '"></td>\n' +
                 '        <td class="expand-area">\n' +
                 '            <div class="nowrap-container">\n' +
                 '                <span class="nowrap-text">{{ concatDescription }}</span>\n' +
@@ -43,10 +46,10 @@ function insertData(x) {
                 '        <tbody class="description-container tbody-hidden ' + oddRow + '">\n';
 
             let concatDescr = "";
-            for (const description of therapy.description) {
+            for (const description of training.description) {
                 concatDescr += description.beschreibung + ", ";
                 htmlText += '<tr class="description-row">\n' +
-                    '<td colspan="2"><textarea class="table-input" maxlength="1000" name="' + description.pk_beschreibungTh_id + '">' +
+                    '<td colspan="2"><textarea class="table-input" maxlength="1000" name="' + description.pk_beschreibungtr_id + '">' +
                     description.beschreibung + '</textarea></td>\n' +
                     '        <td class="delete-col delete-row">\n' +
                     '            <span class="material-icons delete-icon">\n' +
@@ -134,7 +137,7 @@ function deleteRow(event) {
     let row = event.target.closest('tr');
     let descrId = row.querySelector('textarea').name;
 
-    deleteList.push('/api/beschreibungTh.php?id=' + descrId);
+    deleteList.push('/api/beschreibungTr.php?id=' + descrId);
 
     row.remove();
 
@@ -143,9 +146,9 @@ function deleteRow(event) {
 
 function deleteOffer(event) {
     let body = event.target.closest('tbody');
-    let descrId = body.querySelector('.therapy-names').name;
+    let descrId = body.querySelector('.training-names').name;
 
-    deleteList.push('/api/therapy.php?id=' + descrId);
+    deleteList.push('/api/training.php?id=' + descrId);
 
     body.nextElementSibling.remove();
     body.remove();
@@ -158,34 +161,34 @@ document.getElementById('add-offer').addEventListener("click", addOfferButtonCli
 function addOfferButtonClick(event) {
     let httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = putPostResp;
-    httpRequest.open('POST', '/api/therapy.php');
+    httpRequest.open('POST', '/api/training.php');
     httpRequest.setRequestHeader('Content-Type', 'application/json');
     httpRequest.send();
 }
 
 function submitForm() {
     let form = document.getElementById("editForm");
-    let therapyNames = form.getElementsByClassName("therapy-names");
+    let trainingNames = form.getElementsByClassName("training-names");
 
     let output = {};
-    for (let i = 0; i < therapyNames.length; i++) {
-        let therapyId = therapyNames[i].name;
-        let therapyName = therapyNames[i].value;
-        output[therapyId] = {
-            therapie_name: therapyName,
+    for (let i = 0; i < trainingNames.length; i++) {
+        let trainingId = trainingNames[i].name;
+        let trainingName = trainingNames[i].value;
+        output[trainingId] = {
+            training_name: trainingName,
             description: [],
         };
 
-        let descriptions = therapyNames[i].closest('tbody').nextElementSibling.childNodes;
+        let descriptions = trainingNames[i].closest('tbody').nextElementSibling.childNodes;
 
         for (let j = 0; j < descriptions.length; j++) {
             if (descriptions[j].nodeName === "TR" && descriptions[j].classList.contains("description-row")) {
                 let textarea = descriptions[j].getElementsByTagName("textarea")[0];
                 let descriptionData = {
-                    pk_beschreibungTh_id: textarea.name,
+                    pk_beschreibungTr_id: textarea.name,
                     beschreibung: textarea.value,
                 };
-                output[therapyId].description.push(descriptionData);
+                output[trainingId].description.push(descriptionData);
             }
         }
     }
@@ -197,9 +200,11 @@ function submitForm() {
         httpRequest.send()
     }
 
+    console.log(output);
+
     let httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = putPostResp;
-    httpRequest.open('PUT', '/api/therapy.php');
+    httpRequest.open('PUT', '/api/training.php');
     httpRequest.setRequestHeader('Content-Type', 'application/json');
     httpRequest.send(JSON.stringify(output));
 }

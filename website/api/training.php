@@ -26,20 +26,20 @@ function var_dump_ret($mixed = null)
     return $content;
 }
 
-function insertDescriptions(array $descriptions, \Doctrine\DBAL\Connection $conn, int $therapyId)
+function insertDescriptions(array $descriptions, \Doctrine\DBAL\Connection $conn, int $trainingId)
 {
     foreach ($descriptions as $description) {
         $queryBuilder = $conn->createQueryBuilder();
-        if (empty($description["pk_beschreibungTh_id"])) {
-            $queryBuilder->insert('beschreibungTh')
+        if (empty($description["pk_beschreibungTr_id"])) {
+            $queryBuilder->insert('beschreibungTr')
                 ->setValue('beschreibung', $conn->quote($description["beschreibung"]))
-                ->setValue('fk_pk_therapie_id', $therapyId);
+                ->setValue('fk_pk_training_id', $trainingId);
         } else {
-            $queryBuilder->update('beschreibungTh')
+            $queryBuilder->update('beschreibungTr')
                 ->set('beschreibung', ':descr')
                 ->setParameter('descr', $description["beschreibung"])
-                ->where('pk_beschreibungTh_id = :id')
-                ->setParameter('id', $description["pk_beschreibungTh_id"]);
+                ->where('pk_beschreibungTr_id = :id')
+                ->setParameter('id', $description["pk_beschreibungTr_id"]);
         }
         $queryBuilder->executeStatement();
     }
@@ -55,34 +55,34 @@ $conn = DriverManager::getConnection(array(
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $queryBuilder = $conn->createQueryBuilder();
     if (array_key_exists('id', $_GET)) {
-        $queryBuilder->select('pk_th_id, therapie_name')
-            ->from('therapie')
-            ->where('pk_th_id = ?')
+        $queryBuilder->select('pk_tr_id, training_name')
+            ->from('training')
+            ->where('pk_tr_id = ?')
             ->setParameter(0, $_GET['id']);
     } else {
-        $queryBuilder->select('pk_th_id, therapie_name')
-            ->from('therapie');
+        $queryBuilder->select('pk_tr_id, training_name')
+            ->from('training');
     }
 
     $results = $queryBuilder->fetchAllAssociativeIndexed();
 
-    $therapiesOut = $results;
+    $trainingsOut = $results;
 
-    foreach ($results as $therapy => $therapyDetails) {
+    foreach ($results as $training => $trainingDetails) {
         $queryBuilder = $conn->createQueryBuilder();
 
-        $queryBuilder->select('pk_beschreibungTh_id, beschreibung')
-            ->from('beschreibungTh')
-            ->where('fk_pk_therapie_id = ?')
-            ->setParameter(0, $therapy);
+        $queryBuilder->select('pk_beschreibungtr_id, beschreibung')
+            ->from('beschreibungTr')
+            ->where('fk_pk_training_id = ?')
+            ->setParameter(0, $training);
 
         $results = $queryBuilder->fetchAllAssociative();
 
-        $therapiesOut[$therapy]['description'] = $results;
+        $trainingsOut[$training]['description'] = $results;
     }
 
     header('content-type: application/json');
-    echo json_encode($therapiesOut);
+    echo json_encode($trainingsOut);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
@@ -90,16 +90,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     if ($_SERVER['CONTENT_TYPE'] == 'application/json') {
         $data = json_decode($request, true);
 
-        foreach ($data as $therapyId => $therapy) {
+        foreach ($data as $trainingId => $training) {
             $queryBuilder = $conn->createQueryBuilder();
-            $queryBuilder->update('therapie')
-                ->set('therapie_name', ':name')
-                ->where('pk_th_id = :id')
-                ->setParameter('name', $therapy["therapie_name"])
-                ->setParameter('id', $therapyId);
+            $queryBuilder->update('training')
+                ->set('training_name', ':name')
+                ->where('pk_tr_id = :id')
+                ->setParameter('name', $training["training_name"])
+                ->setParameter('id', $trainingId);
             $queryBuilder->executeStatement();
 
-            insertDescriptions($therapy["description"], $conn, $therapyId);
+            insertDescriptions($training["description"], $conn, $trainingId);
         }
         http_response_code(204);
     }
@@ -111,14 +111,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_SERVER['CONTENT_TYPE'] == 'application/json') {
         $data = json_decode($request, true);
         $queryBuilder = $conn->createQueryBuilder();
-        if ($data != null && array_key_exists('therapie_name', $data)) {
-            $queryBuilder->insert('therapie')
+        if ($data != null && array_key_exists('training_name', $data)) {
+            $queryBuilder->insert('training')
                 ->setValue('fk_pk_id', 1)
-                ->setValue('therapie_name', $conn->quote($data['therapie_name']));
+                ->setValue('training_name', $conn->quote($data['training_name']));
         } else {
-            $queryBuilder->insert('therapie')
+            $queryBuilder->insert('training')
                 ->setValue('fk_pk_id', 1)
-                ->setValue('therapie_name', $conn->quote(''));
+                ->setValue('training_name', $conn->quote(''));
         }
         $queryBuilder->executeStatement();
 
@@ -136,8 +136,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     if (array_key_exists('id', $_GET)) {
         $queryBuilder = $conn->createQueryBuilder();
-        $queryBuilder->delete('therapie')
-            ->where('pk_th_id = :id')
+        $queryBuilder->delete('training')
+            ->where('pk_tr_id = :id')
             ->setParameter('id', $_GET['id']);
         $queryBuilder->executeStatement();
     }
