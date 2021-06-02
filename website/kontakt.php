@@ -21,7 +21,7 @@ include "nav.php"
             <div class="item">
                 <p>Christian Werdenich</p>
                 <p>Telefon:</p>
-                <p class="right">+43 660 12345678</p>
+                <p class="right">+43 664 37112860</p>
                 <p>Email:</p>
                 <p class="right">fascial.sportstherapy@gmail.com</p>
                 <div id="socialMediaDiv">
@@ -35,8 +35,8 @@ include "nav.php"
                 <p>Medieninhaber</p>
                 <div class="right">
                     <p>Christian Werdenich</p>
-                    <p>Das Haus am Toast 22</p>
-                    <p>1230 Wieeeha</p>
+                    <p>Straße Haus-Nr.</p>
+                    <p>PLZ ORT</p>
                 </div>
                 <p class="right2">fascial.sportstherapy@gmail.com</p>
                 <a href="/agb.php">Allgemeine Geschäftsbedingungen</a>
