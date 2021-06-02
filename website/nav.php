@@ -49,13 +49,13 @@
             <div class="nav-element">
                 <a class="nav-link" href="/ueber-mich"></a>
                 <span class="material-icons icon">person</span>
-                Über uns
+                Über mich
             </div>
             <div class="nav-dropdown">
                 <div class="nav-dropdown-bg"></div>
                 <div class="nav-element">
                     <a class="nav-link" href="/ueber-mich"></a>
-                    Team
+                    Info
                 </div>
                 <div class="nav-element">
                     <a class="nav-link" href="/kontakt"></a>
