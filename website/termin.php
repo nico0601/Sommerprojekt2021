@@ -86,12 +86,18 @@ if (isset($response) && $response) {
                     ->from('termin');
                 $termine = $queryBuilder->fetchAllAssociative();
 
-                foreach ($termine as $termin) {
-
-                    $termin = new Termin($termin['pk_datum'], $termin['zeit_von'], $termin['zeit_bis'], $termin['location']);
-                    $termin = $termin->getValues();
-
+                if (empty($termine)) {
                     echo <<<ENDE
+                <div class="item calender">
+                    <p class="oswald" style="word-wrap: break-word; overflow: hidden">Keine Termine verfügbar</p>
+                </div>
+ENDE;                } else {
+                    foreach ($termine as $termin) {
+
+                        $termin = new Termin($termin['pk_datum'], $termin['zeit_von'], $termin['zeit_bis'], $termin['location']);
+                        $termin = $termin->getValues();
+
+                        echo <<<ENDE
                 <div class="item calender">
                     <p class="oswald day">{$termin["tag"]}</p>
                     <p class="time">{$termin["zeit_von"]} &ndash; {$termin["zeit_bis"]}</p>
@@ -99,6 +105,7 @@ if (isset($response) && $response) {
                     <p class="blue date">{$termin["pk_datum"]}</p>
                 </div>
 ENDE;
+                    }
                 }
                 ?>
             </div>

@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS event
 
 CREATE TABLE IF NOT EXISTS therapie
 (
-    pk_th_id      int primary key,
+    pk_th_id      int primary key auto_increment,
     therapie_name VARCHAR(50),
     fk_pk_id      INT NOT NULL,
 
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS therapie
 
 CREATE TABLE IF NOT EXISTS training
 (
-    pk_tr_id      int primary key,
+    pk_tr_id      int primary key auto_increment,
     training_name VARCHAR(50),
     fk_pk_id      INT NOT NULL,
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS training
 
 CREATE TABLE IF NOT EXISTS beschreibungTh
 (
-    pk_beschreibungTh_id INT PRIMARY KEY,
+    pk_beschreibungTh_id INT PRIMARY KEY AUTO_INCREMENT,
     beschreibung         VARCHAR(1000) NOT NULL,
     fk_pk_therapie_id    int           NOT NULL,
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS beschreibungTh
 
 CREATE TABLE IF NOT EXISTS beschreibungTr
 (
-    pk_beschreibungTr_id INT PRIMARY KEY,
+    pk_beschreibungTr_id INT PRIMARY KEY AUTO_INCREMENT,
     beschreibung         VARCHAR(1000) NOT NULL,
     fk_pk_training_id    int           NOT NULL,
 

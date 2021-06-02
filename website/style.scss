@@ -52,6 +52,46 @@ h3 {
   color: #00ADD0;
 }
 
+.nowrap-text {
+  white-space: nowrap;
+  text-overflow: "...";
+  width: 100%;
+  display: block;
+  overflow: hidden !important;
+}
+
+.expand-icon {
+  font-size: 1.2em;
+  margin-top: -2px;
+  right: 0;
+  position: absolute;
+}
+
+.delete-icon {
+  font-size: 1.2em;
+  height: 1.2em;
+  //margin-top: -2px;
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.delete-col {
+  position: relative;
+}
+
+.nowrap-container {
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: calc(100% - 1.3em) 1.3em;
+  position: relative;
+  cursor: pointer;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -62,11 +102,16 @@ h3 {
 
 #heading {
   background: #D7D8D9;
-  height: 100px;
+  min-height: 100px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  word-wrap: anywhere;
+
+  h1 {
+    text-align: center;
+  }
 }
 
 .contentHeading {

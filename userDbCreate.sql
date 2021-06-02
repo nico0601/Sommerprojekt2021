@@ -1,6 +1,13 @@
 create user if not exists phpUser@localhost;
 alter user phpUser@localhost
 identified by 'DanielleAndDorkaAreMyCuddles';
+-- :::::::::::::::::::::::::::::::::::::::::::::
+-- :::::::::::::::::::::::::::::::::::::::::::::
+-- :::::::::::::::::::::::::::::::::::::::::::::
+-- ::::: TODO: Change Secret before deploy :::::
+-- :::::::::::::::::::::::::::::::::::::::::::::
+-- :::::::::::::::::::::::::::::::::::::::::::::
+-- :::::::::::::::::::::::::::::::::::::::::::::
 
 DROP DATABASE IF EXISTS fastUserDb;
 CREATE DATABASE IF NOT EXISTS fastUserDb;
@@ -18,7 +25,7 @@ create table tokens(
 );
 
 insert into users (userName, passwdHash)
-values ('admin', '$2y$10$M4eKwE5DdI4dr.ecgD14OO3l6C/jZFtlZDKR3/wdegY1YZShZz7iC');
+values ('admin', '$2y$10$/YbSCrdNktKjUWPi.ocQuuDAdB5yLtAuAzl16CzzxeUxovHTLCZcG');
 
 grant all on fastUserDb.* to phpUser@localhost;
 grant all on fast_db.* to phpUser@localhost;
