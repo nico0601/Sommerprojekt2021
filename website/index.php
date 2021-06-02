@@ -43,7 +43,7 @@ include "nav.php";
     <div class="contentSection">
         <div class="description">
             <img src="/images/pfeil.png" class="nav" id="buttonLeft1" alt="<-">
-            <form method="get" action="therapie.php">
+            <form method="post" action="/therapie">
 
                 <?php
                 include __DIR__ . "/getPDO.php";
@@ -72,7 +72,7 @@ ENDE;
         <div class="description">
             <img src="/images/pfeil.png" class="nav" id="buttonLeft2" alt="<-">
 
-            <form method="get" action="training.php">
+            <form method="post" action="/training">
                 <?php
                 $queryBuilder = getPDO()
                     ->select("*")

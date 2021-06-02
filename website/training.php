@@ -33,8 +33,8 @@ include "nav.php"
         <div class="contentHeading">{$training["training_name"]}</div>
 ENDE;
 
-        if (isset($_GET['angebot']) && $_GET['angebot'] !== "") {
-            if ($_GET['angebot'] == $i) {
+        if (isset($_POST['angebot']) && $_POST['angebot'] !== "") {
+            if ($_POST['angebot'] == $i) {
                 echo "<div class='description noHidden'>";
             } else {
                 echo "<div class='description hidden'>";
