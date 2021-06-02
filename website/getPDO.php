@@ -7,9 +7,18 @@ include __DIR__ . "/../vendor/autoload.php";
 
 function getPDO()
 {
+//    $conn = DriverManager::getConnection(array(
+//        'dbname' => 'fastDb',
+//        'user' => 'phpUser',
+//        'password' => 'DanielleAndDorkaAreMyCuddles',
+//        'host' => 'localhost',
+//        'driver' => 'pdo_mysql'));
+//    return $queryBuilder = $conn->createQueryBuilder();
+
+    // für BPLACED:
     $conn = DriverManager::getConnection(array(
-        'dbname' => 'fast_db',
-        'user' => 'phpUser',
+        'dbname' => 'quiz_fastDb',
+        'user' => 'quiz_phpUser',
         'password' => 'DanielleAndDorkaAreMyCuddles',
         'host' => 'localhost',
         'driver' => 'pdo_mysql'));
@@ -18,9 +27,18 @@ function getPDO()
 
 function getUserPDO()
 {
+//    $conn = DriverManager::getConnection(array(
+//        'dbname' => 'fastUserDb',
+//        'user' => 'phpUser',
+//        'password' => 'DanielleAndDorkaAreMyCuddles',
+//        'host' => 'localhost',
+//        'driver' => 'pdo_mysql'));
+//    return $queryBuilder = $conn->createQueryBuilder();
+
+    // für BPLACED:
     $conn = DriverManager::getConnection(array(
-        'dbname' => 'fastUserDb',
-        'user' => 'phpUser',
+        'dbname' => 'quiz_fastUserDb',
+        'user' => 'quiz_phpUser',
         'password' => 'DanielleAndDorkaAreMyCuddles',
         'host' => 'localhost',
         'driver' => 'pdo_mysql'));
