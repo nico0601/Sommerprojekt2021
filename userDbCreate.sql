@@ -28,4 +28,3 @@ insert into users (userName, passwdHash)
 values ('admin', '$2y$10$/YbSCrdNktKjUWPi.ocQuuDAdB5yLtAuAzl16CzzxeUxovHTLCZcG');
 
 grant all on fastUserDb.* to phpUser@localhost;
-grant all on fast_db.* to phpUser@localhost;

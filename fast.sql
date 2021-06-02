@@ -1,5 +1,8 @@
-DROP DATABASE IF EXISTS fastDb;
+create user if not exists phpUser@localhost;
+alter user phpUser@localhost
+identified by 'DanielleAndDorkaAreMyCuddles';
 
+DROP DATABASE IF EXISTS fastDb;
 CREATE DATABASE IF NOT EXISTS fastDb;
 
 use fastDb;
@@ -180,3 +183,6 @@ VALUES ('2021-06-16', '08:00', '11:30', 'Praxis', 1),
        ('2021-06-24', '15:00', '16:30', 'Praxis', 1),
        ('2021-06-25', '09:00', '09:30', 'Praxis', 1),
        ('2021-06-29', '10:00', '12:30', 'Event', 1);
+
+
+grant all on fastDb.* to phpUser@localhost;
