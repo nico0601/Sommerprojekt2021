@@ -95,8 +95,18 @@ ENDE;
 
             <img src="/images/pfeil.png" class="nav" id="buttonRight2" alt="->">
         </div>
-        <div class="description">
+        <div class="description" id="infotext">
+            <h2 class="oswald blue">Information:</h2>
+            <?php
+            $queryBuilder = getPDO()
+                ->select("*")
+                ->from('ueber_mich');
+            $stmt = $queryBuilder->fetchAllAssociative();
 
+            foreach ($stmt as $ueber_mich) {
+                echo "<p id='descriptionText'>" . nl2br($ueber_mich["infotext"]) . "</p>";
+            }
+            ?>
         </div>
     </div>
 </section>

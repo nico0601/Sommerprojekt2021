@@ -1,3 +1,10 @@
+.contentSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
 #video {
   position: relative;
   display: flex;
@@ -70,7 +77,6 @@
   border: 0.65vw solid white;
   font-size: 3vw;
   width: 25vw;
-  //margin: 0;
 }
 
 .button:hover {
@@ -92,12 +98,25 @@
 
 
 .description {
+  width: 100vw;
   background: #4D4D4D;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   padding: 50px 0;
+}
+#infotext {
+  width: 50vw;
+  background: none;
+  flex-direction: column;
+  text-align: justify;
+}
+#descriptionText {
+  margin: 20px 0;
+}
+h2 {
+  font-size: 40px;
 }
 
 .therapie, .training {
@@ -177,6 +196,14 @@
     font-size: 5vw;
     width: 35vw;
   }
+
+
+  #infotext {
+    width: 65vw;
+  }
+  h2 {
+    font-size: 30px;
+  }
 }
 
 @media (max-width: 650px) {
@@ -194,6 +221,10 @@
   }
   .nav {
     width: 40px;
+  }
+
+  #infotext {
+    width: 50vw;
   }
 }
 
@@ -218,16 +249,19 @@
   .therapie, .training {
     margin: 0 20px;
   }
+
+  #infotext {
+    width: 85vw;
+  }
+  h2 {
+    font-size: 25px;
+  }
 }
 
 @media (max-width: 350px) {
   #logo {
     width: 30vw;
   }
-
-  //#fastText {
-  //  margin-top: 1vw;
-  //}
 
   .angebotA {
     max-width: 150px;
