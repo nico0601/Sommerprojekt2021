@@ -63,8 +63,8 @@ include "../nav.php";
             <td></td>
         </tr>
     </table>
-    <button type="submit" class="pure-button pure-button-primary" style="right: 0; position:absolute;">Save changes
-    </button>
+    <button type="submit" class="pure-button pure-button-primary" style="float: right;">Save changes</button>
+    <button type="button" class="pure-button" onclick="location.href = '/admin'" style="float: right">Zurück</button>
 </form>
 
 <div id="result">
