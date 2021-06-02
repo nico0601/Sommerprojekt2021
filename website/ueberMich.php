@@ -5,9 +5,9 @@
 <html lang="en">
 <head>
 
-  <?php
-  include "header.php"
-  ?>
+    <?php
+    include "header.php"
+    ?>
     <title>F.A.S.T - Über mich</title>
     <link rel="stylesheet" href="/ueberMich.css">
 </head>
@@ -32,7 +32,7 @@ include "nav.php"
             <div class="item">
                 <p class="blue oswald left3">Information</p>
                 <?php
-                include "getPDO.php";
+                include __DIR__ . "/getPDO.php";
 
                 $queryBuilder = getPDO()
                     ->select("*")
@@ -40,7 +40,7 @@ include "nav.php"
                 $stmt = $queryBuilder->fetchAllAssociative();
 
                 foreach ($stmt as $ueber_mich) {
-                    echo "<p id='descriptionText'>".nl2br($ueber_mich["infotext"])."</p>";
+                    echo "<p id='descriptionText'>" . nl2br($ueber_mich["infotext"]) . "</p>";
                 }
                 ?>
             </div>

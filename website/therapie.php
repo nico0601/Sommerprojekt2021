@@ -18,7 +18,7 @@ include "nav.php"
 </div>
 <section id="content">
     <?php
-    include "getPDO.php";
+    include_once __DIR__ . "/getPDO.php";
 
     ini_set('display_errors', '1');
     ini_set('display_startup_errors', '1');

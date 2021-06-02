@@ -1,7 +1,5 @@
 <?php
-session_start();
-include_once "getPDO.php";
-require_once "Event.php";
+include "adminSpaceHeader.php";
 
 if (isset($_FILES['event']['tmp_name']) && $_FILES['event']['tmp_name'] != "" &&
     filesize($_FILES['event']['tmp_name']) < 50000000) {

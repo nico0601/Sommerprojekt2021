@@ -1,6 +1,4 @@
 <?php
-include_once "../getPDO.php";
-
 class Termin
 {
     /**

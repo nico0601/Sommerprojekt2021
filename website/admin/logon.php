@@ -3,8 +3,12 @@
 use Doctrine\DBAL\DriverManager;
 
 session_start();
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
 
-include "../../vendor/autoload.php";
+include_once __DIR__ . "/../../vendor/autoload.php";
+include __DIR__ . "/../getPDO.php";
 
 $loginError = false;
 
@@ -22,17 +26,8 @@ try {
 function isLoggedIn()
 {
     if (key_exists("token", $_SESSION)) {
-        $conn = DriverManager::getConnection(array(
-            'dbname' => 'fastUserDb',
-            'user' => 'phpUser',
-            'password' => 'DanielleAndDorkaAreMyCuddles',
-            'host' => 'localhost',
-            'driver' => 'pdo_mysql'));
-
-        $queryBuilder = $conn->createQueryBuilder();
-
         $token = $_SESSION["token"];
-        $queryBuilder
+        $queryBuilder = getUserPDO()
             ->select('expiryDate')
             ->from('tokens')
             ->where('pk_tokenId = ?')
@@ -47,7 +42,7 @@ function isLoggedIn()
         }
 
         if (date_diff($currentDate, $expiryDate)->invert == 1) {
-            $queryBuilder
+            getUserPDO()
                 ->delete("tokens")
                 ->where("pk_tokenId = ?")
                 ->setParameter(0, $token)

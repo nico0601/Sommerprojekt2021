@@ -1,5 +1,5 @@
 <?php
-include_once "getPDO.php";
+include "adminSpaceHeader.php";
 
 class Event
 {

@@ -46,7 +46,7 @@ include "nav.php";
             <form method="get" action="therapie.php">
 
                 <?php
-                include "getPDO.php";
+                include __DIR__ . "/getPDO.php";
 
                 $queryBuilder = getPDO()
                     ->select("*")

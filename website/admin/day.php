@@ -1,4 +1,6 @@
 <?php
+include "adminSpaceHeader.php";
+
 $datePattern = "/^[\d]{4}-[\d]{2}-[\d]{2}$/";
 
 if (isset($_GET['date']) && $_GET['date'] != "" && preg_match($datePattern, $_GET['date'])) {

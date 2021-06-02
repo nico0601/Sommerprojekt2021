@@ -1,21 +1,14 @@
 <?php
 session_start();
 
-include "../../vendor/autoload.php";
+include_once __DIR__ . "/../../vendor/autoload.php";
+include_once __DIR__ . "/../getPDO.php";
 
 use Doctrine\DBAL\DriverManager;
 
 if (key_exists("token", $_SESSION)) {
-    $conn = DriverManager::getConnection(array(
-        'dbname' => 'fastUserDb',
-        'user' => 'phpUser',
-        'password' => 'DanielleAndDorkaAreMyCuddles',
-        'host' => 'localhost',
-        'driver' => 'pdo_mysql'));
-    $queryBuilder = $conn->createQueryBuilder();
-
     $token = $_SESSION["token"];
-    $queryBuilder
+    $queryBuilder = getUserPDO()
         ->select('expiryDate')
         ->from('tokens')
         ->where('pk_tokenId = ?')
@@ -37,7 +30,7 @@ if (key_exists("token", $_SESSION)) {
     }
 
     if (date_diff($currentDate, $expiryDate)->invert == 1) {
-        $queryBuilder
+        $queryBuilder = getUserPDO()
             ->delete("tokens")
             ->where("pk_tokenId = ?")
             ->setParameter(0, $token)

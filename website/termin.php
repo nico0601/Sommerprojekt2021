@@ -14,8 +14,9 @@
 <body>
 <?php
 include "nav.php";
-include "getPDO.php";
+include __DIR__ . "/getPDO.php";
 
+//TODO: Change
 //$to = "fascial.sportstherapy@gmail.com";
 $to = "7157@htl.rennweg.at";
 
@@ -42,30 +43,30 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
     }
 
     $termin = explode("-", $termin);
-    $termin = $termin[2].".".$termin[1].".".$termin[0];
+    $termin = $termin[2] . "." . $termin[1] . "." . $termin[0];
 
     $message = "
           Ich möchte für den " . $termin . " einen Termin anfragen!\n
           " . $_POST["nachricht"] . "\n
           Mit freundlichen Grüßen\n
-          Gesendet von: ".$_POST['email']
-    ;
+          Gesendet von: " . $_POST['email'];
 
     if ($validtermin) {
         try {
             $response = mail($to, $_POST['betreff'], $message, $header);
-        } catch (Exception $ex) {}
-    }else {
+        } catch (Exception $ex) {
+        }
+    } else {
         $response = false;
     }
-}else if (isset($_POST['betreff']) || isset($_POST['termin']) || isset($_POST['nachricht']) || isset($_POST['email'])) {
+} else if (isset($_POST['betreff']) || isset($_POST['termin']) || isset($_POST['nachricht']) || isset($_POST['email'])) {
     $response = false;
 }
 
 
 if (isset($response) && $response) {
     echo "<div id='erfolgreich'><h2>Email erfolgreich versendet!</h2></div>";
-}else if (isset($response) && $response === false) {
+} else if (isset($response) && $response === false) {
     echo "<div id='fehlgeschlagen' class='error'><h2>Email konnte leider nicht versendet werden!<br><span id='kleiner'>(Ist der gewählte Termin in dem Kalender angeführt?)</span></h2></div>";
 }
 ?>
@@ -141,7 +142,7 @@ ENDE;
                         if ($i == 0) {
                             $min = $termin["pk_datum"];
                             $max = $termin["pk_datum"];
-                        }else {
+                        } else {
                             if (strtotime($min) > strtotime($termin["pk_datum"])) {
                                 $min = $termin["pk_datum"];
                             }
@@ -152,7 +153,7 @@ ENDE;
                         $i++;
                     }
 
-                    echo '<input type="date" name="termin" id="termin" min="'.$min.'" max="'.$max.'" pattern="\d{2}.\d{2}.\d{4}" required>'
+                    echo '<input type="date" name="termin" id="termin" min="' . $min . '" max="' . $max . '" pattern="\d{2}.\d{2}.\d{4}" required>'
                     ?>
 
                     <label for="nachricht">Nachricht: <sup>*</sup></label>

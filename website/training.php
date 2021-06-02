@@ -19,7 +19,7 @@ include "nav.php"
 </div>
 <section id="content">
     <?php
-    include "getPDO.php";
+    include __DIR__ . "/getPDO.php";
 
     $queryBuilder = getPDO()
         ->select("*")
