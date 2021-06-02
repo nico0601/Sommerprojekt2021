@@ -2,7 +2,9 @@ create user if not exists phpUser@localhost;
 alter user phpUser@localhost
 identified by 'DanielleAndDorkaAreMyCuddles';
 
-create or replace database fastUserDb;
+DROP DATABASE IF EXISTS fastUserDb;
+CREATE DATABASE IF NOT EXISTS fastUserDb;
+
 use fastUserDb;
 
 create table users(
@@ -18,4 +20,5 @@ create table tokens(
 insert into users (userName, passwdHash)
 values ('admin', '$2y$10$M4eKwE5DdI4dr.ecgD14OO3l6C/jZFtlZDKR3/wdegY1YZShZz7iC');
 
-grant all on fastUserDb.* to phpUser@localhost
+grant all on fastUserDb.* to phpUser@localhost;
+grant all on fast_db.* to phpUser@localhost;
