@@ -43,7 +43,7 @@ include "nav.php";
     <div class="contentSection">
         <div class="description">
             <img src="/images/pfeil.png" class="nav" id="buttonLeft1" alt="<-">
-            <form method="post" action="/therapie">
+            <form method="post" action="/therapie-angebote">
 
                 <?php
                 include __DIR__ . "/getPDO.php";
@@ -57,7 +57,7 @@ include "nav.php";
                 foreach ($therapien as $therapie) {
                     echo <<<ENDE
                 <div class="item therapie">
-                    <a href="/therapie" class="angebotA">
+                    <a href="/therapie-angebote" class="angebotA">
                         <button type="submit" name="angebot" value="$i" class="button">{$therapie["therapie_name"]}</button>
                     </a>
                 </div>
@@ -72,7 +72,7 @@ ENDE;
         <div class="description">
             <img src="/images/pfeil.png" class="nav" id="buttonLeft2" alt="<-">
 
-            <form method="post" action="/training">
+            <form method="post" action="/training-angebote">
                 <?php
                 $queryBuilder = getPDO()
                     ->select("*")
@@ -83,7 +83,7 @@ ENDE;
                 foreach ($trainings as $training) {
                     echo <<<ENDE
                 <div class="item training">
-                    <a href="/training" class="angebotA">
+                    <a href="/training-angebote" class="angebotA">
                         <button type="submit" name="angebot" value="$i" class="button">{$training["training_name"]}</button>
                     </a>
                 </div>
@@ -94,6 +94,9 @@ ENDE;
             </form>
 
             <img src="/images/pfeil.png" class="nav" id="buttonRight2" alt="->">
+        </div>
+        <div class="description">
+
         </div>
     </div>
 </section>
