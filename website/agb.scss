@@ -14,3 +14,11 @@
     margin-bottom: 10pt;
   }
 }
+
+@media (max-width: 1000px) {
+  .agbText {
+    width: 90vw;
+    margin: 15px;
+    text-wrap: normal;
+  }
+}
