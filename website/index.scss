@@ -108,9 +108,11 @@
 }
 #infotext {
   width: 50vw;
-  background: none;
+  background: #d7d8d9;
   flex-direction: column;
   text-align: justify;
+  padding: 25px 50px;
+  margin: 50px 0;
 }
 #descriptionText {
   margin: 20px 0;
@@ -224,7 +226,8 @@ h2 {
   }
 
   #infotext {
-    width: 50vw;
+    width: 80vw;
+    padding: 10px 20px;
   }
 }
 
