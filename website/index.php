@@ -19,7 +19,7 @@ include "nav.php";
 ?>
 <div id="video">
     <video class="videoElement lozad" preload="none" autoplay muted loop playsinline>
-        <!--        <source data-src="/video/FAST_manifest.xml" type="application/dash+xml"/>-->
+        <source data-src="/video/FAST_manifest.xml" type="application/dash+xml"/>
         <source data-src="/video/FAST_160x90_250k.webm" type="video/webm">
     </video>
 
