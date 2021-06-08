@@ -78,7 +78,8 @@ if (isset($_POST['von'], $_POST['bis'], $_POST['location'], $_POST['termin']) &&
 
                 $queryBuilder = getPDO()
                     ->select("*")
-                    ->from('termin');
+                    ->from('termin')
+                    ->orderBy('pk_datum', 'ASC');
                 $termine = $queryBuilder->fetchAllAssociative();
 
                 foreach ($termine as $termin) {

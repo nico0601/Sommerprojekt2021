@@ -195,7 +195,8 @@ ENDE;
 
                 $queryBuilder = getPDO()
                     ->select("*")
-                    ->from('termin');
+                    ->from('termin')
+                    ->orderBy('pk_datum', 'ASC');
                 $termine = $queryBuilder->fetchAllAssociative();
 
                 if (empty($termine)) {
@@ -252,7 +253,8 @@ ENDE;
                     <?php
                     $queryBuilder = getPDO()
                         ->select("*")
-                        ->from('termin');
+                        ->from('termin')
+                        ->orderBy('pk_datum', 'ASC');
                     $termine = $queryBuilder->fetchAllAssociative();
                     $i = 0;
                     $min = '';
