@@ -35,8 +35,8 @@ include "nav.php"
                 <p>Medieninhaber</p>
                 <div class="right">
                     <p>Christian Werdenich</p>
-                    <p>Straße Haus-Nr.</p>
-                    <p>PLZ ORT</p>
+                    <p>Donaufelderstraße 40-42</p>
+                    <p>1210 Wien</p>
                 </div>
                 <p class="right2">fascial.sportstherapy@gmail.com</p>
                 <a href="/agb.php">Allgemeine Geschäftsbedingungen</a>
