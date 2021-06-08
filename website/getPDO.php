@@ -12,7 +12,8 @@ function getPDO()
         'user' => 'phpUser',
         'password' => 'DanielleAndDorkaAreMyCuddles',
         'host' => 'localhost',
-        'driver' => 'pdo_mysql'));
+        'driver' => 'pdo_mysql',
+        'charset' => 'UTF8'));
     return $queryBuilder = $conn->createQueryBuilder();
 
     // für BPLACED:
@@ -32,7 +33,8 @@ function getUserPDO()
         'user' => 'phpUser',
         'password' => 'DanielleAndDorkaAreMyCuddles',
         'host' => 'localhost',
-        'driver' => 'pdo_mysql'));
+        'driver' => 'pdo_mysql',
+        'charset' => 'UTF8'));
     return $queryBuilder = $conn->createQueryBuilder();
 
     // für BPLACED:
