@@ -36,7 +36,7 @@ ENDE;
         </div>
         <div class="contentInfo">
             <p>Bei Interesse entweder</p>
-            <p class="bold">telefonisch (+43 664 37112860)</p>
+            <p class="bold">telefonisch (+43 664 3712860)</p>
             <p>oder</p>
             <p class="bold">per Email (fascial.sportstherapy@gmail.com)</p>
             <p>Kontakt aufnehmen</p>

@@ -21,7 +21,7 @@ include "nav.php"
             <div class="item">
                 <p>Christian Werdenich</p>
                 <p>Telefon:</p>
-                <p class="right">+43 664 37112860</p>
+                <p class="right">+43 664 3712860</p>
                 <p>Email:</p>
                 <p class="right">fascial.sportstherapy@gmail.com</p>
                 <div id="socialMediaDiv">
