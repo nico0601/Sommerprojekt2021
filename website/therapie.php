@@ -56,7 +56,7 @@ ENDE;
         foreach ($angebote as $angebot) {
             echo <<<ENDE
             <div class="item">
-                <img class="plus" src="/images/plus.svg" alt="plus icon">
+                <img class="plus" src="/images/punkt.png" alt="plus icon">
                 <a>{$angebot["beschreibung"]}</a>
             </div>
 ENDE;
