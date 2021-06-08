@@ -5,6 +5,8 @@ identified by 'DanielleAndDorkaAreMyCuddles';
 DROP DATABASE IF EXISTS fastDb;
 CREATE DATABASE IF NOT EXISTS fastDb;
 
+ALTER DATABASE fastDb CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 use fastDb;
 
 CREATE TABLE IF NOT EXISTS fast

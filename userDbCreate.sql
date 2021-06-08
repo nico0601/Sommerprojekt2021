@@ -12,6 +12,8 @@ identified by 'DanielleAndDorkaAreMyCuddles';
 DROP DATABASE IF EXISTS fastUserDb;
 CREATE DATABASE IF NOT EXISTS fastUserDb;
 
+ALTER DATABASE fastUserDb CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 use fastUserDb;
 
 create table users(
