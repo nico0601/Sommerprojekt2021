@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS fast
     pk_id INT PRIMARY KEY
 );
 
-CREATE TABLE IF NOT EXISTS event
+CREATE TABLE IF NOT EXISTS events
 (
     pk_event VARCHAR(200) PRIMARY KEY,
     fk_pk_id INT NOT NULL,
@@ -84,7 +84,7 @@ INSERT INTO fast(pk_id)
 VALUES (1);
 
 
-INSERT INTO event(pk_event, fk_pk_id)
+INSERT INTO events(pk_event, fk_pk_id)
 VALUES ('/events/Event.jpg', 1),
        ('/events/Event1.jpg', 1),
        ('/events/Event2.jpg', 1),

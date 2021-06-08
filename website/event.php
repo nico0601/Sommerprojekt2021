@@ -22,7 +22,7 @@ include "nav.php"
 
             $queryBuilder = getPDO()
                 ->select("*")
-                ->from('event');
+                ->from('events');
             $events = $queryBuilder->fetchAllAssociative();
 
             foreach ($events as $event) {

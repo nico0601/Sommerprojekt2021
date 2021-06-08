@@ -44,7 +44,7 @@ class Event
 
         $queryBuilder = getPDO()
             ->select('*')
-            ->from('event');
+            ->from('events');
         $events = $queryBuilder->fetchAllAssociative();
 
         foreach ($events as $event) {
@@ -63,7 +63,7 @@ class Event
     {
         if (preg_match($this->eventPattern, $this->event)) {
             $queryBuilder = getPDO()
-                ->delete('event')
+                ->delete('events')
                 ->where('pk_event = ?')
                 ->setParameter(0, $this->event);
             $queryBuilder->execute();
@@ -84,7 +84,7 @@ class Event
     {
         if (!$this->duplicate && preg_match($this->eventPattern, $this->event)) {
             $queryBuilder = getPDO()
-                ->insert('event')
+                ->insert('events')
                 ->values(array(
                     'pk_event' => '?',
                     'fk_pk_id' => 1

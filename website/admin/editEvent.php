@@ -40,7 +40,7 @@ if (isset($_SESSION['file']) && $_SESSION['file'] != "") {
 
             $queryBuilder = getPDO()
                 ->select("*")
-                ->from('event');
+                ->from('events');
             $events = $queryBuilder->fetchAllAssociative();
 
             foreach ($events as $event) {
