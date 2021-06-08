@@ -1,5 +1,5 @@
 <footer>
-    <a href="/kontakt">Kontakt</a> | <a href="/kontakt">Impressum</a> | <a href="/admin">Admin Bereich</a>
+    <a href="/kontakt">Kontakt</a> | <a href="/agb.php">Impressum</a> | <a href="/admin">Admin Bereich</a>
     <br><br>
-    &copy; 2021 <a href="https://github.com/christoph-samuel">Christoph Samuel</a>
+    &copy; 2021 Christian Werdenich
 </footer>
