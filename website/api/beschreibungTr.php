@@ -38,7 +38,7 @@ function var_dump_ret($mixed = null)
 
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     if (array_key_exists('id', $_GET)) {
-        $queryBuilder = $conn->createQueryBuilder();
+        $queryBuilder = getPDO();
         $queryBuilder->delete('beschreibungTr')
             ->where('pk_beschreibungTr_id = :id')
             ->setParameter('id', $_GET['id']);
