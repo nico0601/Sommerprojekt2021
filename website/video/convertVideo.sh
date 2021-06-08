@@ -4,7 +4,7 @@ filename=$(basename -- "$fullfile")
 filename="${filename%.*}"
 
 if test -f "$FILE"; then
-echo "Do you wish to install this program?"
+echo "Do you wish to override the videos?"
 select yn in "Yes" "No"; do
     case $yn in
         Yes ) break;;
@@ -12,7 +12,7 @@ select yn in "Yes" "No"; do
     esac
 done
 rm ${filename}_*.webm
-
+fi
 
 ffmpeg -i $1 -c:v libvpx-vp9 -keyint_min 150 \
 -g 150 -tile-columns 4 -frame-parallel 1  -f webm -dash 1 \
@@ -33,3 +33,4 @@ ffmpeg \
   -f webm_dash_manifest \
   -adaptation_sets "id=0,streams=0,1,2,3,4" \
   ${filename}_manifest.mpd
+

@@ -21,6 +21,7 @@ include "nav.php";
     <video class="videoElement lozad" preload="none" autoplay muted loop playsinline>
         <source data-src="/video/FAST_manifest.xml" type="application/dash+xml"/>
         <source data-src="/video/FAST_160x90_250k.webm" type="video/webm">
+        <source data-src="/video/FAST_640x360_1000k.mp4" type="video/mp4">
     </video>
 
     <div class="videoOverlay">
