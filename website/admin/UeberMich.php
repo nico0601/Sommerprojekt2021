@@ -14,7 +14,7 @@ class UeberMich
      * @var string
      */
 
-    private string $textPattern = "/^[\w `'{}()%&\-@#$~!_^\/\.\n\r]*$/m";
+    private string $textPattern = "/^[\wÄäöÖÜüß `'{}()%&\-@#$~!_^\/\.\n\r]*$/m";
 
     /**
      * UeberMich constructor.

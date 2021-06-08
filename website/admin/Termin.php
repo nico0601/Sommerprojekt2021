@@ -1,4 +1,5 @@
 <?php
+
 class Termin
 {
     /**
@@ -20,7 +21,7 @@ class Termin
 
     private string $datePattern = "/^[\d]{4}-[\d]{2}-[\d]{2}$/";
     private string $timePattern = "/^[\d]{2}:[\d]{2}$/";
-    private string $locationPattern = "/^[\w\d `'{}()%&\-@#$~!_^\/]*$/";
+    private string $locationPattern = "/^[\wÄäöÖÜüß `'{}()%&\-@#$~!_^\/\.\n\r]*$/m";
 
     /**
      * Termin constructor.

@@ -1,4 +1,5 @@
 <?php
+session_start()
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +10,7 @@
     ?>
     <title>F.A.S.T - Termine</title>
     <link rel="stylesheet" href="/termin.css">
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
     <script type="text/javascript" src="/response.js" defer></script>
 </head>
 <body>
@@ -16,17 +18,77 @@
 include "nav.php";
 include __DIR__ . "/getPDO.php";
 
+//phpinfo();
+
 //TODO: Change
 //$to = "fascial.sportstherapy@gmail.com";
 $to = "7157@htl.rennweg.at";
 
-$pattern = "/^\s*$/mi";
+$patternText = "/^[\wÄäöÖÜüß `'{}()%&\-@#$~!_^\/\.\n\r]*$/m";
+$patternTermin = "/^\d{4}-\d{2}-\d{2}$/m";
+
+function post($url, $postVars = array())
+{
+    //Transform our POST array into a URL-encoded query string.
+    $postStr = http_build_query($postVars);
+    //Create an $options array that can be passed into stream_context_create.
+    $options = array(
+        'http' =>
+            array(
+                'method' => 'POST', //We are using the POST HTTP method.
+                'header' => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $postStr //Our URL-encoded query string.
+            )
+    );
+    //Pass our $options array into stream_context_create.
+    //This will return a stream context resource.
+    $streamContext = stream_context_create($options);
+    //Use PHP's file_get_contents function to carry out the request.
+    //We pass the $streamContext variable in as a third parameter.
+    $result = file_get_contents($url, false, $streamContext);
+    //If $result is FALSE, then the request has failed.
+    if ($result === false) {
+        //If the request failed, throw an Exception containing
+        //the error.
+        $error = error_get_last();
+        throw new Exception('POST request failed: ' . $error['message']);
+    }
+    //If everything went OK, return the response.
+    return $result;
+}
+
+if (isset($_POST['h-captcha-response']) && $_POST['h-captcha-response'] != "") {
+# PSEUDO CODE
+    $SECRET_KEY = "0xCb38bf4698c81885673634B370230fC585f39f49";
+    $VERIFY_URL = "https://hcaptcha.com/siteverify";
+
+# Retrieve token from post data with key 'h-captcha-response'.
+    $token = $_POST['h-captcha-response'];
+
+# Build payload with secret key and token.
+    $data = array(
+        'secret' => $SECRET_KEY,
+        'response' => $token
+    );
+
+# Post data to api and check
+    try {
+        $responseHCaptcha = post("https://hcaptcha.com/siteverify", $data);
+    } catch (Exception $ex) {
+    }
+}
 
 if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['email']) &&
-    !preg_match($pattern, $_POST['betreff']) && !preg_match($pattern, $_POST['termin']) &&
-    !preg_match($pattern, $_POST['nachricht']) && !preg_match($pattern, $_POST['email'])) {
+    preg_match($patternText, $_POST['betreff']) && preg_match($patternTermin, $_POST['termin']) &&
+    preg_match($patternText, $_POST['nachricht']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+
     $header = array(
-        'From' => $_POST['email']
+        'From' => $_POST['email'],
+        'Content-type' => 'text/html; charset=utf8_unicode_ci',
+        'Reply-To' => $_POST['email'],
+        'Return-Path' => $_POST['email'],
+        'X-Mailer: PHP/' => phpversion(),
+        'MIME-Version' => '1.0'
     );
 
     $termin = $_POST['termin'];
@@ -45,29 +107,79 @@ if (isset($_POST['betreff'], $_POST['termin'], $_POST['nachricht'], $_POST['emai
     $termin = explode("-", $termin);
     $termin = $termin[2] . "." . $termin[1] . "." . $termin[0];
 
-    $message = "
-          Ich möchte für den " . $termin . " einen Termin anfragen!\n
-          " . $_POST["nachricht"] . "\n
-          Mit freundlichen Grüßen\n
-          Gesendet von: " . $_POST['email'];
+    $message = <<<ENDE
+    <body>
+          <p>Ich möchte für den $termin einen Termin anfragen!</p>
+          <p>{$_POST["nachricht"]}</p>
+          <p>Mit freundlichen Grüßen</p>
+          <br>
+          <p>Gesendet von: {$_POST["email"]}</p>
+    </body>
+ENDE;
 
     if ($validtermin) {
         try {
-            $response = mail($to, $_POST['betreff'], $message, $header);
+            if ($responseHCaptcha) {
+                if (isset($_SESSION['betreff'], $_SESSION['termin'], $_SESSION['nachricht'], $_SESSION['email'])) {
+                    if ($_SESSION['betreff'] != $_POST['betreff'] || $_SESSION['termin'] != $_POST['termin'] ||
+                        $_SESSION['nachricht'] != $_POST['nachricht'] || $_SESSION['email'] != $_POST['email']) {
+
+                        $response = mail($to, $_POST['betreff'], $message, $header);
+                        $_SESSION['betreff'] = $_POST['betreff'];
+                        $_SESSION['termin'] = $_POST['termin'];
+                        $_SESSION['nachricht'] = $_POST['nachricht'];
+                        $_SESSION['email'] = $_POST['email'];
+                    } else {
+                        $response = 'duplicate';
+                    }
+                } else {
+                    $response = mail($to, $_POST['betreff'], $message, $header);
+                    $_SESSION['betreff'] = $_POST['betreff'];
+                    $_SESSION['termin'] = $_POST['termin'];
+                    $_SESSION['nachricht'] = $_POST['nachricht'];
+                    $_SESSION['email'] = $_POST['email'];
+                }
+            } else {
+                $response = 'hCaptcha';
+            }
         } catch (Exception $ex) {
         }
     } else {
-        $response = false;
+        $response = 'invalidTermin';
     }
 } else if (isset($_POST['betreff']) || isset($_POST['termin']) || isset($_POST['nachricht']) || isset($_POST['email'])) {
-    $response = false;
+    $response = 'noMatch';
 }
 
-
-if (isset($response) && $response) {
+if (isset($response) && $response === true) {
     echo "<div id='erfolgreich'><h2>Email erfolgreich versendet!</h2></div>";
-} else if (isset($response) && $response === false) {
-    echo "<div id='fehlgeschlagen' class='error'><h2>Email konnte leider nicht versendet werden!<br><span id='kleiner'>(Ist der gewählte Termin in dem Kalender angeführt?)</span></h2></div>";
+} else if (isset($response)) {
+    switch ($response) {
+        case 'duplicate':
+            $text = "Email gerade eben erst versendet";
+            break;
+        case 'hCaptcha':
+            $text = "hCaptcha-Check nicht erfolgreich";
+            break;
+        case 'invalidTermin':
+            $text = "Termin nicht verfügbar";
+            break;
+        case 'noMatch':
+            $text = "Eingaben nicht formkorrekt";
+            break;
+        default:
+            $text = "Unbekannter Fehler aufgetreten";
+            break;
+    }
+
+    echo <<<ENDE
+    <div id='fehlgeschlagen' class='error'>
+            <h2>Email konnte leider nicht versendet werden!
+            <br>
+            <span id='kleiner'>($text)</span>
+        </h2>
+    </div>
+ENDE;
 }
 ?>
 <div id="heading">
@@ -91,7 +203,8 @@ if (isset($response) && $response) {
                 <div class="item calender">
                     <p class="oswald" style="word-wrap: break-word; overflow: hidden">Keine Termine verfügbar</p>
                 </div>
-ENDE;                } else {
+ENDE;
+                } else {
                     foreach ($termine as $termin) {
 
                         $termin = new Termin($termin['pk_datum'], $termin['zeit_von'], $termin['zeit_bis'], $termin['location']);
@@ -173,6 +286,7 @@ ENDE;
                     <p id="required">* ... Pflichtfelder</p>
                 </div>
                 <p id="required">automatische Email an: fascial.sportstherapy@gmail.com</p>
+                <div class="h-captcha" data-sitekey="957e4e38-deea-4457-bed2-ca83b9129bc1"></div>
                 <input type="submit" id="formButton" value="Email absenden">
             </form>
         </div>

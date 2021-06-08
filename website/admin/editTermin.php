@@ -19,7 +19,7 @@ include_once "Termin.php";
 
 $datePattern = "/^[\d]{4}-[\d]{2}-[\d]{2}$/";
 $timePattern = "/^[\d]{2}:[\d]{2}$/";
-$locationPattern = "/^[\w\d `'{}()%&\-@#$~!_^\/]*$/";
+$locationPattern = "/^[\wÄäöÖÜüß `'{}()%&\-@#$~!_^\/\.\n\r]*$/m";
 
 function update($which, $set, $where)
 {
