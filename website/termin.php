@@ -20,7 +20,7 @@ include __DIR__ . "/getPDO.php";
 
 $to = "fascial.sportstherapy@gmail.com";
 
-$patternText = "/^[\wÄäöÖÜüß `'{}()%&\-@#$~!_^\/\.\n\r]*$/m";
+$patternText = "/^[\wÄäöÖÜüß `'|{}()%&\-@#$~!_^\/\.\n\r]*$/m";
 $patternTermin = "/^\d{4}-\d{2}-\d{2}$/m";
 
 function post($url, $postVars = array())
