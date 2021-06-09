@@ -10,7 +10,7 @@ function getPDO()
     $conn = DriverManager::getConnection(array(
         'dbname' => 'fastDb',
         'user' => 'phpUser',
-        'password' => 'DanielleAndDorkaAreMyCuddles',
+        'password' => '^Dz,:2-%W?uF_)/;',
         'host' => 'localhost',
         'driver' => 'pdo_mysql',
         'charset' => 'UTF8'));
@@ -31,7 +31,7 @@ function getUserPDO()
     $conn = DriverManager::getConnection(array(
         'dbname' => 'fastUserDb',
         'user' => 'phpUser',
-        'password' => 'DanielleAndDorkaAreMyCuddles',
+        'password' => '^Dz,:2-%W?uF_)/;',
         'host' => 'localhost',
         'driver' => 'pdo_mysql',
         'charset' => 'UTF8'));
