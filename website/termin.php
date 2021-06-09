@@ -18,11 +18,7 @@ session_start()
 include "nav.php";
 include __DIR__ . "/getPDO.php";
 
-//phpinfo();
-
-//TODO: Change
-//$to = "fascial.sportstherapy@gmail.com";
-$to = "7157@htl.rennweg.at";
+$to = "fascial.sportstherapy@gmail.com";
 
 $patternText = "/^[\wÄäöÖÜüß `'{}()%&\-@#$~!_^\/\.\n\r]*$/m";
 $patternTermin = "/^\d{4}-\d{2}-\d{2}$/m";
