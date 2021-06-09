@@ -1,6 +1,6 @@
 create user if not exists phpUser@localhost;
 alter user phpUser@localhost
-identified by 'DanielleAndDorkaAreMyCuddles';
+identified by '^Dz,:2-%W?uF_)/;';
 
 DROP DATABASE IF EXISTS fastDb;
 CREATE DATABASE IF NOT EXISTS fastDb;
