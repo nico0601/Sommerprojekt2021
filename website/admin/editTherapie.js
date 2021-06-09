@@ -206,7 +206,7 @@ function submitForm() {
 
 function putPostResp(x) {
     if (x.target.readyState === 4) {
-        if (x.target.status === 204) {
+        if (x.target.status === 204 || x.target.status === 200) {
             location.reload();
         } else {
             document.querySelector('#result').innerHTML =
