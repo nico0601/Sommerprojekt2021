@@ -244,7 +244,7 @@ ENDE;
         <div class="kontaktDiv">
             <form method="post" action="">
                 <p class="left">Telefon:</p>
-                <p id="telNr">+43 664 37112860</p>
+                <p id="telNr">+43 664 3712860</p>
                 <p class="left">Email (keine Hausbesuche):</p>
                 <div id="grid">
                     <label for="betreff">Betreff: <sup>*</sup></label>
