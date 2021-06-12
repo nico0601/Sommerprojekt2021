@@ -10,6 +10,7 @@ if (isset($_FILES['event']['tmp_name']) && $_FILES['event']['tmp_name'] != "" &&
     $saveFolder = '/events/';
     $_SESSION['file'] = $saveFolder . $_FILES['event']['name'];
     $_SESSION['size'] = filesize($_FILES['event']['tmp_name']);
+    $_SESSION['type'] = exif_imagetype($_FILES['event']['tmp_name']);
 }
 
 header("Location: editEvent.php");

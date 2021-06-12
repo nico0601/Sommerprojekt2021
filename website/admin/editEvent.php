@@ -21,10 +21,19 @@ if (isset($_POST['delete']) && $_POST['delete'] != "") {
     $event = new Event($_POST['delete']);
     $event->delete();
 }
+
 if (isset($_SESSION['file']) && $_SESSION['file'] != "") {
-    $event = new Event($_SESSION['file']);
-    $event->insert();
-    $_SESSION['file'] = "";
+    if (isset($_SESSION['type']) && $_SESSION['type']) {
+        $event = new Event($_SESSION['file']);
+        $event->insert();
+        $_SESSION['file'] = "";
+    } else {
+        echo <<<ENDE
+        <div id='fehlgeschlagen' class='error'>
+            <h2>Dieses Event entspricht nicht einem der passenden Dateitypen!</h2>
+        </div>
+ENDE;
+    }
 }
 ?>
 
