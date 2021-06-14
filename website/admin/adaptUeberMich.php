@@ -46,7 +46,7 @@ ENDE;
                 ?>
             </div>
             <div id="buttonDiv">
-                <input type="submit" class="formButton" value="Über mich anpassen">
+                <input type="submit" class="formButton" value="adapt Text">
                 <a href="editUeberMich.php">
                     <input type="button" class="formButton" value="Zurück">
                 </a>
